@@ -1,8 +1,8 @@
 {
-  "name": "angular-io-example",
+  "name": "mealsy-online-ordering",
   "version": "1.0.0",
   "private": true,
-  "description": "Example project from an angular.io guide.",
+  "description": "angular2 version of mealsy online ordering",
   "scripts": {
     "lint": "tslint ./src/**/*.ts -t verbose",
     "start": "ng serve",
@@ -12,8 +12,7 @@
     "ng": "ng"
   },
   "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "author": "Arash Khosravi - arashsoft@gmail.com",
   "dependencies": {
     "@angular/animations": "^6.0.0",
     "@angular/common": "^6.0.0",
