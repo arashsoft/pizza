@@ -3,5 +3,5 @@ export class Food {
   name: string;
   description: string;
   price: number;
-  picturePath: string;
+  picturePath?: string;
 }

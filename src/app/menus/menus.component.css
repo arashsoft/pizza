@@ -1,0 +1,8 @@
+/* MenusComponent's private CSS styles */
+.subMenu-item{
+  margin-left: 20px;
+}
+
+.mainMenu-item{
+  font-size: 0.8em;
+}

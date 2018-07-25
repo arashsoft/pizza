@@ -1,0 +1,18 @@
+<nav class="navbar sticky-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">Food Provider Here</a>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="hidden-xs col-sm-4 col-md-3">
+      <ul class="list-group list-group-flush">
+        <ng-template ngFor let-menu [ngForOf]="menus">
+          <li class="list-group-item mainMenu-item"> > {{menu.name}}</li>
+          <li *ngFor="let subMenu of menu.menuSections" class="list-group-item subMenu-item">{{subMenu.name}}</li>
+        </ng-template>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-9">
+
+    </div>
+  </div>
+</div>
