@@ -1,65 +1,36 @@
 /* Master Styles */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~font-awesome/css/font-awesome.css";
 
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
-h2, h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+body {
+  /*bg-light*/
+  background-color: #f8f9fa;
 }
 
-body, input[text], button {
-  color: #888;
-  font-family: Cambria, Georgia;
-}
-a {
-  cursor: pointer;
-  cursor: hand;
-}
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
+.top5 {
+  margin-top: 5px;
 }
 
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
+.top7 {
+  margin-top: 7px;
+}
+
+.top10 {
   margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
 }
 
-/* everywhere else */
-* {
-  font-family: Arial, Helvetica, sans-serif;
+.top15 {
+  margin-top: 15px;
+}
+
+.top17 {
+  margin-top: 17px;
+}
+
+.top30 {
+  margin-top: 30px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

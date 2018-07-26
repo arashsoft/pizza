@@ -1,8 +1,17 @@
 /* MenusComponent's private CSS styles */
-.subMenu-item{
-  margin-left: 20px;
+.main-menu-container{
+  max-width: 1200px;
 }
 
 .mainMenu-item{
-  font-size: 0.8em;
+  font-size: 1.1em;
+}
+
+.subMenu-item{
+  margin-left: 20px;
+  font-size: 1.3em;
+}
+
+.submenu-title{
+  margin-bottom: -5px;
 }

@@ -1,0 +1,25 @@
+<div class="food-item bg-white" (click)="openDetails(foodDetailTemplate)">
+  <img src="./assets/images/pizza.png">
+  <div class="food-title clearfix">
+    <p class="float-left">{{food.name}}</p>
+    <i class="float-right fa fa-cart-plus"></i>
+  </div>
+  <div class="food-price">{{food.price | currency}}</div>
+  <div class="food-description">{{food.description}}</div>
+</div>
+
+<ng-template #foodDetailTemplate let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <i class="fa fa-arrow-left cursor-pointer" (click)="d('Cross click')"></i>
+    <img class="modal-img" src="./assets/images/pizza.png">
+    <div class="food-title clearfix">
+      <p class="float-left">{{food.name}}</p>
+    </div>
+    <div class="food-price">{{food.price | currency}}</div>
+    <div class="food-description">{{food.description}}</div>
+    <p class="text-success font-italic top30">Answer following questions to customize your order</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success btn-large mx-auto" (click)="c('Close click')">Add to Cart</button>
+  </div>
+</ng-template>

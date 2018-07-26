@@ -1,0 +1,25 @@
+/* FoodDetailComponent's private CSS styles */
+
+.food-item{
+ padding: 5px;
+}
+
+img{
+  width: 100%;
+}
+
+img.modal-img{
+  padding: 0 40px;
+}
+
+.food-item .food-title{
+}
+
+.food-price{
+  color: gray;
+  font-size: 0.9em;
+}
+
+.food-description{
+  font-size: 0.9em;
+}

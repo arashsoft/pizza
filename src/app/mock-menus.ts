@@ -31,11 +31,6 @@ export const MENUS: Menu[] = [
             name: 'Pizza fifth',
             description: 'olive, meat',
             price: 16.99
-          }, {
-            id: 1112,
-            name: 'Pizza sixth',
-            description: 'tomato',
-            price: 17.49
           }]
       },
       {
