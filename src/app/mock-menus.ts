@@ -1,4 +1,4 @@
-import {Menu} from './menu';
+import {Menu} from './model/menu';
 
 export const MENUS: Menu[] = [
   {
@@ -10,7 +10,66 @@ export const MENUS: Menu[] = [
             id: 1111,
             name: 'Pizza Margherita',
             description: 'Olive, Ground Meat',
-            price: 12.35
+            price: 12.35,
+            foodSections: [
+              {
+                id: 12,
+                name: 'Toppings?',
+                items: [
+                  {
+                    id: 8723,
+                    name: 'Mutti Peeled Tomatoes'
+                  },
+                  {
+                    id: 8723,
+                    name: 'Rapini'
+                  },
+                  {
+                    id: 8723,
+                    name: 'Cherry Tomatoes'
+                  },
+                  {
+                    id: 8723,
+                    name: 'Portobello Mushrooms'
+                  },
+                  {
+                    id: 8723,
+                    name: 'Extra virgin olive oil'
+                  }
+                ]
+              },
+              {
+                id: 15,
+                name: 'Beverages?',
+                items: [
+                  {
+                    id: 8723,
+                    name: 'Coke',
+                    price: 1.99
+                  },
+                  {
+                    id: 8723,
+                    name: 'Diet Coke',
+                    price: 1.99
+                  },
+                  {
+                    id: 8723,
+                    name: 'Canada Dry',
+                    price: 2.25
+                  },
+                  {
+                    id: 8723,
+                    name: 'Sprite',
+                    price: 2.75
+                  },
+                  {
+                    id: 8723,
+                    name: 'water',
+                    price: 1.50
+                  }
+                ]
+              }
+            ]
           }, {
             id: 1112,
             name: 'Pizza second',
@@ -59,7 +118,8 @@ export const MENUS: Menu[] = [
       }
     ]
   },
-  {id: 12, name: 'Lunch Special',
+  {
+    id: 12, name: 'Lunch Special',
     menuSections: [
       {
         id: 111, name: 'Pizzas', foods: [
@@ -95,5 +155,6 @@ export const MENUS: Menu[] = [
             price: 17.49
           }]
       }
-    ]},
+    ]
+  },
 ];

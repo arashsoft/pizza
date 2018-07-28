@@ -12,12 +12,24 @@
   <div class="modal-body">
     <i class="fa fa-arrow-left cursor-pointer" (click)="d('Cross click')"></i>
     <img class="modal-img" src="./assets/images/pizza.png">
-    <div class="food-title clearfix">
-      <p class="float-left">{{food.name}}</p>
+    <div class="food-title">
+      <p>{{food.name}}</p>
     </div>
     <div class="food-price">{{food.price | currency}}</div>
     <div class="food-description">{{food.description}}</div>
-    <p class="text-success font-italic top30">Answer following questions to customize your order</p>
+    <div *ngIf="food.foodSections" class="top30">
+      <span class="text-success font-italic">Answer following questions to customize your order</span>
+      <div *ngFor="let foodSection of food.foodSections">
+        <h5 class="top15">{{foodSection.name}}</h5>
+        <div *ngFor="let item of foodSection.items" class="clearfix top7">
+          <div class="float-left">
+            <input type="checkbox" (change)="item.value = !item.value">
+            {{item.name}}
+          </div>
+          <div *ngIf="item.price" class="float-right">{{item.price | currency}}</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success btn-large mx-auto" (click)="c('Close click')">Add to Cart</button>
