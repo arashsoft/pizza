@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../model/food';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {CartService} from '../cart/cart.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class FoodDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public cartService: CartService
   ) {}
 
   ngOnInit(): void {

@@ -32,6 +32,6 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success btn-large mx-auto" (click)="c('Close click')">Add to Cart</button>
+    <button type="button" class="btn btn-success btn-large mx-auto" (click)="cartService.addFood(food); c('Close click')">Add to Cart</button>
   </div>
 </ng-template>
