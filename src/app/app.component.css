@@ -1,29 +1,24 @@
 /* AppComponent's private CSS styles */
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
+.navbar-right-side{
+  padding-right: 30px;
+  position: relative;
 }
-h2 {
+.top-cart-icon {
   font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
+  cursor: pointer;
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+
+.top-cart-icon:focus {
+  outline: none;
 }
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.active {
-  color: #039be5;
+
+.top-cart-counter{
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 14px;
+  border-radius: 50%;
+  right: 22px;
 }

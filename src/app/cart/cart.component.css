@@ -1,0 +1,13 @@
+.cart-container{
+  max-width: 800px;
+}
+
+.food-price{
+  color: gray;
+  font-size: 0.9em;
+}
+
+.cart-btn{
+  width: 300px;
+  max-width: 100%;
+}

@@ -23,3 +23,8 @@ img.modal-img{
 .food-description{
   font-size: 0.9em;
 }
+
+.cart-icon{
+  font-size: 2em;
+  padding-right: 5px;
+}

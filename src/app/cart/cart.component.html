@@ -1,0 +1,17 @@
+<div class="container cart-container">
+  <h4>CART</h4>
+  <div class="clearfix">
+    <h5 class="float-left">ITEMS</h5>
+    <h5 class="float-right">PRICE</h5>
+  </div>
+  <div *ngFor="let food of cartService.cart.foods" class="bg-white">
+    <div class="clearfix">
+      <h5 class="float-left">{{food.name}}</h5>
+      <span class="float-right food-price">{{food.price | currency}}</span>
+    </div>
+  </div>
+  <span class="bg-white" *ngIf="!cartService.cart.foods.length">Your cart is empty.</span>
+
+  <button type="button" class="btn btn-success btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">Checkout</button>
+  <button type="button" class="btn btn-light btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">Continue Shopping</button>
+</div>

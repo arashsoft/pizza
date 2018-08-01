@@ -14,6 +14,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenusComponent} from './menus/menus.component';
 import {FoodDetailComponent} from './food-detail/food-detail.component';
+import {CartComponent} from './cart/cart.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {FoodDetailComponent} from './food-detail/food-detail.component';
     AppComponent,
     DashboardComponent,
     MenusComponent,
-    FoodDetailComponent
+    FoodDetailComponent,
+    CartComponent
   ],
   bootstrap: [AppComponent]
 })
