@@ -20,6 +20,7 @@ export class FoodDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.food.calculatePrice();
   }
 
   openDetails(foodDetailTemplate): void {

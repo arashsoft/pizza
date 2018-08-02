@@ -4,13 +4,21 @@
     <h5 class="float-left">ITEMS</h5>
     <h5 class="float-right">PRICE</h5>
   </div>
-  <div *ngFor="let food of cartService.cart.foods" class="bg-white">
+  <div *ngFor="let item of cartService.cart.items" class="bg-white">
     <div class="clearfix">
-      <h5 class="float-left">{{food.name}}</h5>
-      <span class="float-right food-price">{{food.price | currency}}</span>
+      <h5 class="float-left">{{item.food.name}}</h5>
+      <span class="float-right food-price">{{item.food.totalPrice | currency}}</span>
+    </div>
+    <div *ngFor="let foodSection of item.food.foodSections">
+      <h5 class="food-section-title">{{foodSection.name}}</h5>
+      <span class="food-section-items">{{foodSection.items.toString()}}</span>
+    </div>
+    <div class="clearfix">
+      <h5 class="float-left">Quantity</h5>
+      <app-quantity class="float-right" [(quantity)]="item.quantity"></app-quantity>
     </div>
   </div>
-  <span class="bg-white" *ngIf="!cartService.cart.foods.length">Your cart is empty.</span>
+  <span class="bg-white" *ngIf="!cartService.cart.items.length">Your cart is empty.</span>
 
   <button type="button" class="btn btn-success btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">Checkout</button>
   <button type="button" class="btn btn-light btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">Continue Shopping</button>

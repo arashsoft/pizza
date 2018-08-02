@@ -1,5 +1,5 @@
-import {Food} from './food';
+import {CartItem} from './cartItem';
 
 export class Cart {
-  foods = new Array<Food>();
+  items = new Array<CartItem>();
 }

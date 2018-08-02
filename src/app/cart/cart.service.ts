@@ -1,13 +1,19 @@
 import {Injectable} from '@angular/core';
 import {Cart} from '../model/cart';
 import {Food} from '../model/food';
+import {CartItem} from '../model/cartItem';
 
 @Injectable({providedIn: 'root'})
 export class CartService {
   cart = new Cart;
 
   addFood(food: Food) {
-    this.cart.foods.push(food);
+    food.calculatePrice();
+    this.cart.items.push(new CartItem(food));
+  }
+
+  getTotalItems(): number {
+    return this.cart.items.length;
   }
 
   clear() {

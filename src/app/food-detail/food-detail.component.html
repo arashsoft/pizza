@@ -15,7 +15,7 @@
     <div class="food-title">
       <p>{{food.name}}</p>
     </div>
-    <div class="food-price">{{food.price | currency}}</div>
+    <div class="food-price">{{food.totalPrice | currency}}</div>
     <div class="food-description">{{food.description}}</div>
     <div *ngIf="food.foodSections" class="top30">
       <span class="text-success font-italic">Answer following questions to customize your order</span>
@@ -23,7 +23,7 @@
         <h5 class="top15">{{foodSection.name}}</h5>
         <div *ngFor="let item of foodSection.items" class="clearfix top7">
           <div class="float-left">
-            <input type="checkbox" (change)="item.value = !item.value">
+            <input type="checkbox" (change)="item.value = !item.value; food.calculatePrice();">
             {{item.name}}
           </div>
           <div *ngIf="item.price" class="float-right">{{item.price | currency}}</div>

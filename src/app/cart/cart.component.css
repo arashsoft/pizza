@@ -11,3 +11,12 @@
   width: 300px;
   max-width: 100%;
 }
+
+.food-section-title{
+  font-size: 0.8em;
+}
+
+.food-section-items{
+  font-style: italic;
+  font-size: 0.8em;
+}

@@ -1,4 +1,6 @@
 import {Menu} from './model/menu';
+import {FoodSectionItem} from './model/foodSectionItem';
+import {Food} from './model/food';
 
 export const MENUS: Menu[] = [
   {
@@ -6,115 +8,116 @@ export const MENUS: Menu[] = [
     menuSections: [
       {
         id: 111, name: 'Pizzas', foods: [
-          {
-            id: 1111,
-            name: 'Pizza Margherita',
-            description: 'Olive, Ground Meat',
-            price: 12.35,
-            foodSections: [
+          new Food(
+            1111,
+            'Pizza Margherita',
+            'Olive, Ground Meat',
+            12.35,
+            undefined,
+            [
               {
                 id: 12,
                 name: 'Toppings?',
                 items: [
-                  {
-                    id: 8723,
-                    name: 'Mutti Peeled Tomatoes'
-                  },
-                  {
-                    id: 8723,
-                    name: 'Rapini'
-                  },
-                  {
-                    id: 8723,
-                    name: 'Cherry Tomatoes'
-                  },
-                  {
-                    id: 8723,
-                    name: 'Portobello Mushrooms'
-                  },
-                  {
-                    id: 8723,
-                    name: 'Extra virgin olive oil'
-                  }
+                  new FoodSectionItem(
+                    8723,
+                    'Mutti Peeled Tomatoes'
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Rapini'
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Cherry Tomatoes'
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Portobello Mushrooms'
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Extra virgin olive oil'
+                  )
                 ]
               },
               {
                 id: 15,
                 name: 'Beverages?',
                 items: [
-                  {
-                    id: 8723,
-                    name: 'Coke',
-                    price: 1.99
-                  },
-                  {
-                    id: 8723,
-                    name: 'Diet Coke',
-                    price: 1.99
-                  },
-                  {
-                    id: 8723,
-                    name: 'Canada Dry',
-                    price: 2.25
-                  },
-                  {
-                    id: 8723,
-                    name: 'Sprite',
-                    price: 2.75
-                  },
-                  {
-                    id: 8723,
-                    name: 'water',
-                    price: 1.50
-                  }
+                  new FoodSectionItem(
+                    8723,
+                    'Coke',
+                    1.99
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Diet Coke',
+                    1.99
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Canada Dry',
+                    2.25
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'Sprite',
+                    2.75
+                  ),
+                  new FoodSectionItem(
+                    8723,
+                    'water',
+                    1.50
+                  )
                 ]
               }
             ]
-          }, {
-            id: 1112,
-            name: 'Pizza second',
-            description: 'Tomato',
-            price: 18.99
-          }, {
-            id: 1111,
-            name: 'Pizza third',
-            description: 'Basil, olive, meat',
-            price: 13.50
-          }, {
-            id: 1112,
-            name: 'Pizza fourth',
-            description: 'tomato',
-            price: 18.99
-          }, {
-            id: 1111,
-            name: 'Pizza fifth',
-            description: 'olive, meat',
-            price: 16.99
-          }]
+          ), new Food(
+            1112,
+            'Pizza second',
+            'Tomato',
+            18.99
+          ), new Food(
+            1111,
+            'Pizza third',
+            'Basil, olive, meat',
+            13.50
+          ), new Food(
+            1112,
+            'Pizza fourth',
+            'tomato',
+            18.99
+          ), new Food(
+            1111,
+            'Pizza fifth',
+            'olive, meat',
+            16.99
+          )]
       },
       {
         id: 111, name: 'Beverages', foods: [
-          {
-            id: 1111,
-            name: 'Coke',
-            description: '',
-            price: 2.35
-          }, {
-            id: 1112,
-            name: 'Diet Coke',
-            description: '',
-            price: 4.99
-          }, {
-            id: 1111,
-            name: 'Canada Dry',
-            description: '',
-            price: 3.50
-          }, {
-            id: 1112,
-            name: 'Sprite',
-            description: '',
-            price: 2.75
-          }]
+          new Food(
+            1111,
+            'Coke',
+            '',
+            2.35
+          ), new Food(
+            1112,
+            'Diet Coke',
+            '',
+            4.99
+          ), new Food(
+            1111,
+            'Canada Dry',
+            '',
+            3.50
+          ), new Food(
+            1112,
+            'Sprite',
+            '',
+            2.75
+          )]
       }
     ]
   },
@@ -123,37 +126,37 @@ export const MENUS: Menu[] = [
     menuSections: [
       {
         id: 111, name: 'Pizzas', foods: [
-          {
-            id: 1111,
-            name: 'Pizza Margherita',
-            description: 'Olive, Ground Meat',
-            price: 12.35
-          }, {
-            id: 1112,
-            name: 'Pizza second',
-            description: 'Tomato',
-            price: 18.99
-          }, {
-            id: 1111,
-            name: 'Pizza third',
-            description: 'Basil, olive, meat',
-            price: 13.50
-          }, {
-            id: 1112,
-            name: 'Pizza fourth',
-            description: 'tomato',
-            price: 18.99
-          }, {
-            id: 1111,
-            name: 'Pizza fifth',
-            description: 'olive, meat',
-            price: 16.99
-          }, {
-            id: 1112,
-            name: 'Pizza sixth',
-            description: 'tomato',
-            price: 17.49
-          }]
+          new Food(
+            1111,
+            'Pizza Margherita',
+            'Olive, Ground Meat',
+            12.35
+          ), new Food(
+            1112,
+            'Pizza second',
+            'Tomato',
+            18.99
+          ), new Food(
+            1111,
+            'Pizza third',
+            'Basil, olive, meat',
+            13.50
+          ), new Food(
+            1112,
+            'Pizza fourth',
+            'tomato',
+            18.99
+          ), new Food(
+            1111,
+            'Pizza fifth',
+            'olive, meat',
+            16.99
+          ), new Food(
+            1112,
+            'Pizza sixth',
+            'tomato',
+            17.49
+          )]
       }
     ]
   },
