@@ -17,7 +17,7 @@ export const MENUS: Menu[] = [
             [
               {
                 id: 12,
-                name: 'Toppings?',
+                name: 'Toppings',
                 items: [
                   new FoodSectionItem(
                     8723,
@@ -43,7 +43,7 @@ export const MENUS: Menu[] = [
               },
               {
                 id: 15,
-                name: 'Beverages?',
+                name: 'Beverages',
                 items: [
                   new FoodSectionItem(
                     8723,

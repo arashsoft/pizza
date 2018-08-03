@@ -1,5 +1,5 @@
 .cart-container{
-  max-width: 800px;
+  max-width: 600px;
 }
 
 .food-price{
@@ -13,10 +13,26 @@
 }
 
 .food-section-title{
-  font-size: 0.8em;
+  font-size: 0.85em;
+  margin-bottom: 1px;
 }
 
 .food-section-items{
   font-style: italic;
   font-size: 0.8em;
+  display: inline-block;
+  line-height: 120%;
+}
+
+.cart-padding{
+  padding: 25px 30px 15px 30px;
+}
+
+.cart-empty-message{
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.cart-quantity-text{
+  font-size: 0.85em;
 }

@@ -20,7 +20,7 @@
     <div *ngIf="food.foodSections" class="top30">
       <span class="text-success font-italic">Answer following questions to customize your order</span>
       <div *ngFor="let foodSection of food.foodSections">
-        <h5 class="top15">{{foodSection.name}}</h5>
+        <h5 class="top15">{{foodSection.name}} ?</h5>
         <div *ngFor="let item of foodSection.items" class="clearfix top7">
           <div class="float-left">
             <input type="checkbox" (change)="item.value = !item.value; food.calculatePrice();">
@@ -32,6 +32,6 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success btn-large mx-auto" (click)="cartService.addFood(food); c('Close click')">Add to Cart</button>
+    <button type="button" class="btn btn-mealsy1 btn-large mx-auto add-to-cart-btn" (click)="cartService.addFood(food); c('Close click')">ADD TO CART</button>
   </div>
 </ng-template>

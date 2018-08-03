@@ -1,25 +1,28 @@
 <div class="container cart-container">
+  <div class="cart-padding">
   <h4>CART</h4>
-  <div class="clearfix">
-    <h5 class="float-left">ITEMS</h5>
-    <h5 class="float-right">PRICE</h5>
+    <div class="clearfix">
+      <h5 class="float-left">ITEMS</h5>
+      <h5 class="float-right">PRICE</h5>
+    </div>
   </div>
-  <div *ngFor="let item of cartService.cart.items" class="bg-white">
+  <div *ngFor="let item of cartService.cart.items" class="bg-white cart-padding top3">
     <div class="clearfix">
       <h5 class="float-left">{{item.food.name}}</h5>
       <span class="float-right food-price">{{item.food.totalPrice | currency}}</span>
     </div>
-    <div *ngFor="let foodSection of item.food.foodSections">
+    <div *ngFor="let foodSection of item.food.foodSections" class="top10">
       <h5 class="food-section-title">{{foodSection.name}}</h5>
-      <span class="food-section-items">{{foodSection.items.toString()}}</span>
+      <span class="food-section-items top5">{{foodSection.items.join(', ')}}</span>
     </div>
-    <div class="clearfix">
-      <h5 class="float-left">Quantity</h5>
+    <div class="clearfix top15">
+      <h5 class="float-left cart-quantity-text top5">Quantity</h5>
       <app-quantity class="float-right" [(quantity)]="item.quantity"></app-quantity>
     </div>
   </div>
-  <span class="bg-white" *ngIf="!cartService.cart.items.length">Your cart is empty.</span>
-
-  <button type="button" class="btn btn-success btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">Checkout</button>
-  <button type="button" class="btn btn-light btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">Continue Shopping</button>
+  <h5 class="bg-white cart-padding .cart-empty-message" *ngIf="!cartService.cart.items.length">Your cart is empty.</h5>
+  <div class="cart-padding bg-white">
+    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">CHECKOUT</button>
+    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" (click)="cartService.addFood(food); c('Close click')">CONTINUE SHOPPING</button>
+  </div>
 </div>
