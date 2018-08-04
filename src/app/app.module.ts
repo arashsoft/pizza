@@ -9,13 +9,14 @@ import {InMemoryDataService} from './in-memory-data.service';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {HomeComponent} from './pages/home/home.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {MenusComponent} from './menus/menus.component';
-import {FoodDetailComponent} from './food-detail/food-detail.component';
-import {CartComponent} from './cart/cart.component';
-import { QuantityComponent } from './quantity/quantity.component';
+import {MenuComponent} from './pages/menu/menu.component';
+import {FoodDetailComponent} from './pages/menu/food-detail/food-detail.component';
+import {CartComponent} from './pages/cart/cart.component';
+import { QuantityComponent } from './component/quantity/quantity.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 
 @NgModule({
@@ -35,11 +36,12 @@ import { QuantityComponent } from './quantity/quantity.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
-    MenusComponent,
+    HomeComponent,
+    MenuComponent,
     FoodDetailComponent,
     CartComponent,
-    QuantityComponent
+    QuantityComponent,
+    NavbarComponent
   ],
   bootstrap: [AppComponent]
 })

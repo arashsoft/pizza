@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Food} from '../model/food';
+import {Food} from '../../../model/food';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {CartService} from '../cart/cart.service';
+import {CartService} from '../../../service/cart.service';
 import * as _ from 'lodash';
 
 @Component({

@@ -22,8 +22,8 @@
   </div>
   <h5 class="bg-white cart-padding .cart-empty-message text-center" *ngIf="!cartService.cart.items.length">Your cart is empty</h5>
   <div class="cart-padding bg-white bottom15">
-    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">CHECKOUT</button>
-    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" (click)="cartService.addFood(food); c('Close click')">CONTINUE SHOPPING</button>
+    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn">CHECKOUT</button>
+    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" [routerLink]="['/menus']">CONTINUE SHOPPING</button>
   </div>
   <h5 class="footer-note bottom30 text-center">Powered by Mealsy.ca</h5>
 </div>
