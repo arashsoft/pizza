@@ -1,4 +1,23 @@
 /* HomeComponent's private CSS styles */
 .home-container{
-  max-width: 600px;
+  max-width: 400px;
+}
+
+.input-group.login-input>.input-group-prepend{
+  /*width: 50px;*/
+
+}
+.input-group.login-input>.input-group-prepend>.input-group-text{
+  width: 50px;
+  border-radius: 1px 0 0 1px;
+  border: none;
+  background-color: rgb(250,250,255);
+  color: darkgray;
+}
+
+.input-group.login-input>.form-control{
+  background-color: rgb(250,250,255);
+  border-radius: 0 1px 1px 0;
+  border: none;
+  font-size: 0.9em;
 }
