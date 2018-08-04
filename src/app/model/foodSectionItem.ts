@@ -10,7 +10,6 @@ export class FoodSectionItem {
     this.price = price;
   }
 
-
   public toString = (): string => {
     return this.name;
   };

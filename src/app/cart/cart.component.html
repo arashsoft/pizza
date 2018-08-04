@@ -13,16 +13,17 @@
     </div>
     <div *ngFor="let foodSection of item.food.foodSections" class="top10">
       <h5 class="food-section-title">{{foodSection.name}}</h5>
-      <span class="food-section-items top5">{{foodSection.items.join(', ')}}</span>
+      <span class="food-section-items top5">{{foodSection.selectedItems}}</span>
     </div>
     <div class="clearfix top15">
       <h5 class="float-left cart-quantity-text top5">Quantity</h5>
-      <app-quantity class="float-right" [(quantity)]="item.quantity"></app-quantity>
+      <app-quantity class="float-right" [(quantity)]="item.quantity" (quantityChange)="cartService.cart.calculatePrice()"></app-quantity>
     </div>
   </div>
-  <h5 class="bg-white cart-padding .cart-empty-message" *ngIf="!cartService.cart.items.length">Your cart is empty.</h5>
-  <div class="cart-padding bg-white">
+  <h5 class="bg-white cart-padding .cart-empty-message text-center" *ngIf="!cartService.cart.items.length">Your cart is empty</h5>
+  <div class="cart-padding bg-white bottom15">
     <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" (click)="cartService.addFood(food); c('Close click')">CHECKOUT</button>
     <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" (click)="cartService.addFood(food); c('Close click')">CONTINUE SHOPPING</button>
   </div>
+  <h5 class="footer-note bottom30 text-center">Powered by Mealsy.ca</h5>
 </div>

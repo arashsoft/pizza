@@ -1,0 +1,16 @@
+.quantity-container{
+  padding: 10px 15px;
+  border: 1px solid darkgray;
+  border-radius: 50px / 100%;
+}
+.quantity-icon{
+  color: darkgray;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+.quantity-number{
+  padding: 0 15px;
+  font-size: 1.1em;
+  user-select: none;
+}

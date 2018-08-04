@@ -10,6 +10,7 @@ export class CartService {
   addFood(food: Food) {
     food.calculatePrice();
     this.cart.items.push(new CartItem(food));
+    this.cart.calculatePrice();
   }
 
   getTotalItems(): number {
@@ -18,5 +19,6 @@ export class CartService {
 
   clear() {
     this.cart = new Cart();
+    this.cart.calculatePrice();
   }
 }
