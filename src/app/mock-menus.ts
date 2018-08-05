@@ -1,5 +1,5 @@
 import {Menu} from './model/menu';
-import {FoodSectionItem} from './model/foodSectionItem';
+import {FoodAnswer} from './model/foodAnswer';
 import {Food} from './model/food';
 
 export const MENUS: Menu[] = [
@@ -19,23 +19,23 @@ export const MENUS: Menu[] = [
                 id: 12,
                 name: 'Toppings',
                 items: [
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Mutti Peeled Tomatoes'
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Rapini'
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Cherry Tomatoes'
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Portobello Mushrooms'
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Extra virgin olive oil'
                   )
@@ -45,27 +45,27 @@ export const MENUS: Menu[] = [
                 id: 15,
                 name: 'Beverages',
                 items: [
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Coke',
                     1.99
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Diet Coke',
                     1.99
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Canada Dry',
                     2.25
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'Sprite',
                     2.75
                   ),
-                  new FoodSectionItem(
+                  new FoodAnswer(
                     8723,
                     'water',
                     1.50

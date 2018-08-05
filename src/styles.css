@@ -83,3 +83,9 @@ body {
   border: 1px solid darkgray;
   height:40px;
 }
+
+.footer-note{
+  color: darkgray;
+  font-size: 0.7em;
+}
+

@@ -1,3 +1,9 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar sticky-top navbar-light bg-white">
+  <a class="navbar-brand" href="#">Food Provider Here</a>
+  <div class="navbar-right-side" >
+    <div>User profile here
+      <span class="fa fa-shopping-cart top-cart-icon " [routerLink]="['/cart']"></span>
+      <span class="top-cart-counter bg-success text-white">{{cartService.getTotalItems()}}</span>
+    </div>
+  </div>
+</nav>

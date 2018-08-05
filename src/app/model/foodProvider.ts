@@ -1,13 +1,9 @@
 import {Menu} from './menu';
+import {Address} from './address';
 
 export class FoodProvider {
   id: number;
-  companyId: number;
-  businessId?: number;
   name: string;
-  logoPath: string;
   menus?: Menu[];
-  phone: string;
-  address: string;
-  postalCode: string;
+  address: Address;
 }

@@ -15,8 +15,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenuComponent} from './pages/menu/menu.component';
 import {FoodDetailComponent} from './pages/menu/food-detail/food-detail.component';
 import {CartComponent} from './pages/cart/cart.component';
-import { QuantityComponent } from './component/quantity/quantity.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
+import {QuantityComponent} from './component/quantity/quantity.component';
+import {NavbarComponent} from './component/navbar/navbar.component';
+import { OrderSettingComponent } from './pages/order-setting/order-setting.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     FoodDetailComponent,
     CartComponent,
     QuantityComponent,
-    NavbarComponent
+    NavbarComponent,
+    OrderSettingComponent
   ],
   bootstrap: [AppComponent]
 })

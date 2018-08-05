@@ -1,4 +1,5 @@
-import {FoodSection} from './foodSection';
+import {FoodQuestion} from './foodQuestion';
+import {FoodSize} from './foodSize';
 
 export class Food {
   id: number;
@@ -6,18 +7,18 @@ export class Food {
   description: string;
   price: number;
   picturePath?: string;
-  foodSections?: FoodSection[];
+  foodSize?: FoodSize[];
 
   // @lazy: total price of food based on selected foodSections
   totalPrice?: number;
 
-  constructor(id: number, name: string, description: string, price: number, picturePath?: string, foodSections?: FoodSection[]) {
+  constructor(id: number, name: string, description: string, price: number, picturePath?: string, foodSize?: FoodSize[]) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.price = price;
     this.picturePath = picturePath;
-    this.foodSections = foodSections;
+    this.foodSize = foodSize;
   }
 
   /**
@@ -30,7 +31,7 @@ export class Food {
       for (const foodSection of this.foodSections) {
         const selectedItems = [];
         for (const foodSectionItem of foodSection.items) {
-          if (foodSectionItem.value) {
+          if (foodSectionItem.selected) {
             totalPrice += (foodSectionItem.price || 0);
             selectedItems.push(foodSectionItem.name);
           }
@@ -48,7 +49,7 @@ export class Food {
     if (this.foodSections) {
       for (const foodSection of this.foodSections) {
         for (const foodSectionItem of foodSection.items) {
-          foodSectionItem.value = false;
+          foodSectionItem.selected = false;
         }
       }
     }

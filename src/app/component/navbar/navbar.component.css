@@ -1,0 +1,23 @@
+.navbar-right-side{
+  padding-right: 30px;
+  position: relative;
+}
+.top-cart-icon {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.top-cart-icon:focus {
+  outline: none;
+}
+
+.top-cart-counter{
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 14px;
+  border-radius: 50%;
+  right: 22px;
+}

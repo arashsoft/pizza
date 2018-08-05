@@ -1,8 +1,9 @@
-export class FoodSectionItem {
+export class FoodAnswer {
   id: number;
   name: string;
   price?: number;
-  value = false;
+  defaultSelected: boolean;
+  selected = false;
 
   constructor(id, name, price?) {
     this.id = id;
