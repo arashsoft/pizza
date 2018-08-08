@@ -3,13 +3,13 @@ import {CartItem} from './cartItem';
 export class Cart {
   items = new Array<CartItem>();
 
-  // @lazy: total price of food based on selected foodSections
+  // @Lazy: total price of food based on selected foodSections
   subTotalPrice?: number;
 
-  // @lazy: total price of food based on selected foodSections
+  // @Lazy: total price of food based on selected foodSections
   taxPrice?: number;
 
-  // @lazy: total price of food based on selected foodSections
+  // @Lazy: total price of food based on selected foodSections
   totalPrice?: number;
 
   constructor() {

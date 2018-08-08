@@ -4,7 +4,6 @@ import {FoodQuestion} from './foodQuestion';
 export class FoodSize {
   id: number;
   name: string;
+  price: number;
   questions: FoodQuestion[];
-  // @lazy: comma separated string of selected items
-  selectedItems?: string;
 }

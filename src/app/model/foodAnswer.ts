@@ -3,7 +3,9 @@ export class FoodAnswer {
   name: string;
   price?: number;
   defaultSelected: boolean;
-  selected = false;
+
+  // @Data determines if this checkbox/radio is selected or quantity of item;
+  selected: boolean | number = false;
 
   constructor(id, name, price?) {
     this.id = id;

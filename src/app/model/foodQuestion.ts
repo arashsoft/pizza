@@ -3,8 +3,13 @@ import {FoodAnswer} from './foodAnswer';
 export class FoodQuestion {
   id: number;
   name: string;
-  // type: // 3 enums
+  type: FoodQuestionType;
   answers: FoodAnswer[];
-  // @lazy: comma separated string of selected items
+  // @Lazy: comma separated string of selected items
   selectedItems?: string;
+}
+
+
+export enum FoodQuestionType {
+  CHECKBOX, OPTION, QUANTITY
 }
