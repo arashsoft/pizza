@@ -7,8 +7,9 @@ export class Food {
   price: number;
   picturePath?: string;
   foodSizes?: FoodSize[];
+  defaultSelectedSize?: FoodSize;
 
-  // @Data
+  // @Data: The size of food
   selectedSize?: FoodSize;
 
   // @Lazy: total price of food based on selected foodSections
@@ -30,33 +31,31 @@ export class Food {
           this.selectedSize = foodSize;
         }
       }
+      this.defaultSelectedSize = this.selectedSize;
     }
   }
 
   /**
    * Calculate total price of food.
    */
-  public calculatePrice = (): void => {
-    let totalPrice = this.price;
-    if (this.foodSizes) {
-      totalPrice = this.selectedSize.price;
-      for (const question of this.selectedSize.questions) {
-        totalPrice += question.getPrice();
-      }
+  public calculatePrice(): void {
+    if (this.selectedSize) {
+      this.totalPrice = this.selectedSize.getPrice();
+    } else {
+      this.totalPrice = this.price;
     }
-    this.totalPrice = totalPrice;
   };
 
   /**
    * reset food to its original state, including size and all question/answers
    */
   public reset() {
-    if (this.foodSections) {
-      for (const foodSection of this.foodSections) {
-        for (const foodSectionItem of foodSection.items) {
-          foodSectionItem.selected = false;
-        }
+    if (this.foodSizes) {
+      for (const foodSize of this.foodSizes) {
+        foodSize.reset();
       }
     }
+    this.selectedSize = this.defaultSelectedSize;
+    this.calculatePrice();
   }
 }
