@@ -1,4 +1,4 @@
-import {FoodAnswer} from './foodAnswer';
+import {FoodAnswer, FoodAnswerToppingSize} from './foodAnswer';
 import * as _ from 'lodash';
 
 export class FoodQuestion {
@@ -39,10 +39,16 @@ export class FoodQuestion {
           selectedItems.push(answer);
         }
       }
-    } else if (this.type === FoodQuestionType.QUANTITY) {
+    } else if (this.type === FoodQuestionType.QUANTITY || this.type === FoodQuestionType.TOPPING_QUANTITY) {
       for (const answer of this.answers) {
         if (answer.quantity > 0) {
-          totalPrice += (answer.price * answer.quantity);
+          if (answer.toppingSide === FoodAnswerToppingSize.FULL) {
+            totalPrice += (answer.price * answer.quantity);
+          } else if (answer.toppingSide === FoodAnswerToppingSize.LEFT || answer.toppingSide === FoodAnswerToppingSize.RIGHT) {
+            totalPrice += (answer.price * answer.quantity / 2);
+          } else {
+            throw new Error('Unknown topping sise');
+          }
           selectedItems.push(answer);
         }
       }
@@ -69,5 +75,5 @@ export class FoodQuestion {
 
 
 export enum FoodQuestionType {
-  CHECKBOX, OPTION, QUANTITY
+  CHECKBOX, OPTION, QUANTITY, TOPPING_QUANTITY
 }

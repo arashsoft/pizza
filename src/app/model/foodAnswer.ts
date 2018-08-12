@@ -9,6 +9,8 @@ export class FoodAnswer {
   selected = false;
   // @Data: determines the quantity of answer
   quantity = 0;
+  // @Data: pizza topping side
+  toppingSide = FoodAnswerToppingSize.FULL;
 
   constructor(id, name, price?, defaultSelected?, defaultQuantity?) {
     this.id = id;
@@ -23,6 +25,13 @@ export class FoodAnswer {
   }
 
   public toString = (): string => {
+    if (this.toppingSide === FoodAnswerToppingSize.FULL) {
+      return this.name;
+    } else if (this.toppingSide === FoodAnswerToppingSize.RIGHT) {
+      return this.name + '(right side)';
+    } else if (this.toppingSide === FoodAnswerToppingSize.LEFT) {
+      return this.name + '(left side)';
+    }
     return this.name;
   };
 
@@ -30,4 +39,8 @@ export class FoodAnswer {
     this.selected = this.defaultSelected || false;
     this.quantity = this.defaultQuantity || 0;
   }
+}
+
+export enum FoodAnswerToppingSize {
+  FULL, LEFT, RIGHT
 }
