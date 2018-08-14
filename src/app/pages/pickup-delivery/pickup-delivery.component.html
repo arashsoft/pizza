@@ -1,0 +1,46 @@
+<form #pickupDelivery="ngForm">
+  <div class="modal-body">
+    <i class="fa fa-arrow-left cursor-pointer" (click)="d('Cross click')"></i>
+    <div class="mt-3"><span class="fa fa-cog"></span> SELECT YOUR ORDER TYPE</div>
+    <div class="px-3">
+      <label class="checkmark-container mt-3">PICKUP
+        <input type="radio" [(ngModel)]="orderService.isPickup" value="true" name="radio">
+        <span class="checkmark"></span>
+      </label>
+      <label class="checkmark-container">DELIVERY
+        <input type="radio" [(ngModel)]="orderService.isPickup"  value="false" name="radio">
+        <span class="checkmark"></span>
+      </label>
+
+      <div class="mt-4 clearfix address-container text-secondary">
+        <span class="float-left">Address</span>
+        <input class="float-right" ng-model=>
+        <hr>
+      </div>
+      <div class="mt-2 clearfix address-container text-secondary">
+        Postal Code
+        <hr>
+      </div>
+      <div class="mt-2 clearfix address-container text-secondary">
+        Unit Number
+        <hr>
+      </div>
+      <div class="mt-2 clearfix address-container text-secondary">
+        Buzzer
+        <hr>
+      </div>
+      <div class="mt-2 clearfix address-container text-secondary">
+        City
+        <hr>
+      </div>
+      <div class="mt-2 clearfix address-container text-secondary">
+        Province
+        <hr>
+      </div>
+    </div>
+    <div class="mt-1"><span class="fa fa-clock"></span>SCHEDULED FOR</div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-mealsy1 btn-large mx-auto" (click)="c('Close click')">CONTINUE</button>
+  </div>
+</form>

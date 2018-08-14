@@ -17,7 +17,7 @@ import {FoodDetailComponent} from './pages/menu/food-detail/food-detail.componen
 import {CartComponent} from './pages/cart/cart.component';
 import {QuantityComponent} from './component/quantity/quantity.component';
 import {NavbarComponent} from './component/navbar/navbar.component';
-import { OrderSettingComponent } from './pages/order-setting/order-setting.component';
+import {PickupDeliveryComponent} from './pages/pickup-delivery/pickup-delivery.component';
 
 
 @NgModule({
@@ -43,7 +43,7 @@ import { OrderSettingComponent } from './pages/order-setting/order-setting.compo
     CartComponent,
     QuantityComponent,
     NavbarComponent,
-    OrderSettingComponent
+    PickupDeliveryComponent
   ],
   bootstrap: [AppComponent]
 })
