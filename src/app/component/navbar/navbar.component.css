@@ -21,3 +21,10 @@
   border-radius: 50%;
   right: 22px;
 }
+
+.pickup-delivery{
+  color: rgb(0, 200, 100);
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}

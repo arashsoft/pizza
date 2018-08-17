@@ -1,4 +1,21 @@
+.faded-input {
+  /*border: none;*/
+  width: calc(100% - 100px);
+  text-align: right;
+  color: rgb(0, 200, 100);
+  font-size: 1.3em;
+  border: none;
+  border-bottom: 1px solid white;
+}
 
+.faded-input:focus{
+  outline: none;
+  border-bottom: 1px solid darkgray;
+}
+
+.pickup-delivery-btn{
+  width: 250px;
+}
 /*radio*/
 .checkmark-container {
   display: block;
@@ -6,7 +23,7 @@
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 0.9em;
   user-select: none;
 }
 

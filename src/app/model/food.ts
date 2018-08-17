@@ -15,18 +15,21 @@ export class Food {
   // @Lazy: total price of food based on selected foodSections
   totalPrice?: number;
 
-  constructor(id: number, name: string, description: string, price: number, picturePath?: string, foodSizes?: FoodSize[]) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.price = price;
-    this.picturePath = picturePath;
-    this.foodSizes = foodSizes;
+  // TODO: add back-end types
+  constructor(foodObject) {
+    this.id = foodObject.FoodId;
+    this.name = foodObject.Name;
+    this.description = foodObject.Ingredients;
+    this.price = foodObject.Price;
+    this.picturePath = foodObject.PhotoPath;
+    if (foodObject.Foodsize) {
+      this.foodSizes = foodObject.Foodsize.map(foodSizeObject => new FoodSize(foodSizeObject));
+    }
 
-    if (foodSizes && foodSizes.length) {
+    if (this.foodSizes && this.foodSizes.length) {
       // find cheapest foodSize and use it as selectedSize
-      this.selectedSize = foodSizes[0];
-      for (const foodSize of foodSizes) {
+      this.selectedSize = this.foodSizes[0];
+      for (const foodSize of this.foodSizes) {
         if (this.selectedSize.price > foodSize.price) {
           this.selectedSize = foodSize;
         }

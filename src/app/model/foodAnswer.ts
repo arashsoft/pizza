@@ -12,15 +12,16 @@ export class FoodAnswer {
   // @Data: pizza topping side
   toppingSide = FoodAnswerToppingSize.FULL;
 
-  constructor(id, name, price?, defaultSelected?, defaultQuantity?) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    if (defaultSelected) {
-      this.selected = defaultSelected;
+  // TODO: add back-end types
+  constructor(answerObject, ratio: number) {
+    this.id = answerObject.OrderAnswerId;
+    this.name = answerObject.Text;
+    this.price = answerObject.price * ratio;
+    if (answerObject.defaultSelected) {
+      this.selected = answerObject.defaultSelected;
     }
-    if (defaultQuantity) {
-      this.quantity = defaultQuantity;
+    if (answerObject.defaultQuantity) {
+      this.quantity = answerObject.defaultQuantity;
     }
   }
 

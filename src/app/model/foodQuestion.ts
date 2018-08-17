@@ -14,14 +14,15 @@ export class FoodQuestion {
   // @Lazy: total price of this question
   totalPrice?: number;
 
-  constructor(id, name, type, answers: FoodAnswer[], numberOfFreeItems?) {
-    this.id = id;
-    this.name = name;
-    this.type = type;
-    this.answers = answers;
-    if (numberOfFreeItems > 0) {
-      this.numberOfFreeItems = numberOfFreeItems;
-      this.lowestItemPrice = _.min(_.pluck(answers, 'price'));
+  // TODO: add back-end type
+  constructor(questionObject) {
+    this.id = questionObject.FoodsizeOrderquestionId;
+    this.name = questionObject.Text;
+    this.type = questionObject.Type;
+    this.numberOfFreeItems = questionObject.MaxFreeAnswer;
+    this.answers = questionObject.OrderQuestion.Orderanswer.map(answerObject => new FoodAnswer(answerObject, questionObject.Ratio));
+    if (this.numberOfFreeItems > 0) {
+      this.lowestItemPrice = _.min(_.map(this.answers, 'price'));
     }
   }
 
@@ -75,5 +76,5 @@ export class FoodQuestion {
 
 
 export enum FoodQuestionType {
-  CHECKBOX, OPTION, QUANTITY, TOPPING_QUANTITY
+  OPTION = 1, CHECKBOX = 2, QUANTITY = 3, TOPPING_QUANTITY = 4
 }

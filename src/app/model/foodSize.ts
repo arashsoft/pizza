@@ -6,6 +6,12 @@ export class FoodSize {
   price: number;
   questions?: FoodQuestion[];
 
+  constructor(foodSizeObject: any) {
+    this.id = foodSizeObject.FoodSizeId;
+    this.name = foodSizeObject.Text;
+    this.price = foodSizeObject.Price;
+    this.questions = foodSizeObject.Foodsizeorderquestion.map(questionObject => new FoodQuestion(questionObject));
+  }
 
   getPrice(): number {
     if (this.questions) {

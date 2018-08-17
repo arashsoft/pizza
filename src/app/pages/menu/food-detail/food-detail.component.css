@@ -1,34 +1,56 @@
 /* FoodDetailComponent's private CSS styles */
 
-.food-item{
- padding: 5px;
+.food-item {
+  padding: 5px;
 }
 
-img{
+.food-title {
+  font-size: 1.2em;
+}
+
+img {
   width: 100%;
 }
 
-img.modal-img{
+img.modal-img {
   padding: 0 40px;
 }
 
-.food-item .food-title{
+.food-item .food-title {
 }
 
-.food-price{
+.food-price {
   color: gray;
   font-size: 0.9em;
 }
 
-.food-description{
+.food-description {
   font-size: 0.9em;
 }
 
-.cart-icon{
+.cart-icon {
   font-size: 2em;
   padding-right: 5px;
 }
 
-.add-to-cart-btn{
+.add-to-cart-btn {
   width: 250px;
+}
+
+.size-container {
+  display: flex;
+  width: 100%;
+}
+
+.food-size {
+  flex: 1;
+}
+
+.food-size.active {
+  background-color: rgb(0, 200, 100);
+  color: white;
+}
+
+.food-size-name {
+  font-size: 1.2em;
 }

@@ -1,7 +1,7 @@
 <div class="food-item bg-white" (click)="openDetails(foodDetailTemplate)">
-  <img src="./assets/images/pizza.png">
+  <img *ngIf="food.picturePath" [src]="food.picturePath">
   <div class="food-title clearfix">
-    <p class="float-left">{{food.name}}</p>
+    <h5 class="float-left">{{food.name}}</h5>
     <i class="float-right fa fa-cart-plus cart-icon"></i>
   </div>
   <div class="food-price">{{food.price | currency}}</div>
@@ -11,13 +11,16 @@
 <ng-template #foodDetailTemplate let-c="close" let-d="dismiss">
   <div class="modal-body">
     <i class="fa fa-arrow-left cursor-pointer" (click)="d('Cross click')"></i>
-    <img class="modal-img" src="./assets/images/pizza.png">
-    <div class="food-title">
-      <p>{{food.name}}</p>
-    </div>
-    <div class="food-price">{{food.totalPrice | currency}}</div>
+    <img *ngIf="food.picturePath" class="modal-img" [src]="food.picturePath">
+    <div class="food-title">{{food.name}}</div>
     <div class="food-description">{{food.description}}</div>
-    <div *ngIf="food.foodSections" class="top30">
+    <div *ngIf="food.foodSizes" class="top30">
+      <div class="size-container">
+        <div *ngFor="let foodSize of food.foodSizes" class="food-size py-3" [ngClass]="{'active': foodSize === food.selectedSize}">
+          <div class="text-center food-size-name">{{foodSize.name}}</div>
+          <div class="food-price text-center">{{foodSize.price}}</div>
+        </div>
+      </div>
       <span class="text-success font-italic">Answer following questions to customize your order</span>
       <div *ngFor="let foodSection of food.foodSections">
         <h5 class="top15">{{foodSection.name}} ?</h5>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Menu} from '../../model/menu';
-import {MENUS} from '../../mock-menus';
+import {FoodProviderResource} from '../../resource/food-provider-resource';
+import {OrderService} from '../../service/order-service';
 
 
 @Component({
@@ -11,10 +12,12 @@ import {MENUS} from '../../mock-menus';
 export class MenuComponent implements OnInit {
   menus: Menu[];
 
-  constructor() { }
+  constructor(private foodProviderResource: FoodProviderResource, private orderService: OrderService) {
+  }
 
   ngOnInit() {
-    this.menus = MENUS;
+    this.orderService.initialize();
+    this.foodProviderResource.getFoodProvider().subscribe(data => this.menus = data.menus);
   }
 
 }

@@ -11,10 +11,12 @@ export class Order {
   savedCard?: SavedCard;
   newCard?: NewCard;
   coupons?: Coupon[];
-  address?: Address;
+  address: Address;
   isPickup = true;
+  isForNow = true;
 
   constructor(cart: Cart) {
     this.cart = cart;
+    this.address = new Address('', '');
   }
 }
