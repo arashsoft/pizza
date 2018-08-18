@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-light bg-white">
-  <a class="navbar-brand">Food Provider Here</a>
+  <a class="navbar-brand">{{foodProviderService.foodProvider?.name}}</a>
   <div class="navbar-right-side" >
-    <div><span class="pickup-delivery mr-2" (click)="openPickupDelivery()">{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}</span>
+    <div><span class="pickup-delivery mr-2" (click)="orderService.openPickupDelivery()">{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}</span>
       <span class="fa fa-shopping-cart top-cart-icon " [routerLink]="['/cart']"></span>
       <span class="top-cart-counter bg-success text-white">{{cartService.getTotalItems()}}</span>
     </div>

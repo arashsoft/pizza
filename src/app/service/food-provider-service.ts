@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {ConfigService} from '../service/config-service';
+import {ConfigService} from './config-service';
 import {FoodProvider} from '../model/foodProvider';
 import {ReplaySubject} from 'rxjs/internal/ReplaySubject';
 import {Observable} from 'rxjs/internal/Observable';
 
 @Injectable({providedIn: 'root'})
-export class FoodProviderResource {
+export class FoodProviderService {
+  public foodProvider: FoodProvider;
   private cache$ = new ReplaySubject<FoodProvider>(1);
 
   constructor(private http: HttpClient, private configService: ConfigService) {
@@ -27,7 +28,8 @@ export class FoodProviderResource {
         data => {
           // @ts-ignore: this is backend foodProvider Object
           const fpObject = data.Businesses[0].Foodprovider;
-          this.cache$.next(new FoodProvider(fpObject));
+          this.foodProvider = new FoodProvider(fpObject);
+          this.cache$.next(this.foodProvider);
           return this.cache$;
         },
         error => {

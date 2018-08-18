@@ -13,50 +13,60 @@
       </label>
       <span *ngIf="order.isPickup === false">
         <div class="mt-4 clearfix address-container text-secondary">
-          <label for="addressLine1" class="float-left cursor-pointer">Address</label>
-          <input type="text" class="float-right faded-input" id="addressLine1" name="addressLine1" [(ngModel)]="order.address.addressLine1">
+          <label for="addressLine1" class="input-label float-left cursor-pointer">Address</label>
+          <input type="text" class="float-right faded-input" id="addressLine1" name="addressLine1"
+                 [(ngModel)]="order.address.addressLine1">
         </div>
         <hr>
-        <div class="mt-2 clearfix address-container text-secondary">
-          <label for="postalCode" class="float-left cursor-pointer">Postal Code</label>
-          <input type="text" class="float-right faded-input" id="postalCode" name="postalCode" [(ngModel)]="order.address.postalCode">
+        <div class="clearfix address-container text-secondary">
+          <label for="postalCode" class="input-label mt-1 float-left cursor-pointer">Postal Code</label>
+          <input type="text" class="float-right faded-input" id="postalCode" name="postalCode"
+                 [(ngModel)]="order.address.postalCode">
         </div>
         <hr>
-        <div class="mt-2 clearfix address-container text-secondary">
-          <label for="unitNumber" class="float-left cursor-pointer">Unit Number</label>
-          <input type="text" class="float-right faded-input" id="unitNumber" name="unitNumber" [(ngModel)]="order.address.unitNumber">
+        <div class="clearfix address-container text-secondary">
+          <label for="unitNumber" class="input-label mt-1 float-left cursor-pointer">Unit Number</label>
+          <input type="text" class="float-right faded-input" id="unitNumber" name="unitNumber"
+                 [(ngModel)]="order.address.unitNumber">
         </div>
         <hr>
-        <div class="mt-2 clearfix address-container text-secondary">
-          <label for="buzzer" class="float-left cursor-pointer">Buzzer</label>
-          <input type="text" class="float-right faded-input" id="buzzer" name="buzzer" [(ngModel)]="order.address.buzzer">
+        <div class="clearfix address-container text-secondary">
+          <label for="buzzer" class="input-label mt-1 float-left cursor-pointer">Buzzer</label>
+          <input type="text" class="float-right faded-input" id="buzzer" name="buzzer"
+                 [(ngModel)]="order.address.buzzer">
         </div>
         <hr>
-        <div class="mt-2 clearfix address-container text-secondary">
-          <label for="city" class="float-left cursor-pointer">City</label>
+        <div class="clearfix address-container text-secondary">
+          <label for="city" class="input-label mt-1 float-left cursor-pointer">City</label>
           <input type="text" class="float-right faded-input" id="city" name="city" [(ngModel)]="order.address.city">
         </div>
         <hr>
-        <div class="mt-2 clearfix address-container text-secondary">
-          <label for="province" class="float-left cursor-pointer">Province</label>
-          <input type="text" class="float-right faded-input" id="province" name="province" [(ngModel)]="order.address.province">
+        <div class="clearfix address-container text-secondary">
+          <label for="province" class="input-label mt-1 float-left cursor-pointer">Province</label>
+          <input type="text" class="float-right faded-input" id="province" name="province"
+                 [(ngModel)]="order.address.province">
         </div>
         <hr>
       </span>
     </div>
     <div class="mt-1"><span class="fa fa-calendar mr-2"></span>SCHEDULED FOR</div>
-    <div class="px-3">
-      <label class="checkmark-container mt-3">NOW
-        <input type="radio" [(ngModel)]="order.isForNow" [value]="true" name="scheduledForNow">
-        <span class="checkmark"></span>
-      </label>
-      <label class="checkmark-container ">LATER
-        <input type="radio" [(ngModel)]="order.isForNow" [value]="false" name="scheduledForNow">
-        <span class="checkmark"></span>
-      </label>
+    <div class="px-3 clearfix">
+      <div class="float-left">
+        <label class="checkmark-container mt-3">NOW
+          <input type="radio" [(ngModel)]="order.isForNow" [value]="true" name="scheduledForNow">
+          <span class="checkmark"></span>
+        </label>
+        <label class="checkmark-container ">LATER
+          <input type="radio" [(ngModel)]="order.isForNow" [value]="false" name="scheduledForNow">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <input *ngIf="!order.isForNow" type="text" class="float-right faded-input mt-5" id="scheduledFor" name="scheduledFor" [(ngModel)]="order.scheduledFor">
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-mealsy1 btn-large mx-auto pickup-delivery-btn" (click)="activeModal.close()">CONTINUE</button>
+    <button type="button" class="btn btn-mealsy1 btn-large mx-auto pickup-delivery-btn" (click)="activeModal.close()">
+      CONTINUE
+    </button>
   </div>
 </form>

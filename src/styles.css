@@ -89,3 +89,19 @@ body {
   font-size: 0.7em;
 }
 
+.faded-input {
+  /*border: none;*/
+  width: calc(100% - 100px);
+  text-align: right;
+  color: rgb(0, 200, 100);
+  font-size: 1.3em;
+  border: none;
+  border-bottom: 1px solid white;
+  height: 30px;
+  background-image: linear-gradient(to right, white, #fbfbfb);
+}
+
+.faded-input:focus{
+  outline: none;
+  border-bottom: 1px solid darkgray;
+}

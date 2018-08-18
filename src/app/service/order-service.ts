@@ -18,9 +18,13 @@ export class OrderService {
     if (!this.isInitialized) {
       this.isInitialized = true;
       setTimeout(() => {
-        const modalRef = this.modalService.open(PickupDeliveryComponent);
-        modalRef.componentInstance.order = this.order;
+        this.openPickupDelivery();
       });
     }
+  }
+
+  openPickupDelivery() {
+    const modalRef = this.modalService.open(PickupDeliveryComponent);
+    modalRef.componentInstance.order = this.order;
   }
 }

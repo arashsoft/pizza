@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container checkout-container">
+  <div class="checkout-padding">
+    <h4>Checkout</h4>
+  </div>
+  <div class="checkout-padding bg-white my-1">
+    <div class="clearfix">
+      <div class="float-left">
+        <span class="fa fa-cog mr-3"></span>{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}
+      </div>
+      <div class="float-right">
+        <button type="button" class="btn btn-sm btn-mealsy2 switch-btn" (click)="orderService.openPickupDelivery()">
+          Switch to {{orderService.order.isPickup? "Delivery": "pickup"}}
+        </button>
+      </div>
+    </div>
+    <hr>
+    <div *ngIf="!orderService.order.isPickup">
+      <div class="d-flex flex-row">
+        <span class="fa fa-truck pt-1 mr-3"></span>
+        <div>{{orderService.order.address.toString()}}</div>
+      </div>
+      <hr>
+    </div>
+    <div class="clearfix">
+      <div class="float-left">
+        <span class="fa fa-calendar mr-3"></span>SCHEDULED FOR
+      </div>
+      <div class="float-right">{{orderService.order.isForNow? 'Now' : orderService.order.scheduledFor}}</div>
+    </div>
+    <hr>
+    <div>
+      <span class="fa fa-money mr-3"></span>TIP
+    </div>
+  </div>
+  <div class="checkout-padding bg-white mb-5">
+    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto checkout-btn">ORDER</button>
+    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto checkout-btn top5" [routerLink]="['/cart']">
+      BACK TO CART
+    </button>
+  </div>
+  <h5 class="footer-note bottom30 text-center">Powered by Mealsy.ca</h5>
+</div>

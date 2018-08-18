@@ -14,6 +14,7 @@ export class Order {
   address: Address;
   isPickup = true;
   isForNow = true;
+  scheduledFor?: string;
 
   constructor(cart: Cart) {
     this.cart = cart;

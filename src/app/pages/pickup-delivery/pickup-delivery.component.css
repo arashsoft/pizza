@@ -1,16 +1,5 @@
-.faded-input {
-  /*border: none;*/
-  width: calc(100% - 100px);
-  text-align: right;
-  color: rgb(0, 200, 100);
-  font-size: 1.3em;
-  border: none;
-  border-bottom: 1px solid white;
-}
-
-.faded-input:focus{
-  outline: none;
-  border-bottom: 1px solid darkgray;
+.input-label{
+  margin: 0;
 }
 
 .pickup-delivery-btn{
