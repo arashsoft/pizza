@@ -90,7 +90,6 @@ body {
 }
 
 .faded-input {
-  /*border: none;*/
   width: calc(100% - 100px);
   text-align: right;
   color: rgb(0, 200, 100);

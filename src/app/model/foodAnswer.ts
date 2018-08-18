@@ -16,7 +16,7 @@ export class FoodAnswer {
   constructor(answerObject, ratio: number) {
     this.id = answerObject.OrderAnswerId;
     this.name = answerObject.Text;
-    this.price = answerObject.price * ratio;
+    this.price = answerObject.Price * ratio;
     if (answerObject.defaultSelected) {
       this.selected = answerObject.defaultSelected;
     }

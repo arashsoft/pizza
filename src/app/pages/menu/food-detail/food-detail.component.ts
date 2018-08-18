@@ -4,6 +4,7 @@ import {Food} from '../../../model/food';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {CartService} from '../../../service/cart.service';
 import * as _ from 'lodash';
+import {FoodSize} from '../../../model/foodSize';
 
 @Component({
   selector: 'app-food-detail',
@@ -29,6 +30,11 @@ export class FoodDetailComponent implements OnInit {
   }
 
   addFoodToCart(): void {
-    this.cartService.addFood( _.cloneDeep(this.food));
+    this.cartService.addFood(_.cloneDeep(this.food));
+  }
+
+  selectSize(foodSize: FoodSize): void {
+    this.food.selectedSize = foodSize;
+    this.food.calculatePrice();
   }
 }

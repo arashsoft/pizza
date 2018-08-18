@@ -1,0 +1,24 @@
+.quantity-sign{
+  padding: 0 5px 6px 5px;
+  background-color: #eee;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 20px;
+  border-radius: 15%;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+}
+.plus-sign{
+  color: rgb(0, 200, 100);
+}
+
+.minus-sign{
+  color: red;
+  padding: 0 7px 6px 7px;
+}
+
+.food-quality{
+  color: gray;
+  font-size: 0.9em;
+}

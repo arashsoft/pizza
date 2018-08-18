@@ -16,6 +16,7 @@ import {QuantityComponent} from './component/quantity/quantity.component';
 import {NavbarComponent} from './component/navbar/navbar.component';
 import {PickupDeliveryComponent} from './pages/pickup-delivery/pickup-delivery.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { FoodQuestionComponent } from './pages/menu/food-detail/food-question/food-question.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     QuantityComponent,
     NavbarComponent,
     PickupDeliveryComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    FoodQuestionComponent
   ],
   entryComponents: [PickupDeliveryComponent],
   bootstrap: [AppComponent]

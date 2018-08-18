@@ -1,0 +1,38 @@
+<h5 class="mt-3">{{question.name}} ?</h5>
+<div [ngSwitch]="question.type">
+  <div *ngSwitchCase="1">
+    <div *ngFor="let answer of question.answers" class="clearfix mt-2">
+      <div class="float-left">
+        <input type="radio" [(ngModel)]="answer.selected" name="{{'radio' + question.id}}"
+               (change)="food.calculatePrice();">
+        {{answer.name}}
+      </div>
+      <div *ngIf="answer.price" class="float-right">{{answer.price | currency}}</div>
+    </div>
+  </div>
+  <div *ngSwitchCase="2">
+    <div *ngFor="let answer of question.answers" class="clearfix mt-2">
+      <div class="float-left">
+        <input type="checkbox" [(ngModel)]="answer.selected" (change)="food.calculatePrice();">
+        {{answer.name}}
+      </div>
+      <div *ngIf="answer.price" class="float-right">{{answer.price | currency}}</div>
+    </div>
+  </div>
+  <div *ngSwitchCase="3">
+    <div *ngFor="let answer of question.answers" class="mt-2">
+      <div class="clearfix">
+        <div class="float-left">{{answer.name}}</div>
+        <div class="float-right">{{answer.price | currency}}
+          <div (click)="answer.quantity = answer.quantity + 1; food.calculatePrice();" class="quantity-sign plus-sign">+</div>
+        </div>
+      </div>
+      <div *ngIf="answer.quantity > 0" class="clearfix">
+          <div (click)="answer.quantity = answer.quantity - 1; food.calculatePrice();" class="float-left quantity-sign minus-sign">-</div>
+          <div class="float-left food-quality ml-2">{{answer.quantity}}</div>
+          <div class="float-right food-quality">{{answer.quantity}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="4"></div>
+</div>

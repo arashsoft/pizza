@@ -39,11 +39,18 @@ img.modal-img {
 
 .size-container {
   display: flex;
-  width: 100%;
+  margin: 0 -16px;
 }
 
 .food-size {
   flex: 1;
+  cursor: pointer;
+  border: solid lightgray;
+  border-width: 1px 0 1px 1px;
+}
+
+.food-size:first-child{
+  border-left-width: 0;
 }
 
 .food-size.active {
