@@ -12,9 +12,9 @@
   <div class="modal-body">
     <i class="fa fa-arrow-left cursor-pointer" (click)="d('Cross click')"></i>
     <img *ngIf="food.picturePath" class="modal-img" [src]="food.picturePath + '_' + food.id + '_600X400.jpg'">
-    <div class="food-title">{{food.name}}</div>{{food.totalPrice | currency}}
+    <div class="food-title">{{food.name}}</div>
     <div class="food-description">{{food.description}}</div>
-    <div *ngIf="food.foodSizes" class="mt-3">
+    <div *ngIf="food.foodSizes && food.foodSizes.length > 1" class="mt-3">
       <div class="size-container">
         <div *ngFor="let foodSize of food.foodSizes" class="food-size py-3" (click)="selectSize(foodSize)"
              [ngClass]="{'active': foodSize === food.selectedSize}">

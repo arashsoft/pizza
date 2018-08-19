@@ -12,6 +12,9 @@ export class FoodAnswer {
   // @Data: pizza topping side
   toppingSide = FoodAnswerToppingSize.FULL;
 
+  // @Lazy: total price of this answer. Gets populated by foodQuestion.getPrice()
+  totalPrice?: number;
+
   // TODO: add back-end types
   constructor(answerObject, ratio: number) {
     this.id = answerObject.OrderAnswerId;
@@ -39,9 +42,10 @@ export class FoodAnswer {
   reset(): void {
     this.selected = this.defaultSelected || false;
     this.quantity = this.defaultQuantity || 0;
+    this.totalPrice = 0;
   }
 }
 
 export enum FoodAnswerToppingSize {
-  FULL, LEFT, RIGHT
+  FULL = 1, LEFT = 2, RIGHT = 3
 }

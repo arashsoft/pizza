@@ -1,4 +1,4 @@
-.quantity-sign{
+.quantity-sign {
   padding: 0 5px 6px 5px;
   background-color: #eee;
   font-weight: bold;
@@ -9,16 +9,39 @@
   display: inline-block;
   user-select: none;
 }
-.plus-sign{
+
+.plus-sign {
   color: rgb(0, 200, 100);
 }
 
-.minus-sign{
+.minus-sign {
   color: red;
   padding: 0 7px 6px 7px;
 }
 
-.food-quality{
+.food-quality {
   color: gray;
   font-size: 0.9em;
+}
+
+.circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.circle.active {
+  background-color: rgb(0, 200, 100);
+}
+
+.circle-left {
+  border-radius: 30px 0 0 30px;
+  width: 15px;
+}
+
+.circle-right {
+  border-radius: 0 30px 30px 0;
+  width: 15px;
 }

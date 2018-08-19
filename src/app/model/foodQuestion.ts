@@ -36,21 +36,28 @@ export class FoodQuestion {
     if (this.type === FoodQuestionType.OPTION || this.type === FoodQuestionType.CHECKBOX) {
       for (const answer of this.answers) {
         if (answer.selected) {
-          totalPrice += answer.price;
+          answer.totalPrice = answer.price;
+          totalPrice += answer.totalPrice;
           selectedItems.push(answer);
+        } else {
+          answer.totalPrice = 0;
         }
       }
     } else if (this.type === FoodQuestionType.QUANTITY || this.type === FoodQuestionType.TOPPING_QUANTITY) {
       for (const answer of this.answers) {
         if (answer.quantity > 0) {
           if (answer.toppingSide === FoodAnswerToppingSize.FULL) {
-            totalPrice += (answer.price * answer.quantity);
+            answer.totalPrice = answer.price * answer.quantity;
+            totalPrice += answer.totalPrice;
           } else if (answer.toppingSide === FoodAnswerToppingSize.LEFT || answer.toppingSide === FoodAnswerToppingSize.RIGHT) {
-            totalPrice += (answer.price * answer.quantity / 2);
+            answer.totalPrice = (answer.price * answer.quantity / 2);
+            totalPrice += answer.totalPrice;
           } else {
             throw new Error('Unknown topping sise');
           }
           selectedItems.push(answer);
+        } else {
+          answer.totalPrice = 0;
         }
       }
     } else {
