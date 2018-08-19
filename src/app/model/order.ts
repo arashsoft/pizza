@@ -19,6 +19,17 @@ export class Order {
   isPickup = true;
   isForNow = true;
   scheduledFor?: string;
+  tipType: TipType = TipType.PERCENTAGE10;
+  tipAmount?: number;
+
+  // @Lazy
+  totalTip?: number;
+  // @Lazy
+  deliveryCharge = 0;
+  // @Lazy
+  discount = 0;
+  // @Lazy
+  totalPrice?: number;
 
   constructor(cart: Cart) {
     this.cart = cart;
@@ -29,4 +40,8 @@ export class Order {
     this.foodProvider = foodProvider;
     this.cart.taxPrice = foodProvider.taxRate;
   }
+}
+
+export enum TipType {
+  NONE = 0, ROUND = 1, PERCENTAGE5 = 5, PERCENTAGE10 = 10, PERCENTAGE15 = 15
 }

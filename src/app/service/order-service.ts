@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Order} from '../model/order';
+import {Order, TipType} from '../model/order';
 import {CartService} from './cart.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PickupDeliveryComponent} from '../pages/pickup-delivery/pickup-delivery.component';
@@ -31,5 +31,29 @@ export class OrderService {
   openPickupDelivery() {
     const modalRef = this.modalService.open(PickupDeliveryComponent);
     modalRef.componentInstance.order = this.order;
+  }
+
+  calculatePrice() {
+    this.cartService.calculatePrice();
+    const totalWithoutTip = this.order.cart.totalPrice + this.order.discount + this.order.deliveryCharge;
+    this.calculateTip(totalWithoutTip);
+    this.order.totalPrice = totalWithoutTip + this.order.totalTip;
+  }
+
+  calculateTip(totalWithoutTip: number) {
+    if (this.order.tipType === TipType.NONE) {
+      this.order.totalTip = this.order.tipAmount || 0;
+    } else if (this.order.tipType === TipType.ROUND) {
+      this.order.totalTip = Math.ceil(totalWithoutTip) - totalWithoutTip;
+      this.order.tipAmount = undefined;
+    } else {
+      this.order.totalTip = totalWithoutTip * this.order.tipType;
+      this.order.tipAmount = undefined;
+    }
+  }
+
+  updateTip(tipType: TipType): void {
+    this.order.tipType = tipType;
+    this.calculatePrice();
   }
 }

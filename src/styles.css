@@ -101,7 +101,7 @@ body {
   border: none;
   border-bottom: 1px solid white;
   height: 30px;
-  background-image: linear-gradient(to right, white, #fbfbfb);
+  background-image: linear-gradient(to bottom, white, white 80%, #fbfbfb);
 }
 
 .faded-input:focus{

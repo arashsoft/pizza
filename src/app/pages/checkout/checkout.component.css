@@ -16,3 +16,12 @@
   width: 150px;
   font-weight: normal;
 }
+.tip-btn{
+  height: 30px;
+  font-weight: normal;
+  width: 100%;
+}
+
+.tip-btn.active{
+  background-color: rgb(0, 200, 100);
+}
