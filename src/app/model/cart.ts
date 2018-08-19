@@ -1,7 +1,9 @@
 import {CartItem} from './cartItem';
 
 export class Cart {
-  items = new Array<CartItem>();
+  items: CartItem[] = [];
+  // @Lazy after foodProvider got loaded
+  taxRate?: number;
 
   // @Lazy: total price of food based on selected foodSections
   subTotalPrice?: number;
@@ -25,6 +27,12 @@ export class Cart {
       subTotalPrice += (cartItem.quantity * cartItem.food.totalPrice);
     }
     this.subTotalPrice = subTotalPrice;
+    if (this.taxRate) {
+      this.taxPrice = subTotalPrice * this.taxRate;
+    } else {
+      this.taxPrice = 0;
+    }
+    this.totalPrice = this.subTotalPrice + this.taxPrice;
   };
 
 }

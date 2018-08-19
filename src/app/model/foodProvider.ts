@@ -6,6 +6,7 @@ export class FoodProvider {
   name: string;
   logoPath: string;
   address: Address;
+  taxRate: number;
   menus?: Menu[];
 
   // TODO: add back-end types
@@ -14,6 +15,7 @@ export class FoodProvider {
     this.name = foodProviderObject.Name;
     this.logoPath = foodProviderObject.LogoPath;
     this.address = new Address(foodProviderObject.Address, foodProviderObject.PostalCode);
+    this.taxRate = foodProviderObject.FirstTaxRate + foodProviderObject.SecondTaxRate;
 
     const menusObject = JSON.parse(foodProviderObject.CompleteMenu.Menus);
     const menusArray: Menu[] = [];

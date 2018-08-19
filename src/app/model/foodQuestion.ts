@@ -68,7 +68,7 @@ export class FoodQuestion {
       totalPrice -= (this.numberOfFreeItems * this.lowestItemPrice);
     }
     this.totalPrice = totalPrice > 0 ? totalPrice : 0;
-    this.selectedItems = selectedItems.join(', ');
+    this.selectedItems = selectedItems.length ? selectedItems.join(', ') : '-no selection';
     return this.totalPrice;
   }
 

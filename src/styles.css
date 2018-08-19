@@ -84,6 +84,10 @@ body {
   height:40px;
 }
 
+.mealsy-green{
+  color: rgb(0, 200, 100);
+}
+
 .footer-note{
   color: darkgray;
   font-size: 0.7em;

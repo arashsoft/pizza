@@ -3,6 +3,7 @@ import {Order} from '../model/order';
 import {CartService} from './cart.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PickupDeliveryComponent} from '../pages/pickup-delivery/pickup-delivery.component';
+import {FoodProviderService} from './food-provider-service';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
@@ -10,8 +11,8 @@ export class OrderService {
   order: Order;
   isInitialized = false;
 
-  constructor(private cartService: CartService, private modalService: NgbModal) {
-    this.order = new Order(cartService.cart);
+  constructor(private cartService: CartService, private modalService: NgbModal, private foodProviderService: FoodProviderService) {
+    this.order = new Order(this.cartService.cart);
   }
 
   initialize() {
@@ -19,6 +20,10 @@ export class OrderService {
       this.isInitialized = true;
       setTimeout(() => {
         this.openPickupDelivery();
+        this.foodProviderService.getFoodProvider().subscribe(
+          foodProvider => {
+            this.order.setFoodProvidder(foodProvider);
+          });
       });
     }
   }

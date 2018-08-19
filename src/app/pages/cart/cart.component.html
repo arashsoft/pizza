@@ -2,27 +2,39 @@
 <div class="container cart-container">
   <div class="cart-padding">
   <h4>CART</h4>
-    <div class="clearfix">
+    <div class="clearfix cart-header">
       <h5 class="float-left">ITEMS</h5>
       <h5 class="float-right">PRICE</h5>
     </div>
   </div>
-  <div *ngFor="let item of cartService.cart.items" class="bg-white cart-padding top3">
+  <div *ngFor="let item of cartService.cart.items" class="bg-white cart-padding mt-1">
     <div class="clearfix">
       <h5 class="float-left">{{item.food.name}}</h5>
       <span class="float-right food-price">{{item.food.totalPrice | currency}}</span>
     </div>
-    <div *ngFor="let foodSection of item.food.foodSections" class="top10">
-      <h5 class="food-section-title">{{foodSection.name}}</h5>
-      <span class="food-section-items top5">{{foodSection.selectedItems}}</span>
+    <div *ngFor="let question of item.food.selectedSize.questions" class="mt-2">
+      <h5 class="food-section-title">{{question.name}}</h5>
+      <span class="food-section-items mt-1">{{question.selectedItems}}</span>
     </div>
-    <div class="clearfix top15">
-      <h5 class="float-left cart-quantity-text top5">Quantity</h5>
+    <div class="clearfix mt-2">
+      <h5 class="float-left cart-quantity-text mt-2">Quantity</h5>
       <app-quantity class="float-right" [(quantity)]="item.quantity" (quantityChange)="cartService.cart.calculatePrice()"></app-quantity>
     </div>
   </div>
   <h5 class="bg-white cart-padding .cart-empty-message text-center" *ngIf="!cartService.cart.items.length">Your cart is empty</h5>
-  <div class="cart-padding bg-white bottom15">
+  <div class="cart-padding bg-white mt-2 mb-3">
+    <div class="clearfix mt-1">
+      <h5 class="float-left">Subtotal</h5>
+      <h5 class="float-right">{{cartService.cart.subTotalPrice | currency}}</h5>
+    </div>
+    <div class="clearfix mt-1">
+      <h5 class="float-left">Tax</h5>
+      <h5 class="float-right">{{cartService.cart.taxPrice | currency}}</h5>
+    </div>
+    <div class="clearfix mt-1 mealsy-green mb-5">
+      <h4 class="float-left">TOTAL</h4>
+      <h4 class="float-right">{{cartService.cart.totalPrice | currency}}</h4>
+    </div>
     <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" [routerLink]="['/checkout']">CHECKOUT</button>
     <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" [routerLink]="['/menus']">CONTINUE SHOPPING</button>
   </div>

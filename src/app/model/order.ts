@@ -4,10 +4,14 @@ import {Coupon} from './coupon';
 import {SavedCard} from './savedCard';
 import {NewCard} from './newCard';
 import {Address} from './address';
+import {FoodProvider} from './foodProvider';
+import {Food} from './food';
 
 export class Order {
   user?: User;
   cart: Cart;
+  // @Lazy after foodProvider got loaded
+  foodProvider?: FoodProvider;
   savedCard?: SavedCard;
   newCard?: NewCard;
   coupons?: Coupon[];
@@ -19,5 +23,10 @@ export class Order {
   constructor(cart: Cart) {
     this.cart = cart;
     this.address = new Address('', '');
+  }
+
+  setFoodProvidder(foodProvider: FoodProvider) {
+    this.foodProvider = foodProvider;
+    this.cart.taxPrice = foodProvider.taxRate;
   }
 }
