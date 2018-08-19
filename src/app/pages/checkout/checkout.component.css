@@ -1,27 +1,75 @@
-.checkout-container{
+.checkout-container {
   max-width: 600px;
 }
 
-.checkout-btn{
+.checkout-btn {
   width: 300px;
   max-width: 100%;
 }
 
-.checkout-padding{
+.checkout-padding {
   padding: 25px 30px 15px 30px;
 }
 
-.switch-btn{
+.switch-btn {
   height: 30px;
   width: 150px;
   font-weight: normal;
 }
-.tip-btn{
+
+.tip-btn,
+.payment-type-btn {
   height: 30px;
   font-weight: normal;
   width: 100%;
 }
 
-.tip-btn.active{
+.tip-btn.active,
+.payment-type-btn.active {
   background-color: rgb(0, 200, 100);
+}
+
+.coupon-container {
+  border-top: 2px dashed #f8f9fa;
+}
+
+.coupon-circle {
+  position: absolute;
+  background-color: #f8f9fa;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  top: -10px;
+}
+
+.coupon-circle.left {
+  left: -10px;
+}
+
+.coupon-circle.right {
+  right: -10px;
+}
+
+.coupon-circle-container {
+  position: relative;
+}
+
+.apply-coupon-btn {
+  width: 90px;
+}
+
+.coupon-input {
+  text-align: left;
+  font-size: 0.9em;
+}
+
+.coupon-input::placeholder,
+.card-input::placeholder {
+  color: lightgray;
+}
+
+.card-input {
+  text-align: left;
+  font-size: 0.9em;
+  width: 100%;
 }

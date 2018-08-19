@@ -18,7 +18,7 @@
     </div>
     <div class="clearfix mt-2">
       <h5 class="float-left cart-quantity-text mt-2">Quantity</h5>
-      <app-quantity class="float-right" [(quantity)]="item.quantity" (quantityChange)="cartService.cart.calculatePrice()"></app-quantity>
+      <app-quantity class="float-right" [(quantity)]="item.quantity" (quantityChange)="cartService.calculatePrice()"></app-quantity>
     </div>
   </div>
   <h5 class="bg-white cart-padding .cart-empty-message text-center" *ngIf="!cartService.cart.items.length">Your cart is empty</h5>

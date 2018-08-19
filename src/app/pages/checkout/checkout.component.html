@@ -32,43 +32,104 @@
     <div>
       <span class="fa fa-money mr-3"></span>TIP
       <div class="d-flex flex-row px-3 mt-3">
-        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1" [ngClass]="{'active': orderService.order.tipType === 1}" (click)="orderService.updateTip(1)">Round</button>
-        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1" [ngClass]="{'active': orderService.order.tipType === 5}"(click)="orderService.updateTip(5)">5%</button>
-        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1" [ngClass]="{'active': orderService.order.tipType === 10}" (click)="orderService.updateTip(10)">10%</button>
-        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1" [ngClass]="{'active': orderService.order.tipType === 15}" (clic1)="orderService.updateTip(15)">15%</button>
+        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
+                [ngClass]="{'active': orderService.order.tipType === 1}" (click)="orderService.updateTip(1)">Round
+        </button>
+        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
+                [ngClass]="{'active': orderService.order.tipType === 5}" (click)="orderService.updateTip(5)">5%
+        </button>
+        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
+                [ngClass]="{'active': orderService.order.tipType === 10}" (click)="orderService.updateTip(10)">10%
+        </button>
+        <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
+                [ngClass]="{'active': orderService.order.tipType === 15}" (click)="orderService.updateTip(15)">15%
+        </button>
       </div>
       <div class="clearfix">
         <label for="tipAmount" class="input-label float-left cursor-pointer">Tip</label>
         <input type="number" class="float-right faded-input" id="tipAmount" name="tipAmount"
-               [(ngModel)]="orderService.order.tipAmount" (change)="orderService.updateTip(0)")>
+               [(ngModel)]="orderService.order.tipAmount" (change)="orderService.updateTip(0)">
       </div>
     </div>
   </div>
   <div class="checkout-padding bg-white mt-2">
     <div class="clearfix mt-1">
-      <h5 class="float-left">Subtotal</h5>
-      <h5 class="float-right">{{cartService.cart.subTotalPrice | currency}}</h5>
+      <div class="float-left">Subtotal</div>
+      <div class="float-right">{{cart.subTotalPrice | currency}}</div>
     </div>
-    <div class="clearfix mt-1">
-      <h5 class="float-left">Tax</h5>
-      <h5 class="float-right">{{cartService.cart.taxPrice | currency}}</h5>
+    <div class="clearfix mt-2">
+      <div class="float-left">Tax</div>
+      <div class="float-right">{{cart.taxPrice | currency}}</div>
     </div>
-    <div class="clearfix mt-1">
-      <h5 class="float-left">Delivery Charge</h5>
-      <h5 class="float-right">{{cartService.cart.taxPrice | currency}}</h5>
+    <div class="clearfix mt-2">
+      <div class="float-left">Tip</div>
+      <div class="float-right">{{order.totalTip | currency}}</div>
     </div>
-    <div class="clearfix mt-1">
-      <h5 class="float-left">Discount</h5>
-      <h5 class="float-right">{{cartService.cart.taxPrice | currency}}</h5>
+    <div class="clearfix mt-2">
+      <div class="float-left">Delivery Charge</div>
+      <div class="float-right">{{order.deliveryCharge | currency}}</div>
     </div>
-    <div class="clearfix mt-1 mealsy-green mb-5">
-      <h4 class="float-left">TOTAL</h4>
-      <h4 class="float-right">{{cartService.cart.totalPrice | currency}}</h4>
+    <div class="clearfix mt-2">
+      <div class="float-left">Discount</div>
+      <div class="float-right">{{order.discount | currency}}</div>
+    </div>
+    <div class="clearfix mt-2 mealsy-green mb-2">
+      <h5 class="float-left">TOTAL</h5>
+      <h5 class="float-right">{{order.totalPrice | currency}}</h5>
+    </div>
+  </div>
+  <div class="coupon-circle-container">
+    <div class="coupon-circle left"></div><div class="coupon-circle right"></div>
+  </div>
+  <div class="checkout-padding bg-white coupon-container">
+    <div>APPLY COUPON</div>
+    <div class="clearfix">
+      <input type="text" class="float-left faded-input coupon-input"  [(ngModel)]="currentCoupon" placeholder="Enter the coupon code">
+      <button type="button" class="btn btn-mealsy1 btn-large float-right apply-coupon-btn ml-2">APPLY</button>
     </div>
   </div>
   <div class="checkout-padding bg-white mt-2 mb-5">
-    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto checkout-btn">ORDER</button>
-    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto checkout-btn top5" [routerLink]="['/cart']">
+    <span class="fa fa-credit-card-alt mr-3"></span>PAYMENT METHODS
+    <div class="px-3 mt-4">
+      <label class="checkmark-container">PAY UPON DELIVERY OR PICKUP
+        <input type="radio" [(ngModel)]="order.isPayOnline" [value]="false" name="isPayOnline">
+        <span class="checkmark"></span>
+      </label>
+      <div *ngIf="!order.isPayOnline">
+        <div class="d-flex flex-row px-3 mt-3">
+          <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
+                  [ngClass]="{'active': order.paymentType === 1}" (click)="order.paymentType = 1">Cash
+          </button>
+          <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
+                  [ngClass]="{'active': order.paymentType === 2}" (click)="order.paymentType = 2">Debit
+          </button>
+          <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
+                  [ngClass]="{'active': order.paymentType === 3}" (click)="order.paymentType = 3">Visa
+          </button>
+          <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
+                  [ngClass]="{'active': order.paymentType === 4}" (click)="order.paymentType = 4">MasterCard
+          </button>
+        </div>
+      </div>
+      <hr>
+      <label class="checkmark-container">PAY ONLINE NOW
+        <input type="radio" [(ngModel)]="order.isPayOnline" [value]="true" name="isPayOnline">
+        <span class="checkmark"></span>
+      </label>
+      <div *ngIf="order.isPayOnline" class="ml-2">
+        <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">
+        <input type="text" class="faded-input card-input mt-2" [(ngModel)]="order.newCard.nameOnCard" placeholder="Name on Card">
+        <div class="d-flex flex-row mt-2">
+          <div class="d-flex flex-row">
+            <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
+            <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.Year" placeholder="Year">
+          </div>
+          <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CCV">
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto checkout-btn mt-5">ORDER</button>
+    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto checkout-btn mt-2" [routerLink]="['/cart']">
       BACK TO CART
     </button>
   </div>

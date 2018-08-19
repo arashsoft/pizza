@@ -47,7 +47,7 @@ export class OrderService {
       this.order.totalTip = Math.ceil(totalWithoutTip) - totalWithoutTip;
       this.order.tipAmount = undefined;
     } else {
-      this.order.totalTip = totalWithoutTip * this.order.tipType;
+      this.order.totalTip = totalWithoutTip * this.order.tipType / 100;
       this.order.tipAmount = undefined;
     }
   }

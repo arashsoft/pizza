@@ -13,7 +13,7 @@ export class Order {
   // @Lazy after foodProvider got loaded
   foodProvider?: FoodProvider;
   savedCard?: SavedCard;
-  newCard?: NewCard;
+  newCard = new NewCard();
   coupons?: Coupon[];
   address: Address;
   isPickup = true;
@@ -21,6 +21,8 @@ export class Order {
   scheduledFor?: string;
   tipType: TipType = TipType.PERCENTAGE10;
   tipAmount?: number;
+  isPayOnline = false;
+  paymentType = PaymentType.NONE;
 
   // @Lazy
   totalTip?: number;
@@ -38,10 +40,14 @@ export class Order {
 
   setFoodProvidder(foodProvider: FoodProvider) {
     this.foodProvider = foodProvider;
-    this.cart.taxPrice = foodProvider.taxRate;
+    this.cart.taxRate = foodProvider.taxRate;
   }
 }
 
 export enum TipType {
   NONE = 0, ROUND = 1, PERCENTAGE5 = 5, PERCENTAGE10 = 10, PERCENTAGE15 = 15
+}
+
+export enum PaymentType {
+  NONE = 0, CASH = 1, DEBIT = 2, VISA = 3, MASTER_CARD = 4
 }
