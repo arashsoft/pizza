@@ -20,7 +20,7 @@
         <hr>
         <div class="clearfix address-container text-secondary">
           <label for="postalCode" class="input-label mt-1 float-left cursor-pointer">Postal Code</label>
-          <input type="text" class="float-right faded-input" id="postalCode" name="postalCode"
+          <input readonly type="text" class="float-right faded-input" id="postalCode" name="postalCode"
                  [(ngModel)]="order.address.postalCode">
         </div>
         <hr>
@@ -38,12 +38,12 @@
         <hr>
         <div class="clearfix address-container text-secondary">
           <label for="city" class="input-label mt-1 float-left cursor-pointer">City</label>
-          <input type="text" class="float-right faded-input" id="city" name="city" [(ngModel)]="order.address.city">
+          <input readonly type="text" class="float-right faded-input" id="city" name="city" [(ngModel)]="order.address.city">
         </div>
         <hr>
         <div class="clearfix address-container text-secondary">
           <label for="province" class="input-label mt-1 float-left cursor-pointer">Province</label>
-          <input type="text" class="float-right faded-input" id="province" name="province"
+          <input readonly type="text" class="float-right faded-input" id="province" name="province"
                  [(ngModel)]="order.address.province">
         </div>
         <hr>

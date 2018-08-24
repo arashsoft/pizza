@@ -17,7 +17,7 @@ export class FoodAnswer {
 
   // TODO: add back-end types
   constructor(answerObject, ratio: number) {
-    this.id = answerObject.OrderAnswerId;
+    this.id = answerObject.Id;
     this.name = answerObject.Text;
     this.price = answerObject.Price * ratio;
     if (answerObject.defaultSelected) {

@@ -2,7 +2,6 @@ import {FoodAnswerToppingSize} from './foodAnswer';
 
 export class Address {
   addressLine1: string;
-  addressLine2?: string;
   unitNumber?: string;
   buzzer?: string;
   postalCode: string;
@@ -17,7 +16,6 @@ export class Address {
 
   public toString(): string {
     return [this.addressLine1,
-      this.addressLine2,
       this.unitNumber,
       this.buzzer,
       this.postalCode,

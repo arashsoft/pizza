@@ -10,7 +10,7 @@ export class Menu {
     this.id = menuObject.MenuId;
     this.name = menuObject.Name;
     const menuSections: MenuSection[] = [];
-    menuObject.Menusection.forEach(menuSectionObject => {
+    menuObject.MenuSections.forEach(menuSectionObject => {
       menuSections.push(new MenuSection(menuSectionObject));
     });
     this.menuSections = menuSections;

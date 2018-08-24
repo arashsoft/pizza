@@ -7,10 +7,10 @@ export class FoodSize {
   questions?: FoodQuestion[];
 
   constructor(foodSizeObject: any) {
-    this.id = foodSizeObject.FoodSizeId;
+    this.id = foodSizeObject.Id;
     this.name = foodSizeObject.Text;
     this.price = foodSizeObject.Price;
-    this.questions = foodSizeObject.Foodsizeorderquestion.map(questionObject => new FoodQuestion(questionObject));
+    this.questions = foodSizeObject.FoodSizeOrderQuestions.map(questionObject => new FoodQuestion(questionObject));
   }
 
   getPrice(): number {

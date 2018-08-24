@@ -17,13 +17,13 @@ export class Food {
 
   // TODO: add back-end types
   constructor(foodObject) {
-    this.id = foodObject.FoodId;
+    this.id = foodObject.Id;
     this.name = foodObject.Name;
     this.description = foodObject.Ingredients;
     this.price = foodObject.Price;
     this.picturePath = foodObject.PhotoPath;
-    if (foodObject.Foodsize) {
-      this.foodSizes = foodObject.Foodsize.map(foodSizeObject => new FoodSize(foodSizeObject));
+    if (foodObject.FoodSizes) {
+      this.foodSizes = foodObject.FoodSizes.map(foodSizeObject => new FoodSize(foodSizeObject));
     }
 
     if (this.foodSizes && this.foodSizes.length) {

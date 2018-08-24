@@ -16,11 +16,11 @@ export class FoodQuestion {
 
   // TODO: add back-end type
   constructor(questionObject) {
-    this.id = questionObject.FoodsizeOrderquestionId;
+    this.id = questionObject.Id;
     this.name = questionObject.Text;
     this.type = questionObject.Type;
     this.numberOfFreeItems = questionObject.MaxFreeAnswer;
-    this.answers = questionObject.OrderQuestion.Orderanswer.map(answerObject => new FoodAnswer(answerObject, questionObject.Ratio));
+    this.answers = questionObject.OrderQuestion.OrderAnswers.map(answerObject => new FoodAnswer(answerObject, questionObject.Ratio));
     if (this.numberOfFreeItems > 0) {
       this.lowestItemPrice = _.min(_.map(this.answers, 'price'));
     }
