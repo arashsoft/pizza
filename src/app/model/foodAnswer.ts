@@ -10,7 +10,7 @@ export class FoodAnswer {
   // @Data: determines the quantity of answer
   quantity = 0;
   // @Data: pizza topping side
-  toppingSide = FoodAnswerToppingSize.FULL;
+  toppingSide = FoodAnswerToppingSide.FULL;
 
   // @Lazy: total price of this answer. Gets populated by foodQuestion.getPrice()
   totalPrice?: number;
@@ -29,11 +29,11 @@ export class FoodAnswer {
   }
 
   public toString = (): string => {
-    if (this.toppingSide === FoodAnswerToppingSize.FULL) {
+    if (this.toppingSide === FoodAnswerToppingSide.FULL) {
       return this.name;
-    } else if (this.toppingSide === FoodAnswerToppingSize.RIGHT) {
+    } else if (this.toppingSide === FoodAnswerToppingSide.RIGHT) {
       return this.name + '(right side)';
-    } else if (this.toppingSide === FoodAnswerToppingSize.LEFT) {
+    } else if (this.toppingSide === FoodAnswerToppingSide.LEFT) {
       return this.name + '(left side)';
     }
     return this.name;
@@ -46,6 +46,6 @@ export class FoodAnswer {
   }
 }
 
-export enum FoodAnswerToppingSize {
+export enum FoodAnswerToppingSide {
   FULL = 1, LEFT = 2, RIGHT = 3
 }

@@ -1,4 +1,4 @@
-import {FoodAnswer, FoodAnswerToppingSize} from './foodAnswer';
+import {FoodAnswer, FoodAnswerToppingSide} from './foodAnswer';
 import * as _ from 'lodash';
 
 export class FoodQuestion {
@@ -46,10 +46,10 @@ export class FoodQuestion {
     } else if (this.type === FoodQuestionType.QUANTITY || this.type === FoodQuestionType.TOPPING_QUANTITY) {
       for (const answer of this.answers) {
         if (answer.quantity > 0) {
-          if (answer.toppingSide === FoodAnswerToppingSize.FULL) {
+          if (answer.toppingSide === FoodAnswerToppingSide.FULL) {
             answer.totalPrice = answer.price * answer.quantity;
             totalPrice += answer.totalPrice;
-          } else if (answer.toppingSide === FoodAnswerToppingSize.LEFT || answer.toppingSide === FoodAnswerToppingSize.RIGHT) {
+          } else if (answer.toppingSide === FoodAnswerToppingSide.LEFT || answer.toppingSide === FoodAnswerToppingSide.RIGHT) {
             answer.totalPrice = (answer.price * answer.quantity / 2);
             totalPrice += answer.totalPrice;
           } else {

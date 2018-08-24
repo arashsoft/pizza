@@ -1,6 +1,5 @@
-import {FoodAnswerToppingSize} from './foodAnswer';
-
 export class Address {
+  placeId?: string;
   addressLine1: string;
   unitNumber?: string;
   buzzer?: string;
@@ -22,5 +21,16 @@ export class Address {
       this.city,
       this.province,
       this.country].filter(val => val).join(', ');
+  }
+
+  public reset(): void {
+    this.placeId = '';
+    this.addressLine1 = '';
+    this.unitNumber = '';
+    this.buzzer = '';
+    this.postalCode = '';
+    this.city = '';
+    this.province = '';
+    this.country = '';
   }
 }

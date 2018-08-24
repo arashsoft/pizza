@@ -5,7 +5,6 @@ import {SavedCard} from './savedCard';
 import {NewCard} from './newCard';
 import {Address} from './address';
 import {FoodProvider} from './foodProvider';
-import {Food} from './food';
 
 export class Order {
   user?: User;

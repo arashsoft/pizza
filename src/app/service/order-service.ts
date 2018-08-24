@@ -4,6 +4,9 @@ import {CartService} from './cart.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PickupDeliveryComponent} from '../pages/pickup-delivery/pickup-delivery.component';
 import {FoodProviderService} from './food-provider-service';
+import {ConfigService} from './config-service';
+import {HttpClient} from '@angular/common/http';
+import {BackendOrderRequest} from '../model/backend/BackendOrderRequest';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
@@ -11,7 +14,11 @@ export class OrderService {
   order: Order;
   isInitialized = false;
 
-  constructor(private cartService: CartService, private modalService: NgbModal, private foodProviderService: FoodProviderService) {
+  constructor(private cartService: CartService,
+              private modalService: NgbModal,
+              private foodProviderService: FoodProviderService,
+              private configService: ConfigService,
+              private http: HttpClient) {
     this.order = new Order(this.cartService.cart);
   }
 
@@ -55,5 +62,16 @@ export class OrderService {
   updateTip(tipType: TipType): void {
     this.order.tipType = tipType;
     this.calculatePrice();
+  }
+
+  submitOrder(): void {
+    this.http.post(this.configService.getConfig().serverUrl + '/transactions', new BackendOrderRequest(this.order)).subscribe(
+      data => {
+
+      },
+      error => {
+
+      }
+    );
   }
 }
