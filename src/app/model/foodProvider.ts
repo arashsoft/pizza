@@ -11,7 +11,7 @@ export class FoodProvider {
 
   // TODO: add back-end types
   constructor(foodProviderObject) {
-    this.id = foodProviderObject.FoodProviderId;
+    this.id = foodProviderObject.Id;
     this.name = foodProviderObject.Name;
     this.logoPath = foodProviderObject.LogoPath;
     this.address = new Address(foodProviderObject.Address, foodProviderObject.PostalCode);
