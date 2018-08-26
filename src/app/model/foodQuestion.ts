@@ -1,5 +1,6 @@
 import {FoodAnswer, FoodAnswerToppingSide} from './foodAnswer';
 import * as _ from 'lodash';
+import {Global} from '../global';
 
 export class FoodQuestion {
   id: number;
@@ -47,13 +48,13 @@ export class FoodQuestion {
       for (const answer of this.answers) {
         if (answer.quantity > 0) {
           if (answer.toppingSide === FoodAnswerToppingSide.FULL) {
-            answer.totalPrice = answer.price * answer.quantity;
+            answer.totalPrice = Global.priceRound(answer.price * answer.quantity);
             totalPrice += answer.totalPrice;
           } else if (answer.toppingSide === FoodAnswerToppingSide.LEFT || answer.toppingSide === FoodAnswerToppingSide.RIGHT) {
-            answer.totalPrice = (answer.price * answer.quantity / 2);
+            answer.totalPrice = Global.priceRound(answer.price * answer.quantity / 2);
             totalPrice += answer.totalPrice;
           } else {
-            throw new Error('Unknown topping sise');
+            throw new Error('Unknown topping side');
           }
           selectedItems.push(answer);
         } else {
@@ -65,7 +66,7 @@ export class FoodQuestion {
     }
     // reduce free items price
     if (this.numberOfFreeItems) {
-      totalPrice -= (this.numberOfFreeItems * this.lowestItemPrice);
+      totalPrice = Global.safeMinus(totalPrice, Global.priceRound(this.numberOfFreeItems * this.lowestItemPrice));
     }
     this.totalPrice = totalPrice > 0 ? totalPrice : 0;
     this.selectedItems = selectedItems.length ? selectedItems.join(', ') : '-no selection';

@@ -7,12 +7,16 @@ import {FoodProviderService} from './food-provider-service';
 import {ConfigService} from './config-service';
 import {HttpClient} from '@angular/common/http';
 import {BackendOrderRequest} from '../model/backend/BackendOrderRequest';
+import {Global} from '../global';
+import {BackendDeliveryChargeRequest} from '../model/backend/backendDeliveryChargeRequest';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
 
   order: Order;
   isInitialized = false;
+  // will be used to know if should calculate delivery chrage or not
+  lastDestinationId?: string;
 
   constructor(private cartService: CartService,
               private modalService: NgbModal,
@@ -42,19 +46,36 @@ export class OrderService {
 
   calculatePrice() {
     this.cartService.calculatePrice();
+    if (this.lastDestinationId !== this.order.address.placeId) {
+      this.http.post(this.configService.getConfig().serverUrl + '/DeliveryCharge',
+        new BackendDeliveryChargeRequest(this.order.foodProvider.id, this.order.address.placeId, this.order.address.postalCode)).subscribe(
+        data => {
+          this.lastDestinationId = this.order.address.placeId;
+          // @ts-ignore: this is backend deliveryCharge reponse
+          this.order.deliveryCharge = Global.priceRound(data.totalDeliveryCharge);
+          this.order.deliveryTax = Global.priceRound(this.order.deliveryCharge * this.order.foodProvider.taxRate);
+        },
+        error => {
+          // TODO: tell user cannot calculate deliverry charge
+        }
+      );
+    } else {
+
+    }
+
     const totalWithoutTip = this.order.cart.totalPrice + this.order.discount + this.order.deliveryCharge;
     this.calculateTip(totalWithoutTip);
-    this.order.totalPrice = totalWithoutTip + this.order.totalTip;
+    this.order.totalPrice = Global.safeSum(totalWithoutTip, this.order.totalTip);
   }
 
   calculateTip(totalWithoutTip: number) {
     if (this.order.tipType === TipType.NONE) {
-      this.order.totalTip = this.order.tipAmount || 0;
+      this.order.totalTip = Global.priceRound(this.order.tipAmount) || 0;
     } else if (this.order.tipType === TipType.ROUND) {
       this.order.totalTip = Math.ceil(totalWithoutTip) - totalWithoutTip;
       this.order.tipAmount = undefined;
     } else {
-      this.order.totalTip = totalWithoutTip * this.order.tipType / 100;
+      this.order.totalTip = Global.priceRound(totalWithoutTip * this.order.tipType / 100);
       this.order.tipAmount = undefined;
     }
   }

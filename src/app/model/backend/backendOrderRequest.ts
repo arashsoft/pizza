@@ -1,10 +1,9 @@
 import {Order} from '../order';
-import {BackendFoodRequest} from './backendFoodRequest';
 import {BackendOrderDetailsRequest} from './BackendOrderDetailsRequest';
 
 export class BackendOrderRequest {
   orderModel: BackendOrderDetailsRequest;
-  paymentModel: {
+  paymentModel?: {
     cardNumber?: string;
     expiryDate?: string;
     cardHolderName?: string;
@@ -15,11 +14,13 @@ export class BackendOrderRequest {
   constructor(order: Order) {
     this.orderModel = new BackendOrderDetailsRequest(order);
 
-    this.paymentModel = {};
-    this.paymentModel.cardNumber = order.newCard.cardNumber.toString();
-    this.paymentModel.expiryDate = order.newCard.month.toString() + order.newCard.year.toString();
-    this.paymentModel.cardHolderName = order.newCard.nameOnCard;
-    this.paymentModel.cardType = order.newCard.GetCardType();
-    this.paymentModel.cvn = order.newCard.ccv.toString();
+    if (order.isPayOnline) {
+      this.paymentModel = {};
+      this.paymentModel.cardNumber = order.newCard.cardNumber.toString();
+      this.paymentModel.expiryDate = order.newCard.month.toString() + order.newCard.year.toString();
+      this.paymentModel.cardHolderName = order.newCard.nameOnCard;
+      this.paymentModel.cardType = order.newCard.GetCardType();
+      this.paymentModel.cvn = order.newCard.ccv.toString();
+    }
   }
 }

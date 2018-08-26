@@ -11,10 +11,22 @@
         <input type="radio" [(ngModel)]="order.isPickup" [value]="false" name="pickupOrDelivery">
         <span class="checkmark"></span>
       </label>
+      <div class="clearfix address-container text-secondary">
+        <label for="orderName" class="input-label mt-1 float-left cursor-pointer">Name</label>
+        <input type="text" class="float-right faded-input" id="orderName" name="orderName"
+               [(ngModel)]="order.orderName">
+      </div>
+      <hr>
+      <div class="clearfix address-container text-secondary">
+        <label for="phoneNumber" class="input-label mt-1 float-left cursor-pointer">Phone</label>
+        <input type="text" class="float-right faded-input" id="phoneNumber" name="phoneNumber"
+               [(ngModel)]="order.orderPhoneNumber">
+      </div>
+      <hr>
       <span [ngClass]="{'d-none' : order.isPickup !== false}">
         <div class="mt-4 clearfix address-container text-secondary">
           <label for="autocomplete" class="input-label float-left cursor-pointer">Address</label>
-          <input type="text" class="float-right faded-input" id="autocomplete" name="autocomplete" autocomplete="off"
+          <input type="text" placeholder="" class="float-right faded-input" id="autocomplete" name="autocomplete" autocomplete="off"
                  [(ngModel)]="order.address.addressLine1">
         </div>
         <hr>

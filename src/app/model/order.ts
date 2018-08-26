@@ -22,11 +22,15 @@ export class Order {
   tipAmount?: number;
   isPayOnline = false;
   paymentType = PaymentType.NONE;
+  orderName = '';
+  orderPhoneNumber = '';
 
   // @Lazy
   totalTip?: number;
   // @Lazy
   deliveryCharge = 0;
+  // @Lazy
+  deliveryTax = 0;
   // @Lazy
   discount = 0;
   // @Lazy
@@ -48,5 +52,5 @@ export enum TipType {
 }
 
 export enum PaymentType {
-  NONE = 0, CASH = 1, DEBIT = 2, VISA = 3, MASTER_CARD = 4
+  NONE = 'None', CASH = 'Cash', DEBIT = 'Debit', VISA = 'Visa', MASTER_CARD = 'MasterCard'
 }

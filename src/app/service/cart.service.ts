@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {Cart} from '../model/cart';
 import {Food} from '../model/food';
 import {CartItem} from '../model/cartItem';
-import {FoodProviderService} from './food-provider-service';
-import {Order} from '../model/order';
+import {Global} from '../global';
 
 @Injectable({providedIn: 'root'})
 export class CartService {
@@ -35,11 +34,11 @@ export class CartService {
   public calculatePrice(): void {
     let subTotalPrice = 0;
     for (const cartItem of this.cart.items) {
-      subTotalPrice += (cartItem.quantity * cartItem.food.totalPrice);
+      subTotalPrice = Global.safeSum(subTotalPrice, Global.priceRound(cartItem.quantity * cartItem.food.totalPrice,));
     }
     this.cart.subTotalPrice = subTotalPrice;
     if (this.cart.taxRate) {
-      this.cart.taxPrice = subTotalPrice * this.cart.taxRate;
+      this.cart.taxPrice = Global.priceRound(subTotalPrice * this.cart.taxRate);
     } else {
       this.cart.taxPrice = 0;
     }

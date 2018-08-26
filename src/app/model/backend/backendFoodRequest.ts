@@ -1,6 +1,4 @@
 import {BackendFoodQuestionRequest} from './backendFoodQuestionRequest';
-import {FoodQuestion} from '../foodQuestion';
-import {Food} from '../food';
 import {CartItem} from '../cartItem';
 
 export class BackendFoodRequest {

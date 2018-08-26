@@ -98,16 +98,16 @@
       <div *ngIf="!order.isPayOnline">
         <div class="d-flex flex-row px-3 mt-3">
           <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
-                  [ngClass]="{'active': order.paymentType === 1}" (click)="order.paymentType = 1">Cash
+                  [ngClass]="{'active': order.paymentType === 'Cash'}" (click)="order.paymentType = 'Cash'">Cash
           </button>
           <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
-                  [ngClass]="{'active': order.paymentType === 2}" (click)="order.paymentType = 2">Debit
+                  [ngClass]="{'active': order.paymentType === 'Debit'}" (click)="order.paymentType = 'Debit'">Debit
           </button>
           <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
-                  [ngClass]="{'active': order.paymentType === 3}" (click)="order.paymentType = 3">Visa
+                  [ngClass]="{'active': order.paymentType === 'Visa'}" (click)="order.paymentType = 'Visa'">Visa
           </button>
           <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
-                  [ngClass]="{'active': order.paymentType === 4}" (click)="order.paymentType = 4">MasterCard
+                  [ngClass]="{'active': order.paymentType === 'MasterCard'}" (click)="order.paymentType = 'MasterCard'">MasterCard
           </button>
         </div>
       </div>
