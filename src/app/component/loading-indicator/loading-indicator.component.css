@@ -1,0 +1,37 @@
+@keyframes loading-indicator-spinner {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+#loading-indicator {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  z-index: 999999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  font-size: 20px;
+}
+
+#loading-indicator .fa-cog {
+  opacity: 0.7;
+  text-shadow: 0 0 4px #F7F7F7;
+  animation: loading-indicator-spinner 2s linear 0s infinite normal;
+}
+
+#loading-indicator .loading-indicator-text {
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 0.7em;
+  background-color: #F7F7F7;
+  box-shadow: 0 0 4px 1px rgba(49, 49, 49, 0.6);
+}

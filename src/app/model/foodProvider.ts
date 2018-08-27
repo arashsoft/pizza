@@ -22,6 +22,9 @@ export class FoodProvider {
     menusObject.forEach(menuObject => {
       menusArray.push(new Menu(menuObject));
     });
+    menusArray.sort(function(menu1, menu2) {
+      return menu1.sortOrder - menu2.sortOrder;
+    });
     this.menus = menusArray;
   }
 }

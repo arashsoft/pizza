@@ -1,17 +1,49 @@
 /* MenusComponent's private CSS styles */
-.main-menu-container{
-  max-width: 1200px;
+.menu-list-container {
+  width: 300px;
+  flex-shrink: 0;
 }
 
-.mainMenu-item{
+.menu-items-container {
+  height: 100%;
+}
+
+.menu-food-item-container {
+  /*display: flex;*/
+  /*flex-flow: row wrap;*/
+}
+
+.menu-food-item {
+  width: calc(100% - 1rem);
+}
+
+@media (min-width: 768px) {
+  .menu-food-item {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 992px) {
+  .menu-food-item {
+    width: calc(33% - 1rem);
+  }
+}
+
+.mainMenu-item {
   font-size: 1.1em;
+  border: 0;
 }
 
-.subMenu-item{
+.subMenu-item {
   margin-left: 20px;
   font-size: 1.3em;
+  border: 0;
 }
 
-.submenu-title{
+.subMenu-item.active {
+  background-color: #f8f9fa;;
+}
+
+.submenu-title {
   margin-bottom: -5px;
 }

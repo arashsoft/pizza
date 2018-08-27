@@ -10,6 +10,7 @@ export class Food {
   foodSizes?: FoodSize[];
   defaultSelectedSize?: FoodSize;
   taxRate: number;
+  sortOrder: number;
 
   // @Data: The size of food
   selectedSize?: FoodSize;
@@ -27,6 +28,7 @@ export class Food {
     this.description = foodObject.Ingredients;
     this.price = foodObject.Price;
     this.picturePath = foodObject.PhotoPath;
+    this.sortOrder = foodObject.Order;
     this.taxRate = foodObject.FirstTaxRate;
     if (foodObject.FoodSizes) {
       this.foodSizes = foodObject.FoodSizes.map(foodSizeObject => new FoodSize(foodSizeObject));

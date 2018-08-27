@@ -11,6 +11,7 @@ import {Address} from '../../model/address';
 })
 export class PickupDeliveryComponent implements OnInit {
   @Input() order: Order;
+  @Input() errors?: {[k: string]: any};
 
   constructor(public activeModal: NgbActiveModal, private cdr: ChangeDetectorRef) {
   }

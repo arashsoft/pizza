@@ -9,6 +9,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {BackendOrderRequest} from '../model/backend/BackendOrderRequest';
 import {Global} from '../global';
 import {Router} from '@angular/router';
+import {LoadingIndicatorService} from './loading-indicator-service';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
@@ -26,6 +27,7 @@ export class OrderService {
               private foodProviderService: FoodProviderService,
               private configService: ConfigService,
               private router: Router,
+              private loadingIndicatorService: LoadingIndicatorService,
               private http: HttpClient) {
     this.order = new Order(this.cartService.cart);
   }
@@ -43,9 +45,12 @@ export class OrderService {
     }
   }
 
-  openPickupDelivery() {
+  openPickupDelivery(errors?) {
     const modalRef = this.modalService.open(PickupDeliveryComponent);
     modalRef.componentInstance.order = this.order;
+    if (errors) {
+      modalRef.componentInstance.errors = errors;
+    }
   }
 
   calculatePrice() {
@@ -98,12 +103,16 @@ export class OrderService {
   }
 
   submitOrder(): void {
+    this.loadingIndicatorService.startLoading('Submitting Order...');
     this.http.post(this.configService.getConfig().serverUrl + '/transactions', new BackendOrderRequest(this.order)).subscribe(
       data => {
         this.router.navigate(['./success']);
       },
       error => {
 
+      },
+      () => {
+        this.loadingIndicatorService.stopLoading();
       }
     );
   }

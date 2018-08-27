@@ -18,6 +18,7 @@ import {PickupDeliveryComponent} from './pages/pickup-delivery/pickup-delivery.c
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { FoodQuestionComponent } from './pages/menu/food-detail/food-question/food-question.component';
 import { SuccessSubmitComponent } from './pages/success-submit/success-submit.component';
+import { LoadingIndicatorComponent } from './component/loading-indicator/loading-indicator.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { SuccessSubmitComponent } from './pages/success-submit/success-submit.co
     PickupDeliveryComponent,
     CheckoutComponent,
     FoodQuestionComponent,
-    SuccessSubmitComponent
+    SuccessSubmitComponent,
+    LoadingIndicatorComponent
   ],
   entryComponents: [PickupDeliveryComponent],
   bootstrap: [AppComponent]

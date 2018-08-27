@@ -1,9 +1,10 @@
 <app-navbar></app-navbar>
-<div class="container mealsy-container">
+<div *ngIf="order" class="container mealsy-container">
   <div class="checkout-padding">
     <h4>Checkout</h4>
   </div>
   <div class="checkout-padding bg-white my-1">
+    <div *ngIf="errors?.emptyCart" class="text-center text-danger mb-2">{{errors.emptyCart}}</div>
     <div class="clearfix">
       <div class="float-left">
         <span class="fa fa-cog mr-3"></span>{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}
@@ -114,25 +115,29 @@
                   [ngClass]="{'active': order.paymentType === 'MasterCard'}" (click)="order.paymentType = 'MasterCard'">MasterCard
           </button>
         </div>
+        <div *ngIf="errors?.paymentType && order.paymentType === 'None'" class="error-message">{{errors.paymentType}}</div>
       </div>
       <hr>
       <label class="checkmark-container">PAY ONLINE NOW
         <input type="radio" [(ngModel)]="order.isPayOnline" [value]="true" name="isPayOnline">
         <span class="checkmark"></span>
       </label>
-      <div *ngIf="order.isPayOnline" class="ml-2">
-        <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">
-        <input type="text" class="faded-input card-input mt-2" [(ngModel)]="order.newCard.nameOnCard" placeholder="Name on Card">
-        <div class="d-flex flex-row mt-2">
-          <div class="d-flex flex-row">
-            <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
-            <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
+      <div *ngIf="order.isPayOnline" class="ml-2" >
+        <form #newCardForm="ngForm" >
+          <div *ngIf="errors?.newCard && newCardForm.pristine" class="error-message">{{errors.newCard}}</div>
+          <input name="cardNumber" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">
+          <input name="nameOnCard" type="text" class="faded-input card-input mt-2" [(ngModel)]="order.newCard.nameOnCard" placeholder="Name on Card">
+          <div class="d-flex flex-row mt-2">
+            <div class="d-flex flex-row">
+              <input name="month" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
+              <input name="year" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
+            </div>
+            <input name="ccv" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CCV">
           </div>
-          <input type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CCV">
-        </div>
+        </form>
       </div>
     </div>
-    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto checkout-btn mt-5" (click)="orderService.submitOrder()">ORDER</button>
+    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto checkout-btn mt-5" (click)="submitOrder()">ORDER</button>
     <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto checkout-btn mt-2" [routerLink]="['/cart']">
       BACK TO CART
     </button>

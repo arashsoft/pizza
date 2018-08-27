@@ -3,7 +3,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CartService} from '../../service/cart.service';
 import {OrderService} from '../../service/order-service';
 import {FoodProviderService} from '../../service/food-provider-service';
-import {PickupDeliveryComponent} from '../../pages/pickup-delivery/pickup-delivery.component';
 
 @Component({
   selector: 'app-navbar',
