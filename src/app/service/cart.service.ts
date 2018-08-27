@@ -19,6 +19,11 @@ export class CartService {
     this.calculatePrice();
   }
 
+  removeFoodByIndex(index: number) {
+    this.cart.items.splice(index, 1);
+    this.calculatePrice();
+  }
+
   getTotalItems(): number {
     return this.cart.items.length;
   }
