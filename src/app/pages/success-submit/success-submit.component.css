@@ -1,0 +1,21 @@
+.success-container {
+  max-width: 400px;
+}
+
+.success-icon {
+  font-size: 3em;
+}
+
+.ok-btn {
+  width: 150px;
+}
+
+.provider-address {
+  color: darkgray;
+  font-size: 0.8em;
+}
+
+.navigate-to-store{
+  color: darkgray;
+  font-size: 0.85em;
+}

@@ -1,4 +1,5 @@
 import {FoodSize} from './foodSize';
+import {Global} from '../global';
 
 export class Food {
   id: number;
@@ -8,12 +9,16 @@ export class Food {
   picturePath?: string;
   foodSizes?: FoodSize[];
   defaultSelectedSize?: FoodSize;
+  taxRate: number;
 
   // @Data: The size of food
   selectedSize?: FoodSize;
 
   // @Lazy: total price of food based on selected foodSections
   totalPrice?: number;
+
+  // @Lazy: The amount of tax on this specific food
+  totalTax?: number;
 
   // TODO: add back-end types
   constructor(foodObject) {
@@ -22,6 +27,7 @@ export class Food {
     this.description = foodObject.Ingredients;
     this.price = foodObject.Price;
     this.picturePath = foodObject.PhotoPath;
+    this.taxRate = foodObject.FirstTaxRate;
     if (foodObject.FoodSizes) {
       this.foodSizes = foodObject.FoodSizes.map(foodSizeObject => new FoodSize(foodSizeObject));
     }
@@ -47,6 +53,7 @@ export class Food {
     } else {
       this.totalPrice = this.price;
     }
+    this.totalTax = Global.priceRound(this.taxRate * this.totalPrice);
   };
 
   /**

@@ -21,8 +21,6 @@ export class PickupDeliveryComponent implements OnInit {
       {types: ['geocode']});
     autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace();
-      console.log(place);
-
       const tempAddress = new Address('', '');
 
       place.address_components.forEach(addressComponent => {

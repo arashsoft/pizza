@@ -45,6 +45,28 @@ export class Order {
     this.foodProvider = foodProvider;
     this.cart.taxRate = foodProvider.taxRate;
   }
+
+  reset() {
+    this.cart.reset();
+    this.newCard = new NewCard();
+    this.coupons = undefined;
+    this.address = new Address('', '');
+    this.isPickup = true;
+    this.isForNow = true;
+    this.scheduledFor = undefined;
+    this.tipType = TipType.PERCENTAGE10;
+    this.tipAmount = undefined;
+    this.isPayOnline = false;
+    this.paymentType = PaymentType.NONE;
+    this.orderName = '';
+    this.orderPhoneNumber = '';
+
+    this.totalTip = undefined;
+    this.deliveryCharge = 0;
+    this.deliveryTax = 0;
+    this.discount = 0;
+    this.totalPrice = undefined;
+  }
 }
 
 export enum TipType {

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container checkout-container">
+<div class="container mealsy-container">
   <div class="checkout-padding">
     <h4>Checkout</h4>
   </div>
@@ -68,6 +68,10 @@
     <div class="clearfix mt-2">
       <div class="float-left">Delivery Charge</div>
       <div class="float-right">{{order.deliveryCharge | currency}}</div>
+    </div>
+    <div class="clearfix mt-2">
+      <div class="float-left">Delivery Tax</div>
+      <div class="float-right">{{order.deliveryTax | currency}}</div>
     </div>
     <div class="clearfix mt-2">
       <div class="float-left">Discount</div>

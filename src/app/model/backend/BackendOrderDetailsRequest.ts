@@ -1,5 +1,6 @@
 import {Order, PaymentType} from '../order';
 import {BackendFoodRequest} from './backendFoodRequest';
+import {Global} from '../../global';
 
 
 export class BackendOrderDetailsRequest {
@@ -41,7 +42,7 @@ export class BackendOrderDetailsRequest {
     this.orderPrice = order.cart.subTotalPrice;
     this.deliveryCharge = order.deliveryCharge;
     this.tip = order.totalTip;
-    this.totalTax = order.cart.taxPrice;
+    this.totalTax = Global.safeSum(order.cart.taxPrice, order.deliveryTax);
     this.discount = order.discount;
     this.ip = window.location.origin;
     this.httpUserAgent = navigator.userAgent;

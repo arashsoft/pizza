@@ -173,3 +173,7 @@ body {
 .pac-container {
   z-index: 1100 !important;
 }
+
+.mealsy-container {
+  max-width: 600px;
+}

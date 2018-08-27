@@ -33,15 +33,13 @@ export class CartService {
    */
   public calculatePrice(): void {
     let subTotalPrice = 0;
+    let subTotalTax = 0;
     for (const cartItem of this.cart.items) {
-      subTotalPrice = Global.safeSum(subTotalPrice, Global.priceRound(cartItem.quantity * cartItem.food.totalPrice,));
+      subTotalPrice = Global.safeSum(subTotalPrice, Global.priceRound(cartItem.quantity * cartItem.food.totalPrice));
+      subTotalTax = Global.safeSum(subTotalTax, Global.priceRound(cartItem.quantity * cartItem.food.totalTax));
     }
     this.cart.subTotalPrice = subTotalPrice;
-    if (this.cart.taxRate) {
-      this.cart.taxPrice = Global.priceRound(subTotalPrice * this.cart.taxRate);
-    } else {
-      this.cart.taxPrice = 0;
-    }
+    this.cart.taxPrice = subTotalTax;
     this.cart.totalPrice = this.cart.subTotalPrice + this.cart.taxPrice;
   };
 }

@@ -5,6 +5,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {MenuComponent} from './pages/menu/menu.component';
 import {CartComponent} from './pages/cart/cart.component';
 import {CheckoutComponent} from './pages/checkout/checkout.component';
+import {SuccessSubmitComponent} from './pages/success-submit/success-submit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/menus', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'menus', component: MenuComponent},
   {path: 'cart', component: CartComponent},
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'success', component: SuccessSubmitComponent},
 ];
 
 @NgModule({

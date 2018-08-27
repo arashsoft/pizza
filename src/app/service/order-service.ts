@@ -5,10 +5,10 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PickupDeliveryComponent} from '../pages/pickup-delivery/pickup-delivery.component';
 import {FoodProviderService} from './food-provider-service';
 import {ConfigService} from './config-service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {BackendOrderRequest} from '../model/backend/BackendOrderRequest';
 import {Global} from '../global';
-import {BackendDeliveryChargeRequest} from '../model/backend/backendDeliveryChargeRequest';
+import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
@@ -18,10 +18,14 @@ export class OrderService {
   // will be used to know if should calculate delivery chrage or not
   lastDestinationId?: string;
 
+  // order confirmation  number
+  confirmationNumber: string;
+
   constructor(private cartService: CartService,
               private modalService: NgbModal,
               private foodProviderService: FoodProviderService,
               private configService: ConfigService,
+              private router: Router,
               private http: HttpClient) {
     this.order = new Order(this.cartService.cart);
   }
@@ -47,23 +51,31 @@ export class OrderService {
   calculatePrice() {
     this.cartService.calculatePrice();
     if (this.lastDestinationId !== this.order.address.placeId) {
-      this.http.post(this.configService.getConfig().serverUrl + '/DeliveryCharge',
-        new BackendDeliveryChargeRequest(this.order.foodProvider.id, this.order.address.placeId, this.order.address.postalCode)).subscribe(
+      const params = new HttpParams()
+        .append('foodProviderId', this.order.foodProvider.id.toString())
+        .append('destinationPlaceId', this.order.address.placeId)
+        .append('postalCode', this.order.address.postalCode);
+      this.http.get(this.configService.getConfig().serverUrl + '/DeliveryCharge', {params: params}).subscribe(
         data => {
           this.lastDestinationId = this.order.address.placeId;
           // @ts-ignore: this is backend deliveryCharge reponse
-          this.order.deliveryCharge = Global.priceRound(data.totalDeliveryCharge);
+          this.order.deliveryCharge = Global.priceRound(data.TotalDeliveryCharge);
           this.order.deliveryTax = Global.priceRound(this.order.deliveryCharge * this.order.foodProvider.taxRate);
+          this.calculatePriceAfterDelivery();
         },
         error => {
           // TODO: tell user cannot calculate deliverry charge
         }
       );
     } else {
-
+      this.calculatePriceAfterDelivery();
     }
 
-    const totalWithoutTip = this.order.cart.totalPrice + this.order.discount + this.order.deliveryCharge;
+
+  }
+
+  calculatePriceAfterDelivery() {
+    const totalWithoutTip = this.order.cart.totalPrice + this.order.discount + this.order.deliveryCharge + this.order.deliveryTax;
     this.calculateTip(totalWithoutTip);
     this.order.totalPrice = Global.safeSum(totalWithoutTip, this.order.totalTip);
   }
@@ -72,7 +84,7 @@ export class OrderService {
     if (this.order.tipType === TipType.NONE) {
       this.order.totalTip = Global.priceRound(this.order.tipAmount) || 0;
     } else if (this.order.tipType === TipType.ROUND) {
-      this.order.totalTip = Math.ceil(totalWithoutTip) - totalWithoutTip;
+      this.order.totalTip = Global.safeMinus(Math.ceil(totalWithoutTip), totalWithoutTip);
       this.order.tipAmount = undefined;
     } else {
       this.order.totalTip = Global.priceRound(totalWithoutTip * this.order.tipType / 100);
@@ -88,11 +100,16 @@ export class OrderService {
   submitOrder(): void {
     this.http.post(this.configService.getConfig().serverUrl + '/transactions', new BackendOrderRequest(this.order)).subscribe(
       data => {
-
+        this.router.navigate(['./success']);
       },
       error => {
 
       }
     );
+  }
+
+  reset(): void {
+    this.order.reset();
+    this.confirmationNumber = undefined;
   }
 }

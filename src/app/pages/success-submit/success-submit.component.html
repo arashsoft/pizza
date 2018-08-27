@@ -1,0 +1,13 @@
+<div class="container success-container bg-white mt-5 p-4 text-center">
+  <h1 class="mt-3"><i class="fa fa-check-circle mealsy-green"></i></h1>
+  <h5>THANK YOU {{name}}</h5>
+  <div>Your order number is</div>
+  <h5>{{confirmationNumber}}</h5>
+  <div class="mt-4 provider-address">Your order has been submitted to</div>
+  <div class="provider-address">{{orderService.order.foodProvider.name}}</div>
+  <div class="provider-address">{{orderService.order.foodProvider.address.toString()}}</div>
+  <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto mt-3 ok-btn" [routerLink]="['/menus']">OK</button>
+  <div class="mt-4 navigate-to-store">Navigate To Store</div>
+  <a><img class="d-block mx-auto cursor-pointer" width="40px" height="40px" src="./assets/images/google_maps.png"></a>
+
+</div>
