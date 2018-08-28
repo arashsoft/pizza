@@ -6,10 +6,7 @@ import {PickupDeliveryComponent} from '../pages/pickup-delivery/pickup-delivery.
 import {FoodProviderService} from './food-provider-service';
 import {ConfigService} from './config-service';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {BackendOrderRequest} from '../model/backend/BackendOrderRequest';
 import {Global} from '../global';
-import {Router} from '@angular/router';
-import {LoadingIndicatorService} from './loading-indicator-service';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
@@ -26,8 +23,6 @@ export class OrderService {
               private modalService: NgbModal,
               private foodProviderService: FoodProviderService,
               private configService: ConfigService,
-              private router: Router,
-              private loadingIndicatorService: LoadingIndicatorService,
               private http: HttpClient) {
     this.order = new Order(this.cartService.cart);
   }
@@ -100,21 +95,6 @@ export class OrderService {
   updateTip(tipType: TipType): void {
     this.order.tipType = tipType;
     this.calculatePrice();
-  }
-
-  submitOrder(): void {
-    this.loadingIndicatorService.startLoading('Submitting Order...');
-    this.http.post(this.configService.getConfig().serverUrl + '/transactions', new BackendOrderRequest(this.order)).subscribe(
-      data => {
-        this.router.navigate(['./success']);
-      },
-      error => {
-
-      },
-      () => {
-        this.loadingIndicatorService.stopLoading();
-      }
-    );
   }
 
   reset(): void {

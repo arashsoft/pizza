@@ -24,9 +24,10 @@ export class QuantityComponent {
 
   reduceQuantity(): void {
     if (this.item.quantity === 1) {
-      this.modalService.open(RemoveItemModalComponent, {centered: true}).result.then(() => {
+      const modalRef = this.modalService.open(RemoveItemModalComponent, {centered: true});
+      modalRef.componentInstance.foodName = this.item.food.name;
+      modalRef.result.then(() => {
         this.cartService.removeFoodByIndex(this.index);
-      }, () => {
       });
       return;
     }

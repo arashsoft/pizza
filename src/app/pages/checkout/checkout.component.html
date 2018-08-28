@@ -5,6 +5,7 @@
   </div>
   <div class="checkout-padding bg-white my-1">
     <div *ngIf="errors?.emptyCart" class="text-center text-danger mb-2">{{errors.emptyCart}}</div>
+    <div *ngIf="errors?.backendError" class="text-center text-danger mb-2 backend-error">{{errors.backendError}}</div>
     <div class="clearfix">
       <div class="float-left">
         <span class="fa fa-cog mr-3"></span>{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}
@@ -16,10 +17,25 @@
       </div>
     </div>
     <hr>
+    <span class="fa fa-user-circle mr-3"></span>PERSONAL INFO
+    <div class="left-indent mt-3">
+      <div class="clearfix">
+        <label for="orderName" class="input-label mt-1 float-left cursor-pointer">Name</label>
+        <input #orderName="ngModel" type="text" placeholder="Your name" class="float-right faded-input" id="orderName" name="orderName"
+               [(ngModel)]="order.orderName">
+      </div>
+      <hr>
+      <div class="clearfix">
+        <label for="phoneNumber" class="input-label mt-1 float-left cursor-pointer">Phone</label>
+        <input #phoneNumber="ngModel" OnlyNumber="true" type="text" placeholder="Your phone number" class="float-right faded-input" id="phoneNumber" name="phoneNumber"
+               [(ngModel)]="order.orderPhoneNumber">
+      </div>
+    </div>
+    <hr>
     <div *ngIf="!orderService.order.isPickup">
       <div class="d-flex flex-row">
         <span class="fa fa-truck pt-1 mr-3"></span>
-        <div>{{orderService.order.address.toString()}}</div>
+        <div>{{orderService.order.address.placeId? orderService.order.address.toString() : '-Not entered'}}</div>
       </div>
       <hr>
     </div>
@@ -32,7 +48,7 @@
     <hr>
     <div>
       <span class="fa fa-money mr-3"></span>TIP
-      <div class="d-flex flex-row px-3 mt-3">
+      <div class="d-flex flex-row left-indent pr-3 mt-3">
         <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
                 [ngClass]="{'active': orderService.order.tipType === 1}" (click)="orderService.updateTip(1)">Round
         </button>
@@ -46,9 +62,9 @@
                 [ngClass]="{'active': orderService.order.tipType === 15}" (click)="orderService.updateTip(15)">15%
         </button>
       </div>
-      <div class="clearfix">
+      <div class="clearfix left-indent mt-4 pb-2 tip-input-container">
         <label for="tipAmount" class="input-label float-left cursor-pointer">Tip</label>
-        <input type="number" class="float-right faded-input" id="tipAmount" name="tipAmount"
+        <input type="text" OnlyNumber="true" class="float-right faded-input" id="tipAmount" name="tipAmount" placeholder="Enter custom tip amount"
                [(ngModel)]="orderService.order.tipAmount" (change)="orderService.updateTip(0)">
       </div>
     </div>
@@ -125,14 +141,14 @@
       <div *ngIf="order.isPayOnline" class="ml-2" >
         <form #newCardForm="ngForm" >
           <div *ngIf="errors?.newCard && newCardForm.pristine" class="error-message">{{errors.newCard}}</div>
-          <input name="cardNumber" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">
+          <input name="cardNumber" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">
           <input name="nameOnCard" type="text" class="faded-input card-input mt-2" [(ngModel)]="order.newCard.nameOnCard" placeholder="Name on Card">
           <div class="d-flex flex-row mt-2">
             <div class="d-flex flex-row">
-              <input name="month" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
-              <input name="year" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
+              <input name="month" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
+              <input name="year" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
             </div>
-            <input name="ccv" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CCV">
+            <input name="ccv" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CCV">
           </div>
         </form>
       </div>

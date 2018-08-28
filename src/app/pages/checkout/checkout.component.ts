@@ -6,6 +6,10 @@ import {Order, PaymentType} from '../../model/order';
 import {Router} from '@angular/router';
 import * as _ from 'lodash';
 import {NgForm} from '@angular/forms';
+import {BackendOrderRequest} from '../../model/backend/backendOrderRequest';
+import {LoadingIndicatorService} from '../../service/loading-indicator-service';
+import {HttpClient} from '@angular/common/http';
+import {ConfigService} from '../../service/config-service';
 
 @Component({
   selector: 'app-checkout',
@@ -17,9 +21,14 @@ export class CheckoutComponent implements OnInit {
   cart: Cart;
   order: Order;
   currentCoupon: string;
-  errors: { [k: string]: any };
+  errors: { [k: string]: any } = {};
 
-  constructor(public cartService: CartService, public orderService: OrderService, private router: Router) {
+  constructor(public cartService: CartService,
+              public orderService: OrderService,
+              private http: HttpClient,
+              private configService: ConfigService,
+              private loadingIndicatorService: LoadingIndicatorService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -31,25 +40,40 @@ export class CheckoutComponent implements OnInit {
       // order page is not initialized, return to menu
       this.router.navigate(['./menus']);
     }
-    this.errors = {};
   }
 
   submitOrder(): void {
-    const errors: { [k: string]: any } = {};
-    this.validatePickupDelivery(errors);
-    if (!_.isEmpty(errors)) {
-      this.orderService.openPickupDelivery(errors);
+    this.errors = {};
+    this.validatePickupDelivery(this.errors);
+    if (!_.isEmpty(this.errors)) {
+      this.orderService.openPickupDelivery(this.errors);
       return;
     }
-    this.validateCart(errors);
-    if (!_.isEmpty(errors)) {
-      this.errors = errors;
-      if (errors.emptyCart) {
+    this.validateCart(this.errors);
+    if (!_.isEmpty(this.errors)) {
+      if (this.errors.emptyCart) {
         $('html, body').animate({scrollTop: 0}, 'slow');
       }
       return;
     }
-    this.orderService.submitOrder();
+    // front-end validation are passed.
+
+    this.loadingIndicatorService.startLoading('Submitting Order...');
+    this.http.post(this.configService.getConfig().serverUrl + '/transactions', new BackendOrderRequest(this.order)).subscribe(
+      data => {
+        this.router.navigate(['./success']);
+        this.loadingIndicatorService.stopLoading();
+      },
+      errorResponse => {
+        if (errorResponse && errorResponse.error && errorResponse.error.message) {
+          this.errors.backendError = errorResponse.error.message;
+        } else {
+          this.errors.backendError = 'There was an issue in ordering progress. Please contact the restaurant directly';
+        }
+        $('html, body').animate({scrollTop: 0}, 'slow');
+        this.loadingIndicatorService.stopLoading();
+      }
+    );
   }
 
   validateCart(errors: { [k: string]: any }) {

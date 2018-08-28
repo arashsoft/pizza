@@ -69,3 +69,16 @@
   font-size: 0.9em;
   width: 100%;
 }
+
+.backend-error {
+  word-wrap: break-word;
+}
+
+.tip-input-container{
+  color: lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.left-indent{
+  margin-left: 32px;
+}

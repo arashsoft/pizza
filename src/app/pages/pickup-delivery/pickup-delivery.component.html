@@ -14,7 +14,7 @@
       <div class="clearfix address-container text-secondary">
         <div *ngIf="errors?.orderName && orderName.pristine" class="error-message">{{errors.orderName}}</div>
         <label for="orderName" class="input-label mt-1 float-left cursor-pointer">Name</label>
-        <input #orderName="ngModel" type="text" class="float-right faded-input" id="orderName" name="orderName"
+        <input #orderName="ngModel" type="text" placeholder="Your name" class="float-right faded-input" id="orderName" name="orderName"
                [(ngModel)]="order.orderName">
       </div>
       <hr>
@@ -23,7 +23,7 @@
           {{errors.orderPhoneNumber}}
         </div>
         <label for="phoneNumber" class="input-label mt-1 float-left cursor-pointer">Phone</label>
-        <input #phoneNumber="ngModel" type="text" class="float-right faded-input" id="phoneNumber" name="phoneNumber"
+        <input #phoneNumber="ngModel" OnlyNumber="true" type="text" placeholder="Your phone number" class="float-right faded-input" id="phoneNumber" name="phoneNumber"
                [(ngModel)]="order.orderPhoneNumber">
       </div>
       <hr>
@@ -31,7 +31,7 @@
         <div class="mt-4 clearfix address-container text-secondary">
           <div *ngIf="errors?.address && address.pristine" class="error-message">{{errors.address}}</div>
           <label for="autocomplete" class="input-label float-left cursor-pointer">Address</label>
-          <input #address="ngModel" type="text" placeholder="" class="float-right faded-input" id="autocomplete"
+          <input #address="ngModel" type="text" placeholder="Start typing address..." class="float-right faded-input" id="autocomplete"
                  name="autocomplete" autocomplete="off"
                  [(ngModel)]="order.address.addressLine1">
         </div>
@@ -44,13 +44,13 @@
         <hr>
         <div class="clearfix address-container text-secondary">
           <label for="unitNumber" class="input-label mt-1 float-left cursor-pointer">Unit Number</label>
-          <input type="text" class="float-right faded-input" id="unitNumber" name="unitNumber"
+          <input type="text" class="float-right faded-input" id="unitNumber" name="unitNumber" placeholder="The unit number"
                  [(ngModel)]="order.address.unitNumber">
         </div>
         <hr>
         <div class="clearfix address-container text-secondary">
           <label for="buzzer" class="input-label mt-1 float-left cursor-pointer">Buzzer</label>
-          <input type="text" class="float-right faded-input" id="buzzer" name="buzzer"
+          <input type="text" class="float-right faded-input" id="buzzer" name="buzzer" placeholder="The buzzer code"
                  [(ngModel)]="order.address.buzzer">
         </div>
         <hr>
@@ -82,7 +82,7 @@
       </div>
       <div *ngIf="!order.isForNow">
         <input #scheduledFor="ngModel" type="text" class="float-right faded-input mt-5" id="scheduledFor"
-               name="scheduledFor" [(ngModel)]="order.scheduledFor">
+               name="scheduledFor" [(ngModel)]="order.scheduledFor" placeholder="Enter the scheduled time">
         <div *ngIf="errors?.scheduledFor && scheduledFor.pristine" class="error-message">{{errors.scheduledFor}}</div>
       </div>
     </div>

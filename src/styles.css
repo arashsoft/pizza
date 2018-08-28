@@ -101,19 +101,22 @@ body {
 }
 
 .faded-input {
-  width: calc(100% - 100px);
+  width: calc(100% - 110px);
   text-align: right;
   color: rgb(0, 200, 100);
   font-size: 1.3em;
   border: none;
   border-bottom: 1px solid white;
   height: 30px;
-  background-image: linear-gradient(to bottom, white, white 80%, #fbfbfb);
+}
+
+.faded-input::placeholder {
+  color: lightgray;
+  font-size: 0.9em;
 }
 
 .faded-input:focus {
   outline: none;
-  border-bottom: 1px solid darkgray;
 }
 
 /*radio*/
@@ -186,7 +189,7 @@ body {
   max-width: 600px;
 }
 
-.error-message{
+.error-message {
   font-size: 0.8em;
   color: #dc3545;
 }

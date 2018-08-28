@@ -15,11 +15,12 @@ import {CartComponent} from './pages/cart/cart.component';
 import {QuantityComponent} from './pages/cart/quantity/quantity.component';
 import {NavbarComponent} from './component/navbar/navbar.component';
 import {PickupDeliveryComponent} from './pages/pickup-delivery/pickup-delivery.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { FoodQuestionComponent } from './pages/menu/food-detail/food-question/food-question.component';
-import { SuccessSubmitComponent } from './pages/success-submit/success-submit.component';
-import { LoadingIndicatorComponent } from './component/loading-indicator/loading-indicator.component';
-import { RemoveItemModalComponent } from './pages/cart/quantity/remove-item-modal/remove-item-modal.component';
+import {CheckoutComponent} from './pages/checkout/checkout.component';
+import {FoodQuestionComponent} from './pages/menu/food-detail/food-question/food-question.component';
+import {SuccessSubmitComponent} from './pages/success-submit/success-submit.component';
+import {LoadingIndicatorComponent} from './component/loading-indicator/loading-indicator.component';
+import {RemoveItemModalComponent} from './pages/cart/quantity/remove-item-modal/remove-item-modal.component';
+import {OnlyNumberDirective} from './component/only-number/only-number';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { RemoveItemModalComponent } from './pages/cart/quantity/remove-item-moda
     FoodQuestionComponent,
     SuccessSubmitComponent,
     LoadingIndicatorComponent,
-    RemoveItemModalComponent
+    RemoveItemModalComponent,
+    OnlyNumberDirective
   ],
   entryComponents: [PickupDeliveryComponent, RemoveItemModalComponent],
   bootstrap: [AppComponent]
