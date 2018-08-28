@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-light bg-white">
-  <a class="navbar-brand">{{foodProviderService.foodProvider?.name}}</a>
+  <a class="navbar-brand cursor-pointer" [routerLink]="['/menus']">{{foodProviderService.foodProvider?.name}}</a>
   <div class="navbar-right-side" >
     <div><span class="pickup-delivery mr-2" (click)="orderService.openPickupDelivery()">{{orderService.order.isPickup ? "PICKUP" : "DELIVERY"}}</span>
       <span class="fa fa-shopping-cart top-cart-icon " [routerLink]="['/cart']"></span>

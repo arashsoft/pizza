@@ -8,7 +8,7 @@ export class Menu {
 
   // TODO: add back-end types
   constructor(menuObject) {
-    this.id = menuObject.MenuId;
+    this.id = menuObject.Id;
     this.name = menuObject.Name;
     this.sortOrder = menuObject.Order;
     const menuSections: MenuSection[] = [];

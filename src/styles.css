@@ -75,7 +75,7 @@ body {
 }
 
 .btn-mealsy1 {
-  background-color: rgb(0, 200, 100);
+  background-color: #00C864;
   font-size: 0.95em;
   font-weight: bold;
   border-radius: 40px / 100%;
@@ -92,7 +92,7 @@ body {
 }
 
 .mealsy-green {
-  color: rgb(0, 200, 100);
+  color: #00C864;
 }
 
 .footer-note {
@@ -103,7 +103,7 @@ body {
 .faded-input {
   width: calc(100% - 110px);
   text-align: right;
-  color: rgb(0, 200, 100);
+  color: #00C864;
   font-size: 1.3em;
   border: none;
   border-bottom: 1px solid white;
@@ -178,7 +178,7 @@ body {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: rgb(0, 200, 100);;
+  background: #00C864;;
 }
 
 .pac-container {

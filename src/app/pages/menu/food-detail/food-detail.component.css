@@ -1,11 +1,12 @@
 /* FoodDetailComponent's private CSS styles */
 
 .food-item {
-  padding: 5px;
+  padding: 0px 10px 10px 10px;
 }
 
 .food-title {
   font-size: 1.2em;
+  margin-top: 13px;
 }
 
 img {
@@ -20,17 +21,22 @@ img.modal-img {
 }
 
 .food-price {
-  color: gray;
-  font-size: 0.9em;
+  margin-top: 10px;
+  color: #b2b0c0;
+  font-size: 11pt;
 }
 
 .food-description {
-  font-size: 0.9em;
+  font-style: italic;
+  font-size: 12pt;
+  color: #4a4a4a;
+  margin-top: 13px;
+  margin-bottom: 3px;
 }
 
 .cart-icon {
-  font-size: 2em;
-  padding-right: 5px;
+  height: 20px;
+  width: 20px;
 }
 
 .add-to-cart-btn {
@@ -49,15 +55,21 @@ img.modal-img {
   border-width: 1px 0 1px 1px;
 }
 
-.food-size:first-child{
+.food-size:first-child {
   border-left-width: 0;
 }
 
 .food-size.active {
-  background-color: rgb(0, 200, 100);
+  background-color: #00C864;
   color: white;
 }
 
 .food-size-name {
   font-size: 1.2em;
+}
+
+.food-name {
+  font-weight: bold;
+  font-size: 14pt;
+  color: #4a4a4a;
 }

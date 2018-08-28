@@ -3,7 +3,7 @@ import {Menu} from '../../model/menu';
 import {FoodProviderService} from '../../service/food-provider-service';
 import {OrderService} from '../../service/order-service';
 import * as $ from 'jquery';
-import * as _ from 'lodash';
+import {MenuSection} from '../../model/menuSection';
 
 @Component({
   selector: 'app-page-menu',
@@ -38,5 +38,9 @@ export class MenuComponent implements OnInit {
         return false;
       }
     });
+  }
+
+  gotoSubMenu(subMenu: MenuSection): void {
+    $('html, body').animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - 56});
   }
 }

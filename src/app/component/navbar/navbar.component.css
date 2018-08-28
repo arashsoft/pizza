@@ -1,7 +1,19 @@
-.navbar-right-side{
+@media (max-width: 767px) {
+  .navbar.sticky-top {
+    position: fixed;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid lightgray;
+  }
+}
+
+.navbar-right-side {
   padding-right: 30px;
   position: relative;
 }
+
 .top-cart-icon {
   font-size: 2em;
   cursor: pointer;
@@ -11,7 +23,7 @@
   outline: none;
 }
 
-.top-cart-counter{
+.top-cart-counter {
   position: absolute;
   height: 15px;
   width: 15px;
@@ -22,8 +34,8 @@
   right: 22px;
 }
 
-.pickup-delivery{
-  color: rgb(0, 200, 100);
+.pickup-delivery {
+  color: #00C864;
   font-weight: bold;
   cursor: pointer;
   user-select: none;

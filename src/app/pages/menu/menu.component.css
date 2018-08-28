@@ -2,6 +2,7 @@
 .menu-list-container {
   width: 300px;
   flex-shrink: 0;
+  padding: 20px;
 }
 
 .menu-items-container {
@@ -9,35 +10,39 @@
 }
 
 .menu-food-item-container {
-  /*display: flex;*/
-  /*flex-flow: row wrap;*/
+  margin-bottom: 60px;
 }
 
 .menu-food-item {
-  width: calc(100% - 1rem);
+  width: calc(100% - 20px);
+  margin: 10px
 }
 
 @media (min-width: 768px) {
   .menu-food-item {
-    width: calc(50% - 1rem);
+    width: calc(50% - 20px);
   }
 }
 
 @media (min-width: 992px) {
   .menu-food-item {
-    width: calc(33% - 1rem);
+    width: calc(33% - 20px);
   }
 }
 
 .mainMenu-item {
   font-size: 1.1em;
   border: 0;
+  padding: 0;
+  margin-bottom: 26px;
 }
 
 .subMenu-item {
-  margin-left: 20px;
-  font-size: 1.3em;
+  font-size: 21pt;
+  color: #34353d;
   border: 0;
+  padding: 16px;
+  margin-bottom: 10px;
 }
 
 .subMenu-item.active {
@@ -45,5 +50,42 @@
 }
 
 .submenu-title {
-  margin-bottom: -5px;
+  position: sticky;
+  top: 56px;
+  margin-bottom: 0;
+  padding: 5px 0 10px 0;
+  margin-left: 10px;
+  font-size: 18pt;
+  color: #35343D;
+}
+
+@media (max-width: 767px) {
+  .submenu-title {
+    top: 0;
+  }
+}
+
+.menu-name {
+  margin-left: 10px;
+  color: #34353d;
+  font-size: 16pt;
+}
+
+.sub-menu-container {
+  margin-bottom: 38px;
+}
+
+.mobile-menu-trigger {
+  position: fixed;
+  right: 20px;
+  bottom: 76px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to top right, #00C864 70%, #e5ff48);
+  color: white;
+  z-index: 999;
+  text-align: center;
+  line-height: 62px;
+  cursor: pointer;
 }
