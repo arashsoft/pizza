@@ -36,9 +36,10 @@ export class CheckoutComponent implements OnInit {
       this.cart = this.cartService.cart;
       this.order = this.orderService.order;
       this.orderService.calculatePrice();
+      $('html, body').animate({scrollTop: 0}, 'fast');
     } else {
       // order page is not initialized, return to menu
-      this.router.navigate(['./menus']);
+      this.router.navigate(['./menus'], {queryParamsHandling: 'merge'});
     }
   }
 
@@ -61,7 +62,7 @@ export class CheckoutComponent implements OnInit {
     this.loadingIndicatorService.startLoading('Submitting Order...');
     this.http.post(this.configService.getConfig().serverUrl + '/transactions', new BackendOrderRequest(this.order)).subscribe(
       data => {
-        this.router.navigate(['./success']);
+        this.router.navigate(['./success'], {queryParamsHandling: 'merge'});
         this.loadingIndicatorService.stopLoading();
       },
       errorResponse => {
@@ -87,6 +88,11 @@ export class CheckoutComponent implements OnInit {
         || _.isEmpty(this.order.newCard.year)) {
         this.newCardForm.form.markAsPristine();
         errors.newCard = 'Please enter your card information completely';
+      } else {
+        const cardType = this.order.newCard.getCardType();
+        if (cardType !== 'VISA' && cardType !== 'Mastercard' && cardType !== 'AMEX') {
+          errors.newCard = 'Cart Type is not supported. Please use Visa, MasterCard, or American Express';
+        }
       }
     }
     if (_.isEmpty(this.order.cart.items)) {

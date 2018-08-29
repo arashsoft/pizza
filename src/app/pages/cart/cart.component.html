@@ -35,8 +35,8 @@
       <h4 class="float-left">TOTAL</h4>
       <h4 class="float-right">{{cartService.cart.totalPrice | currency}}</h4>
     </div>
-    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" [routerLink]="['/checkout']">CHECKOUT</button>
-    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" [routerLink]="['/menus']">CONTINUE SHOPPING</button>
+    <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" queryParamsHandling="merge" [routerLink]="['/checkout']">CHECKOUT</button>
+    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" queryParamsHandling="merge" [routerLink]="['/menus']">CONTINUE SHOPPING</button>
   </div>
   <h5 class="footer-note bottom30 text-center">Powered by Mealsy.ca</h5>
 </div>

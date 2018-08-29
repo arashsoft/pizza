@@ -17,6 +17,13 @@ export class CartService {
     food.calculatePrice();
     this.cart.items.push(new CartItem(food));
     this.calculatePrice();
+    this.shakeCart();
+  }
+
+  private shakeCart(): void {
+    const cartIcon = $('.top-cart-icon, .top-cart-counter');
+    cartIcon.addClass('shake');
+    setTimeout(() => cartIcon.removeClass('shake'), 1000);
   }
 
   removeFoodByIndex(index: number) {

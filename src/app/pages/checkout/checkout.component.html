@@ -145,8 +145,8 @@
           <input name="nameOnCard" type="text" class="faded-input card-input mt-2" [(ngModel)]="order.newCard.nameOnCard" placeholder="Name on Card">
           <div class="d-flex flex-row mt-2">
             <div class="d-flex flex-row">
-              <input name="month" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
-              <input name="year" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
+              <input maxlength="2" name="month" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
+              <input maxlength="2" name="year" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
             </div>
             <input name="ccv" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CCV">
           </div>
@@ -154,7 +154,7 @@
       </div>
     </div>
     <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto checkout-btn mt-5" (click)="submitOrder()">ORDER</button>
-    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto checkout-btn mt-2" [routerLink]="['/cart']">
+    <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto checkout-btn mt-2" queryParamsHandling="merge" [routerLink]="['/cart']">
       BACK TO CART
     </button>
   </div>

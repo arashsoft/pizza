@@ -19,7 +19,7 @@ export class BackendOrderRequest {
       this.paymentModel.cardNumber = order.newCard.cardNumber.toString();
       this.paymentModel.expiryDate = order.newCard.month.toString() + order.newCard.year.toString();
       this.paymentModel.cardHolderName = order.newCard.nameOnCard;
-      this.paymentModel.cardType = order.newCard.GetCardType();
+      this.paymentModel.cardType = order.newCard.getCardType();
       this.paymentModel.cvn = order.newCard.ccv.toString();
     }
   }

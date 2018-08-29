@@ -64,7 +64,7 @@ export class OrderService {
           this.calculatePriceAfterDelivery();
         },
         error => {
-          // TODO: tell user cannot calculate deliverry charge
+          // TODO: tell user cannot calculate delivery charge
         }
       );
     } else {
@@ -93,7 +93,12 @@ export class OrderService {
   }
 
   updateTip(tipType: TipType): void {
-    this.order.tipType = tipType;
+    if (this.order.tipType === tipType) {
+      this.order.tipType = TipType.NONE;
+      this.order.tipAmount = 0;
+    } else {
+      this.order.tipType = tipType;
+    }
     this.calculatePrice();
   }
 

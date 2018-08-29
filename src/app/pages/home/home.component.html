@@ -19,7 +19,7 @@
     <input type="password" class="form-control" placeholder="Password">
   </div>
 
-  <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto mt-4 login-btn" [routerLink]="['/order-setting']">SIGN IN</button>
+  <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto mt-4 login-btn" queryParamsHandling="merge" [routerLink]="['/order-setting']">SIGN IN</button>
   <span class="text-center d-block mt-3 cursor-pointer">I forgot my password</span>
   <span class="text-center d-block mt-4 text-secondary">Not a member yet?</span>
   <span class="text-center d-block join-text cursor-pointer">JOIN</span>

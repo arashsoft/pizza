@@ -73,6 +73,12 @@ export class FoodQuestion {
     return this.totalPrice;
   }
 
+  // used for radio type answers in order to uncheck other answers
+  checkAnswer(answerIndex: number) {
+    this.answers.forEach(answer => answer.selected = false);
+    this.answers[answerIndex].selected = true;
+  }
+
   reset(): void {
     this.totalPrice = 0;
     this.selectedItems = '';
@@ -84,5 +90,5 @@ export class FoodQuestion {
 
 
 export enum FoodQuestionType {
-  OPTION = 1, CHECKBOX = 2, QUANTITY = 3, TOPPING_QUANTITY = 4
+  CHECKBOX = 1, OPTION = 2, QUANTITY = 3, TOPPING_QUANTITY = 4
 }

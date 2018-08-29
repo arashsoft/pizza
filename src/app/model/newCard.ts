@@ -5,7 +5,7 @@ export class NewCard {
   year: number;
   ccv: number;
 
-  GetCardType(): string {
+  getCardType(): string {
     const number = this.cardNumber.toString();
     // visa
     let re = new RegExp('^4');

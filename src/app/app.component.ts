@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CartService} from './service/cart.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,6 @@ import {CartService} from './service/cart.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(public cartService: CartService) {
+  constructor() {
   }
-
 }

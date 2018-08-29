@@ -49,8 +49,8 @@ export class BackendOrderDetailsRequest {
     this.orderTiming = order.isForNow ? 'Asap' : order.scheduledFor;
 
     this.address = {};
-    this.address.name = 'what is name?';
-    this.address.phoneNumenr = 'will be added';
+    this.address.name = order.orderName;
+    this.address.phoneNumenr = order.orderPhoneNumber;
     if (!order.isPickup) {
       this.address.addressLine = order.address.addressLine1;
       this.address.unitNumber = order.address.unitNumber;

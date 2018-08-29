@@ -18,8 +18,8 @@ export class Order {
   isPickup = true;
   isForNow = true;
   scheduledFor?: string;
-  tipType: TipType = TipType.PERCENTAGE10;
-  tipAmount?: number;
+  tipType: TipType = TipType.NONE;
+  tipAmount = 0;
   isPayOnline = false;
   paymentType = PaymentType.NONE;
   orderName = '';

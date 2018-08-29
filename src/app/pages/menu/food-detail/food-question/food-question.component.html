@@ -3,18 +3,17 @@
   <div *ngSwitchCase="1">
     <div *ngFor="let answer of question.answers" class="clearfix mt-2">
       <div class="float-left">
-        <input type="radio" [(ngModel)]="answer.selected" name="{{'radio' + question.id}}"
-               (change)="food.calculatePrice();">
+        <input type="checkbox" [(ngModel)]="answer.selected" (change)="food.calculatePrice();">
         {{answer.name}}
       </div>
       <div *ngIf="answer.price" class="float-right">{{answer.price | currency}}</div>
     </div>
   </div>
   <div *ngSwitchCase="2">
-    <div *ngFor="let answer of question.answers" class="clearfix mt-2">
+    <div *ngFor="let answer of question.answers; let answerIndex = index" class="clearfix mt-2">
       <div class="float-left">
-        <input type="checkbox" [(ngModel)]="answer.selected" (change)="food.calculatePrice();">
-        {{answer.name}}
+        <input class="cursor-pointer" id="{{'answer' + answer.id}}" type="radio" name="{{'radio' + question.id}}" (change)="question.checkAnswer(answerIndex); food.calculatePrice();">
+        <label class="pl-2 cursor-pointer" for="{{'answer' + answer.id}}">{{answer.name}}</label>
       </div>
       <div *ngIf="answer.price" class="float-right">{{answer.price | currency}}</div>
     </div>

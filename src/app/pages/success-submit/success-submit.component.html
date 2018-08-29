@@ -6,8 +6,8 @@
   <div class="mt-4 provider-address">Your order has been submitted to</div>
   <div class="provider-address">{{orderService.order.foodProvider.name}}</div>
   <div class="provider-address">{{orderService.order.foodProvider.address.toString()}}</div>
-  <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto mt-3 ok-btn" [routerLink]="['/menus']">OK</button>
+  <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto mt-3 ok-btn" queryParamsHandling="merge" [routerLink]="['/menus']">OK</button>
   <div class="mt-4 navigate-to-store">Navigate To Store</div>
   <a><img class="d-block mx-auto cursor-pointer" width="40px" height="40px" src="./assets/images/google_maps.png"></a>
-
 </div>
+
