@@ -9,7 +9,6 @@ export class FoodProvider {
   taxRate: number;
   menus?: Menu[];
 
-  // TODO: add back-end types
   constructor(foodProviderObject) {
     this.id = foodProviderObject.Id;
     this.name = foodProviderObject.Name;

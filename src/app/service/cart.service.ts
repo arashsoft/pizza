@@ -3,12 +3,14 @@ import {Cart} from '../model/cart';
 import {Food} from '../model/food';
 import {CartItem} from '../model/cartItem';
 import {Global} from '../global';
+import {OrderStorageService} from './order-storage-service';
+import {Order} from '../model/order';
 
 @Injectable({providedIn: 'root'})
 export class CartService {
   cart: Cart;
 
-  constructor() {
+  constructor(private orderStorageService: OrderStorageService) {
     this.cart = new Cart;
     this.calculatePrice();
   }
@@ -53,5 +55,5 @@ export class CartService {
     this.cart.subTotalPrice = subTotalPrice;
     this.cart.taxPrice = subTotalTax;
     this.cart.totalPrice = this.cart.subTotalPrice + this.cart.taxPrice;
-  };
+  }
 }

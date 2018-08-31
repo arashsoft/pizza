@@ -13,6 +13,17 @@ export class Address {
     this.postalCode = postalCode;
   }
 
+  loadAddress(address: Address) {
+    this.placeId = address.placeId;
+    this.addressLine1 = address.addressLine1;
+    this.unitNumber = address.unitNumber;
+    this.buzzer = address.buzzer;
+    this.postalCode = address.postalCode;
+    this.city = address.city;
+    this.province = address.province;
+    this.country = address.country;
+  }
+
   public toString(): string {
     return [this.addressLine1,
       this.unitNumber,

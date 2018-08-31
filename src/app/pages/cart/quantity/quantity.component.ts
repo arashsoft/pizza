@@ -3,6 +3,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RemoveItemModalComponent} from './remove-item-modal/remove-item-modal.component';
 import {CartService} from '../../../service/cart.service';
 import {CartItem} from '../../../model/cartItem';
+import {OrderService} from '../../../service/order-service';
 
 @Component({
   selector: 'app-quantity',
@@ -14,7 +15,7 @@ export class QuantityComponent {
   @Input() index: number;
   @Output() quantityChange = new EventEmitter<number>();
 
-  constructor(private modalService: NgbModal, private cartService: CartService) {
+  constructor(private modalService: NgbModal, private cartService: CartService, private orderService: OrderService) {
   }
 
   increaseQuantity(): void {
@@ -28,6 +29,7 @@ export class QuantityComponent {
       modalRef.componentInstance.foodName = this.item.food.name;
       modalRef.result.then(() => {
         this.cartService.removeFoodByIndex(this.index);
+        this.orderService.saveOrderHistory();
       });
       return;
     }

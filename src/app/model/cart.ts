@@ -21,4 +21,8 @@ export class Cart {
     this.taxPrice = 0;
     this.totalPrice = 0;
   }
+
+  loadCart(cart: Cart) {
+    this.items = cart.items;
+  }
 }

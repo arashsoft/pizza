@@ -6,7 +6,6 @@ export class MenuSection {
   foods: Food[];
   sortOrder: number;
 
-  // TODO: add back-end types
   constructor(menuSectionObject) {
     this.id = menuSectionObject.Id;
     this.name = menuSectionObject.Name;

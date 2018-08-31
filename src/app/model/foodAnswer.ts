@@ -15,7 +15,6 @@ export class FoodAnswer {
   // @Lazy: total price of this answer. Gets populated by foodQuestion.getPrice()
   totalPrice?: number;
 
-  // TODO: add back-end types
   constructor(answerObject, ratio: number) {
     this.id = answerObject.Id;
     this.name = answerObject.Text;

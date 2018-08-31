@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../../model/food';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CartService} from '../../../service/cart.service';
 import * as _ from 'lodash';
 import {FoodSize} from '../../../model/foodSize';
+import {OrderService} from '../../../service/order-service';
 
 @Component({
   selector: 'app-food-detail',
@@ -16,7 +17,8 @@ export class FoodDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private modalService: NgbModal,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class FoodDetailComponent implements OnInit {
 
   addFoodToCart(): void {
     this.cartService.addFood(_.cloneDeep(this.food));
+    this.orderService.saveOrderHistory();
   }
 
   selectSize(foodSize: FoodSize): void {

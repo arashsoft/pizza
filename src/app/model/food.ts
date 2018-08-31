@@ -21,7 +21,6 @@ export class Food {
   // @Lazy: The amount of tax on this specific food
   totalTax?: number;
 
-  // TODO: add back-end types
   constructor(foodObject) {
     this.id = foodObject.Id;
     this.name = foodObject.Name;

@@ -67,6 +67,22 @@ export class Order {
     this.discount = 0;
     this.totalPrice = undefined;
   }
+
+  loadOrder(order: Order) {
+    this.cart.loadCart(order.cart);
+    this.coupons = order.coupons;
+    this.address.loadAddress(order.address);
+    this.isPickup = order.isPickup;
+    this.isForNow = order.isForNow;
+    this.scheduledFor = order.scheduledFor;
+    this.tipType = order.tipType;
+    this.tipAmount = order.tipAmount;
+    this.isPayOnline = order.isPayOnline;
+    this.paymentType = order.paymentType;
+    this.orderName = order.orderName;
+    this.orderPhoneNumber = order.orderPhoneNumber;
+    this.discount = order.discount;
+  }
 }
 
 export enum TipType {

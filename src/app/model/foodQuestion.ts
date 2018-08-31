@@ -15,7 +15,6 @@ export class FoodQuestion {
   // @Lazy: total price of this question
   totalPrice?: number;
 
-  // TODO: add back-end type
   constructor(questionObject) {
     this.id = questionObject.Id;
     this.name = questionObject.Text;
