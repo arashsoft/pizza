@@ -10,6 +10,7 @@ export class FoodProvider {
   deliveryType: DeliveryType;
   minOrderForPickup: number;
   minOrderForDelivery: number;
+  acceptTip: boolean;
   menus?: Menu[];
 
   constructor(foodProviderObject) {
@@ -21,7 +22,7 @@ export class FoodProvider {
     this.deliveryType = foodProviderObject.DeliveryType;
     this.minOrderForPickup = foodProviderObject.MinOrderForPickUp;
     this.minOrderForDelivery = foodProviderObject.MinOrderForDelivery;
-
+    this.acceptTip = foodProviderObject.AcceptOnlineTip;
 
     const menusObject = JSON.parse(foodProviderObject.CompleteMenu.Menus);
     const menusArray: Menu[] = [];

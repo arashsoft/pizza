@@ -134,6 +134,12 @@ export class OrderService {
   }
 
   updateTip(tipType: TipType): void {
+    if (tipType === TipType.NONE) {
+      this.order.tipType = tipType;
+      this.calculatePrice();
+      return;
+    }
+
     if (this.order.tipType === tipType) {
       this.order.tipType = TipType.NONE;
       this.order.tipAmount = 0;

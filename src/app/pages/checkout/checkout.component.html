@@ -47,7 +47,7 @@
       <div class="float-right">{{orderService.order.isForNow? 'Now' : orderService.order.scheduledFor}}</div>
     </div>
     <hr>
-    <div>
+    <div *ngIf="order.foodProvider.acceptTip">
       <span class="fa fa-money mr-3"></span>TIP
       <div class="d-flex flex-row left-indent pr-3 mt-3">
         <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
