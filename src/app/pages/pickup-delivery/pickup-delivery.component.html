@@ -3,11 +3,11 @@
     <i class="fa fa-arrow-left cursor-pointer" (click)="activeModal.close()"></i>
     <div class="mt-3"><span class="fa fa-cog large-icon mr-2"></span>SELECT YOUR ORDER TYPE</div>
     <div class="px-4">
-      <label class="checkmark-container mt-3">PICKUP
+      <label *ngIf="order.foodProvider?.deliveryType !== 2" class="checkmark-container mt-3">PICKUP
         <input type="radio" [(ngModel)]="order.isPickup" [value]="true" name="pickupOrDelivery">
         <span class="checkmark"></span>
       </label>
-      <label class="checkmark-container">DELIVERY
+      <label *ngIf="order.foodProvider?.deliveryType !== 1" class="checkmark-container">DELIVERY
         <input type="radio" [(ngModel)]="order.isPickup" [value]="false" name="pickupOrDelivery">
         <span class="checkmark"></span>
       </label>

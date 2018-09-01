@@ -1,5 +1,6 @@
 import {FoodSize} from './foodSize';
 import {Global} from '../global';
+import {DeliveryType} from './foodProvider';
 
 export class Food {
   id: number;
@@ -11,6 +12,7 @@ export class Food {
   defaultSelectedSize?: FoodSize;
   taxRate: number;
   sortOrder: number;
+  deliveryType: DeliveryType;
 
   // @Data: The size of food
   selectedSize?: FoodSize;
@@ -21,7 +23,7 @@ export class Food {
   // @Lazy: The amount of tax on this specific food
   totalTax?: number;
 
-  constructor(foodObject) {
+  constructor(foodObject, deliveryType: DeliveryType) {
     this.id = foodObject.Id;
     this.name = foodObject.Name;
     this.description = foodObject.Ingredients;
@@ -29,6 +31,7 @@ export class Food {
     this.picturePath = foodObject.PhotoPath;
     this.sortOrder = foodObject.Order;
     this.taxRate = foodObject.FirstTaxRate;
+    this.deliveryType = deliveryType;
     if (foodObject.FoodSizes) {
       this.foodSizes = foodObject.FoodSizes.map(foodSizeObject => new FoodSize(foodSizeObject));
     }

@@ -5,6 +5,7 @@
   </div>
   <div class="checkout-padding bg-white my-1">
     <div *ngIf="errors?.emptyCart" class="text-center text-danger mb-2">{{errors.emptyCart}}</div>
+    <div *ngIf="errors?.deliveryPickupOnly" class="text-center text-danger mb-2">{{errors.deliveryPickupOnly}}</div>
     <div *ngIf="errors?.backendError" class="text-center text-danger mb-2 backend-error">{{errors.backendError}}</div>
     <div class="clearfix">
       <div class="float-left">
@@ -94,6 +95,7 @@
       <div class="float-left">Discount</div>
       <div class="float-right">{{order.discount | currency}}</div>
     </div>
+    <div *ngIf="errors?.minOrder" class="text-center text-danger mb-2">{{errors.minOrder}}</div>
     <div class="clearfix mt-2 mealsy-green mb-2">
       <h5 class="float-left">TOTAL</h5>
       <h5 class="float-right">{{order.totalPrice | currency}}</h5>

@@ -8,6 +8,7 @@ import {ConfigService} from './config-service';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Global} from '../global';
 import {NewCard} from '../model/newCard';
+import {DeliveryType} from '../model/foodProvider';
 
 @Injectable({providedIn: 'root'})
 export class OrderService {
@@ -36,6 +37,9 @@ export class OrderService {
         this.foodProviderService.getFoodProvider().subscribe(
           foodProvider => {
             this.order.setFoodProvidder(foodProvider);
+            if (this.order.foodProvider.deliveryType === DeliveryType.DELIVERY_ONLY) {
+              this.order.isPickup = false;
+            }
             this.loadOrderHistory();
           });
       });

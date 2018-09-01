@@ -4,6 +4,7 @@ import {FoodProviderService} from '../../service/food-provider-service';
 import {OrderService} from '../../service/order-service';
 import * as $ from 'jquery';
 import {MenuSection} from '../../model/menuSection';
+import {DeliveryType} from '../../model/foodProvider';
 
 @Component({
   selector: 'app-page-menu',
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
   menus: Menu[];
   subMenuMap = {};
 
-  constructor(private foodProviderService: FoodProviderService, private orderService: OrderService) {
+  constructor(private foodProviderService: FoodProviderService, public orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -42,5 +43,12 @@ export class MenuComponent implements OnInit {
 
   gotoSubMenu(subMenu: MenuSection): void {
     $('html, body').animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - 56});
+  }
+
+  isSubMenuVisible(subMenu: MenuSection): boolean {
+    const order = this.orderService.order;
+    return subMenu.deliveryType === DeliveryType.BOTH ||
+      (subMenu.deliveryType === DeliveryType.PICKUP_ONLY && order.isPickup) ||
+      (subMenu.deliveryType === DeliveryType.DELIVERY_ONLY && !order.isPickup);
   }
 }

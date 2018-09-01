@@ -6,8 +6,10 @@
           <i class="fa fa-angle-right"></i><span class="menu-name">{{menu.name}}</span>
         </div>
         <div class="sub-menu-container">
-          <div *ngFor="let subMenu of menu.menuSections" class="subMenu-item bg-mealsy2 cursor-pointer" (click)="gotoSubMenu(subMenu)">{{subMenu.name}}
-          </div>
+          <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
+            <div *ngIf="isSubMenuVisible(subMenu)" class="subMenu-item bg-mealsy2 cursor-pointer" (click)="gotoSubMenu(subMenu)">{{subMenu.name}}
+            </div>
+          </ng-template>
         </div>
       </ng-template>
   </div>

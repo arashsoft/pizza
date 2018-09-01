@@ -10,6 +10,7 @@ import {BackendOrderRequest} from '../../model/backend/backendOrderRequest';
 import {LoadingIndicatorService} from '../../service/loading-indicator-service';
 import {HttpClient} from '@angular/common/http';
 import {ConfigService} from '../../service/config-service';
+import {DeliveryType} from '../../model/foodProvider';
 
 @Component({
   selector: 'app-checkout',
@@ -97,6 +98,27 @@ export class CheckoutComponent implements OnInit {
     }
     if (_.isEmpty(this.order.cart.items)) {
       errors.emptyCart = 'There is not any item in your cart';
+    }
+    if (this.order.isPickup) {
+      this.cart.items.every(cartItem => {
+        if (cartItem.food.deliveryType === DeliveryType.DELIVERY_ONLY) {
+          errors.deliveryPickupOnly = cartItem.food.name + ' is delivery only and cannot get ordered as pickup.';
+          return false;
+        }
+      });
+      if (this.order.totalPrice < this.order.foodProvider.minOrderForPickup) {
+        errors.minOrder = 'The minimum order price for pickup is ' + this.order.foodProvider.minOrderForPickup;
+      }
+    } else {
+      this.cart.items.every(cartItem => {
+        if (cartItem.food.deliveryType === DeliveryType.PICKUP_ONLY) {
+          errors.deliveryPickupOnly = cartItem.food.name + ' is pickup only and cannot get ordered as delivery.';
+          return false;
+        }
+      });
+      if (this.order.totalPrice < this.order.foodProvider.minOrderForDelivery) {
+        errors.minOrder = 'The minimum order price for delivery is ' + this.order.foodProvider.minOrderForDelivery;
+      }
     }
   }
 
