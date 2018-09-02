@@ -28,7 +28,7 @@ export class FoodDetailComponent implements OnInit {
   openDetails(foodDetailTemplate): void {
     this.food.reset();
     this.food.calculatePrice();
-    this.modalService.open(foodDetailTemplate, {});
+    this.modalService.open(foodDetailTemplate, {windowClass: 'food-details-modal'});
   }
 
   addFoodToCart(): void {

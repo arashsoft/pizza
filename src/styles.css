@@ -193,3 +193,14 @@ body {
   font-size: 0.8em;
   color: #dc3545;
 }
+
+/* MODAL SIZES */
+@media (min-width: 576px) {
+  .food-details-modal > .modal-dialog {
+    max-width: 402px;
+  }
+}
+
+.food-details-modal .modal-body{
+  padding: 21px;
+}

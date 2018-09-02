@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  gotoSubMenu(subMenu: MenuSection): void {
+  public gotoSubMenu(subMenu: MenuSection): void {
     $('html, body').animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - 56});
   }
 

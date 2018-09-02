@@ -22,6 +22,7 @@ import {LoadingIndicatorComponent} from './component/loading-indicator/loading-i
 import {RemoveItemModalComponent} from './pages/cart/quantity/remove-item-modal/remove-item-modal.component';
 import {OnlyNumberDirective} from './component/only-number/only-number';
 import { BaseRouterComponent } from './pages/base-router/base-router.component';
+import { EditFoodComponent } from './edit-food/edit-food.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { BaseRouterComponent } from './pages/base-router/base-router.component';
     LoadingIndicatorComponent,
     RemoveItemModalComponent,
     OnlyNumberDirective,
-    BaseRouterComponent
+    BaseRouterComponent,
+    EditFoodComponent
   ],
   entryComponents: [PickupDeliveryComponent, RemoveItemModalComponent],
   bootstrap: [AppComponent]
