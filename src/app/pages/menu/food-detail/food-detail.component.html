@@ -1,11 +1,13 @@
-<div class="food-item bg-white cursor-pointer" (click)="openDetails(foodDetailTemplate)">
-  <img *ngIf="food.picturePath" [src]="food.picturePath + '_' + food.id + '_600X400.jpg'">
-  <div class="food-title clearfix">
-    <div class="float-left food-name">{{food.name}}</div>
-    <i class="float-right fa fa-cart-plus cart-icon"></i>
+<div class="food-item bg-white cursor-pointer clearfix" (click)="openDetails(foodDetailTemplate)">
+  <img class="food-picture" *ngIf="food.picturePath" [src]="food.picturePath + '_' + food.id + '_600X400.jpg'">
+  <div class="food-information">
+    <div class="food-title clearfix">
+      <div class="float-left food-name">{{food.name}}</div>
+      <i class="float-right fa fa-cart-plus d-none d-sm-block cart-icon"></i>
+    </div>
+    <div class="food-price">{{food.price | currency}}</div>
+    <div class="food-description">{{food.description}}</div>
   </div>
-  <div class="food-price">{{food.price | currency}}</div>
-  <div class="food-description">{{food.description}}</div>
 </div>
 
 <ng-template #foodDetailTemplate let-c="close" let-d="dismiss">

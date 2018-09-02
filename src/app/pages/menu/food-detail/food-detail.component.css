@@ -9,13 +9,14 @@
   margin-top: 13px;
 }
 
-.modal-food-title{
+.modal-food-title {
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 21px;
   margin-bottom: 11px;
   color: #4a4a4a;
 }
+
 img {
   width: 100%;
 }
@@ -41,7 +42,7 @@ img.modal-img {
   margin-bottom: 3px;
 }
 
-.modal-food-description{
+.modal-food-description {
   font-style: italic;
   font-size: 0.8rem;
   color: #4a4a4a;
@@ -78,8 +79,9 @@ img.modal-img {
   background-color: #00C864;
   color: white;
 }
+
 .food-size.active .food-size-name,
-.food-size.active .food-price{
+.food-size.active .food-price {
   color: white;
 }
 
@@ -95,13 +97,30 @@ img.modal-img {
   color: #4a4a4a;
 }
 
-.answer-following-text{
+.answer-following-text {
   color: #00C864;
   font-size: 0.8em;
   margin-top: 27px;
 }
 
-.modal-footer.food-detail-footer{
+.modal-footer.food-detail-footer {
   padding-top: 40px;
   padding-bottom: 80px;
+}
+
+@media (max-width: 575px) {
+  .food-item {
+    padding: 10px 10px 9px 20px;
+  }
+
+  .food-picture {
+    float: right;
+    height: 100px;
+    width: 150px;
+  }
+
+  .food-information {
+    float: left;
+    width:  calc(100% - 180px);
+  }
 }
