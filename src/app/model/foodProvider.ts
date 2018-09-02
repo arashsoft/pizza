@@ -18,6 +18,7 @@ export class FoodProvider {
     this.name = foodProviderObject.Name;
     this.logoPath = foodProviderObject.LogoPath;
     this.address = new Address(foodProviderObject.Address, foodProviderObject.PostalCode);
+    this.address.city = foodProviderObject.City.Name;
     this.taxRate = foodProviderObject.FirstTaxRate + foodProviderObject.SecondTaxRate;
     this.deliveryType = foodProviderObject.DeliveryType;
     this.minOrderForPickup = foodProviderObject.MinOrderForPickUp;

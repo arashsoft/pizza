@@ -1,38 +1,97 @@
-.food-price{
-  color: gray;
+.cart-food-provider {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 38px;
+}
+
+.cart-food-provider-city {
+  font-weight: bold;
+  font-size: 0.7em;
+  color: #b2b0c0;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+.cart-header {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 11px;
+}
+
+.cart-text {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 21px;
+  margin-top: 14px;
+}
+
+.food-price {
+  color: #b2b0c0;
   font-size: 0.9em;
 }
 
-.cart-btn{
+.cart-btn {
   width: 300px;
   max-width: 100%;
 }
 
-.food-section-title{
-  font-size: 0.85em;
-  margin-bottom: 1px;
+.food-section-title {
+  font-size: 0.80em;
+  font-weight: bold;
+  margin-bottom: 11px;
 }
 
-.food-section-items{
+.food-section-items {
   font-style: italic;
   font-size: 0.8em;
-  display: inline-block;
-  line-height: 120%;
 }
 
-.cart-padding{
-  padding: 25px 30px 15px 30px;
+.cart-padding {
+  padding: 0 21px 0 21px;
+  color: #4a4a4a;
 }
 
-.cart-empty-message{
+.cart-empty-message {
   font-size: 1.2em;
   text-align: center;
 }
 
-.cart-quantity-text{
-  font-size: 0.85em;
+.cart-quantity-text {
+  font-size: 0.80em;
+  font-weight: bold;
+  height: 48px;
+  line-height: 48px;
+  vertical-align: center;
 }
 
-.cart-header h5{
-  font-size: 1em;
+.item-container {
+  padding-top: 21px;
+  margin-bottom: 2px;
+}
+
+.food-name {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 21px;
+}
+
+.question-container {
+  margin-bottom: 21px;
+}
+
+.cart-quantity-container {
+  margin-top: -7px;
+  padding-bottom: 21px;
+}
+
+.price-container {
+  margin-top: 5px;
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+
+.cart-total-price{
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 40px;
 }

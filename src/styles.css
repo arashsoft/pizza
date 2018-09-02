@@ -42,6 +42,10 @@ body {
   margin-top: 17px;
 }
 
+.top28 {
+  margin-top: 28px;
+}
+
 .top30 {
   margin-top: 30px;
 }
@@ -186,7 +190,7 @@ body {
 }
 
 .mealsy-container {
-  max-width: 600px;
+  max-width: 500px;
 }
 
 .error-message {

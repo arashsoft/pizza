@@ -1,42 +1,44 @@
 <app-navbar></app-navbar>
 <div class="container mealsy-container">
   <div class="cart-padding">
-  <h4>CART</h4>
+    <div class="text-center cart-food-provider">{{orderService.order.foodProvider.name}}</div>
+    <div class="text-center cart-food-provider-city">{{orderService.order.foodProvider.address.city}}</div>
+    <div class="cart-text">CART</div>
     <div class="clearfix cart-header">
-      <h5 class="float-left">ITEMS</h5>
-      <h5 class="float-right">PRICE</h5>
+      <div class="float-left">ITEMS</div>
+      <div class="float-right">PRICE</div>
     </div>
   </div>
-  <div *ngFor="let item of cartService.cart.items; let itemIndex = index" class="bg-white cart-padding mt-1">
+  <div *ngFor="let item of cartService.cart.items; let itemIndex = index" class="bg-white cart-padding item-container">
     <div class="clearfix">
-      <h5 class="float-left">{{item.food.name}}</h5>
+      <div class="float-left food-name">{{item.food.name}}</div>
       <span class="float-right food-price">{{item.food.totalPrice | currency}}</span>
     </div>
-    <div *ngFor="let question of item.food.selectedSize.questions" class="mt-2">
-      <h5 class="food-section-title">{{question.name}}</h5>
-      <span class="food-section-items mt-1">{{question.selectedItems}}</span>
+    <div *ngFor="let question of item.food.selectedSize.questions" class="question-container">
+      <div class="food-section-title">{{question.name}}</div>
+      <div class="food-section-items">{{question.selectedItems}}</div>
     </div>
-    <div class="clearfix mt-2">
-      <h5 class="float-left cart-quantity-text mt-2">Quantity</h5>
+    <div class="clearfix cart-quantity-container">
+      <div class="float-left cart-quantity-text">Quantity</div>
       <app-quantity class="float-right" [item]="item" [index]="itemIndex" (quantityChange)="cartService.calculatePrice(); orderService.saveOrderHistory();"></app-quantity>
     </div>
   </div>
   <h5 class="bg-white cart-padding .cart-empty-message text-center" *ngIf="!cartService.cart.items.length">Your cart is empty</h5>
-  <div class="cart-padding bg-white mt-2 mb-3">
-    <div class="clearfix mt-1">
-      <h5 class="float-left">Subtotal</h5>
-      <h5 class="float-right">{{cartService.cart.subTotalPrice | currency}}</h5>
+  <div class="cart-padding bg-white price-container">
+    <div class="clearfix">
+      <div class="float-left">Subtotal</div>
+      <div class="float-right">{{cartService.cart.subTotalPrice | currency}}</div>
     </div>
-    <div class="clearfix mt-1">
-      <h5 class="float-left">Tax</h5>
-      <h5 class="float-right">{{cartService.cart.taxPrice | currency}}</h5>
+    <div class="clearfix top28">
+      <div class="float-left">Tax</div>
+      <div class="float-right">{{cartService.cart.taxPrice | currency}}</div>
     </div>
-    <div class="clearfix mt-1 mealsy-green mb-5">
-      <h4 class="float-left">TOTAL</h4>
-      <h4 class="float-right">{{cartService.cart.totalPrice | currency}}</h4>
+    <div class="clearfix mealsy-green top28 cart-total-price">
+      <div class="float-left">TOTAL</div>
+      <div class="float-right">{{cartService.cart.totalPrice | currency}}</div>
     </div>
     <button type="button" class="btn btn-mealsy1 btn-large d-block mx-auto cart-btn" queryParamsHandling="merge" [routerLink]="['/checkout']">CHECKOUT</button>
     <button type="button" class="btn btn-mealsy2 btn-large d-block mx-auto cart-btn top5" queryParamsHandling="merge" [routerLink]="['/menus']">CONTINUE SHOPPING</button>
   </div>
-  <h5 class="footer-note bottom30 text-center">Powered by Mealsy.ca</h5>
+  <h5 class="footer-note bottom30 text-center top5">Powered by Mealsy.ca</h5>
 </div>
