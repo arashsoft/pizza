@@ -4,7 +4,8 @@
 }
 
 .checkout-padding {
-  padding: 25px 30px 15px 30px;
+  padding: 0 22px 0 22px;
+  color: #4a4a4a;
 }
 
 .switch-btn {
@@ -81,4 +82,50 @@
 
 .left-indent{
   margin-left: 32px;
+}
+
+.checkout-food-provider {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.checkout-food-provider-city {
+  font-weight: bold;
+  font-size: 0.7em;
+  color: #b2b0c0;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+.checkout-text{
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+.checkout-general-container{
+  padding-top: 20px;
+  padding-bottom: 14px;
+}
+
+.checkout-icons{
+  width: 20px;
+  height: 20px;
+  margin-left: -8px;
+  margin-right: 14px;
+}
+
+.checkout-icons.fa-truck{
+  font-size: 20px;
+}
+
+.checkout-general-text{
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.checkout-hr{
+  margin: 20px -22px;
+  background-color: #F7F7F7;
 }

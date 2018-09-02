@@ -1,15 +1,17 @@
 <app-navbar></app-navbar>
 <div *ngIf="order" class="container mealsy-container">
   <div class="checkout-padding">
-    <h4>Checkout</h4>
+    <div class="text-center checkout-food-provider">{{orderService.order.foodProvider.name}}</div>
+    <div class="text-center checkout-food-provider-city">{{orderService.order.foodProvider.address.city}}</div>
+    <div class="checkout-text">CHECKOUT</div>
   </div>
-  <div class="checkout-padding bg-white my-1">
+  <div class="checkout-padding checkout-general-container bg-white">
     <div *ngIf="errors?.emptyCart" class="text-center text-danger mb-2">{{errors.emptyCart}}</div>
     <div *ngIf="errors?.deliveryPickupOnly" class="text-center text-danger mb-2">{{errors.deliveryPickupOnly}}</div>
     <div *ngIf="errors?.backendError" class="text-center text-danger mb-2 backend-error">{{errors.backendError}}</div>
     <div class="clearfix">
       <div class="float-left">
-        <span class="fa fa-cog mr-3"></span>{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}
+        <img src="./assets/icons/OrderSettings.png" class="checkout-icons"><span class="checkout-general-text">{{orderService.order.isPickup? "PICKUP" : "DELIVERY"}}</span>
       </div>
       <div class="float-right">
         <button type="button" class="btn btn-sm btn-mealsy2 switch-btn" (click)="orderService.openPickupDelivery()">
@@ -17,36 +19,35 @@
         </button>
       </div>
     </div>
-    <hr>
-    <span class="fa fa-user-circle mr-3"></span>PERSONAL INFO
+    <hr class="checkout-hr">
+    <img src="./assets/icons/Pin.png" class="checkout-icons"><span class="checkout-general-text">PERSONAL INFO</span>
     <div class="left-indent mt-3">
       <div class="clearfix">
         <label for="orderName" class="input-label mt-1 float-left cursor-pointer">Name</label>
         <input #orderName="ngModel" type="text" placeholder="Your name" class="float-right faded-input" id="orderName" name="orderName"
                [(ngModel)]="order.orderName">
       </div>
-      <hr>
       <div class="clearfix">
         <label for="phoneNumber" class="input-label mt-1 float-left cursor-pointer">Phone</label>
         <input #phoneNumber="ngModel" OnlyNumber="true" type="text" placeholder="Your phone number" class="float-right faded-input" id="phoneNumber" name="phoneNumber"
                [(ngModel)]="order.orderPhoneNumber">
       </div>
     </div>
-    <hr>
+    <hr class="checkout-hr">
     <div *ngIf="!orderService.order.isPickup">
       <div class="d-flex flex-row">
-        <span class="fa fa-truck pt-1 mr-3"></span>
-        <div>{{orderService.order.address.placeId? orderService.order.address.toString() : '-Not entered'}}</div>
+        <span class="fa fa-truck checkout-icons"></span>
+        <div class="checkout-general-text">{{orderService.order.address.placeId? orderService.order.address.toString() : '-Not entered'}}</div>
       </div>
-      <hr>
+      <hr class="checkout-hr">
     </div>
     <div class="clearfix">
       <div class="float-left">
-        <span class="fa fa-calendar mr-3"></span>SCHEDULED FOR
+        <img src="./assets/icons/Schedual.png" class="checkout-icons"><span class="checkout-general-text">SCHEDULED FOR</span>
       </div>
-      <div class="float-right">{{orderService.order.isForNow? 'Now' : orderService.order.scheduledFor}}</div>
+      <div class="float-right checkout-general-text">{{orderService.order.isForNow? 'Now' : orderService.order.scheduledFor}}</div>
     </div>
-    <hr>
+    <hr class="checkout-hr">
     <div *ngIf="order.foodProvider.acceptTip">
       <span class="fa fa-money mr-3"></span>TIP
       <div class="d-flex flex-row left-indent pr-3 mt-3">
