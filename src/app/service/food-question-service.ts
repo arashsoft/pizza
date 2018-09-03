@@ -63,7 +63,7 @@ export class FoodQuestionService {
   public static foodAnswerToString(foodAnswer: FoodAnswer): string {
     let returnValue = foodAnswer.name;
     if (foodAnswer.quantity && foodAnswer.quantity > 1) {
-      returnValue = foodAnswer.quantity + 'X ' + returnValue;
+      returnValue = foodAnswer.quantity + 'x ' + returnValue;
     }
     if (foodAnswer.toppingSide === FoodAnswerToppingSide.FULL) {
       return returnValue;
