@@ -20,7 +20,7 @@
         <ng-template ngFor let-menu [ngForOf]="menus">
           <div class="mobile-mainMenu-item text-center">{{menu.name}}</div>
           <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
-            <div *ngIf="isSubMenuVisible(subMenu)" class="mobile-subMenu-item text-center cursor-pointer" (click)="gotoSubMenu(subMenu); mobileMenu = !mobileMenu">{{subMenu.name}}</div>
+            <div *ngIf="isSubMenuVisible(subMenu)" class="mobile-subMenu-item text-center cursor-pointer" (click)="gotoSubMenu(subMenu, true); mobileMenu = !mobileMenu">{{subMenu.name}}</div>
           </ng-template>
         </ng-template>
       </div>
@@ -30,7 +30,8 @@
   <div class="menu-items-container bg-mealsy1">
     <ng-template ngFor let-menu [ngForOf]="menus">
       <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
-        <div class="submenu-title bg-mealsy1" id="subMenu{{subMenu.id}}">{{subMenu.name}}</div>
+        <div class="submenu-position-holder" id="subMenu{{subMenu.id}}"></div>
+        <div class="submenu-title bg-mealsy1">{{subMenu.name}}</div>
         <div class="d-flex flex-row flex-wrap align-content-around menu-food-item-container">
           <div *ngFor="let food of subMenu.foods" class="menu-food-item bg-white">
             <app-food-detail [food]="food"></app-food-detail>

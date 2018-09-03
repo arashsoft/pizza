@@ -43,8 +43,8 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  public gotoSubMenu(subMenu: MenuSection): void {
-    $('html, body').animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - 56});
+  public gotoSubMenu(subMenu: MenuSection, isMobile ?: boolean): void {
+    $([document.documentElement, document.body]).animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - (isMobile ? 0 : 56)});
   }
 
   isSubMenuVisible(subMenu: MenuSection): boolean {

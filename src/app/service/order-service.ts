@@ -128,7 +128,7 @@ export class OrderService {
       this.order.totalTip = Global.safeMinus(Math.ceil(totalWithoutTip), totalWithoutTip);
       this.order.tipAmount = undefined;
     } else {
-      this.order.totalTip = Global.priceRound(totalWithoutTip * this.order.tipType / 100);
+      this.order.totalTip = Global.priceRound((totalWithoutTip - (this.order.deliveryCharge + this.order.deliveryTax)) * this.order.tipType / 100);
       this.order.tipAmount = undefined;
     }
   }

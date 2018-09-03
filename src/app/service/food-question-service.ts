@@ -61,14 +61,18 @@ export class FoodQuestionService {
   }
 
   public static foodAnswerToString(foodAnswer: FoodAnswer): string {
-    if (foodAnswer.toppingSide === FoodAnswerToppingSide.FULL) {
-      return foodAnswer.name;
-    } else if (foodAnswer.toppingSide === FoodAnswerToppingSide.RIGHT) {
-      return foodAnswer.name + '(right side)';
-    } else if (foodAnswer.toppingSide === FoodAnswerToppingSide.LEFT) {
-      return foodAnswer.name + '(left side)';
+    let returnValue = foodAnswer.name;
+    if (foodAnswer.quantity && foodAnswer.quantity > 1) {
+      returnValue = foodAnswer.quantity + 'X ' + returnValue;
     }
-    return foodAnswer.name;
+    if (foodAnswer.toppingSide === FoodAnswerToppingSide.FULL) {
+      return returnValue;
+    } else if (foodAnswer.toppingSide === FoodAnswerToppingSide.RIGHT) {
+      return returnValue + '(right side)';
+    } else if (foodAnswer.toppingSide === FoodAnswerToppingSide.LEFT) {
+      return returnValue + '(left side)';
+    }
+    return returnValue;
   }
 
   public static resetFoodAnswer(foodAnswer: FoodAnswer): void {
