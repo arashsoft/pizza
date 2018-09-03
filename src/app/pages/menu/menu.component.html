@@ -13,8 +13,18 @@
         </div>
       </ng-template>
   </div>
-  <div class="d-block d-md-none mobile-menu-trigger">
-    <i class="fa fa-bars fa-2x"></i>
+  <img *ngIf="!mobileMenu" src="./assets/icons/MenuSection_Shadow.png" class="d-block d-md-none mobile-menu-trigger" (click)="mobileMenu = !mobileMenu">
+  <div *ngIf="mobileMenu" class="d-block d-md-none mobile-menu-container" (click)="mobileMenu = !mobileMenu">
+    <div class="mobile-menu" (click)="$event.stopPropagation()">
+      <div class="mobile-menu-scroller">
+        <ng-template ngFor let-menu [ngForOf]="menus">
+          <div class="mobile-mainMenu-item text-center">{{menu.name}}</div>
+          <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
+            <div *ngIf="isSubMenuVisible(subMenu)" class="mobile-subMenu-item text-center cursor-pointer" (click)="gotoSubMenu(subMenu); mobileMenu = !mobileMenu">{{subMenu.name}}</div>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
   </div>
   <h5 *ngIf="!menus" class="text-center">Loading...</h5>
   <div class="menu-items-container bg-mealsy1">

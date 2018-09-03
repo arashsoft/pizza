@@ -15,7 +15,8 @@
 }
 
 .top-cart-icon {
-  font-size: 2em;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .top-cart-icon.shake,
-.top-cart-counter.shake{
+.top-cart-counter.shake {
   animation: shake 0.5s;
   animation-iteration-count: 2;
 }

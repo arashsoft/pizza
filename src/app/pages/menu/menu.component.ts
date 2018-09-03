@@ -14,11 +14,13 @@ import {DeliveryType} from '../../model/foodProvider';
 export class MenuComponent implements OnInit {
   menus: Menu[];
   subMenuMap = {};
+  mobileMenu = false;
 
   constructor(private foodProviderService: FoodProviderService, public orderService: OrderService) {
   }
 
   ngOnInit() {
+    this.mobileMenu = false;
     this.orderService.initialize();
     this.foodProviderService.getFoodProvider().subscribe(data => {
       this.menus = data.menus;

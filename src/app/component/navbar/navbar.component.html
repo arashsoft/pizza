@@ -2,7 +2,7 @@
   <a class="navbar-brand cursor-pointer" queryParamsHandling="merge" [routerLink]="['/menus']">{{foodProviderService.foodProvider?.name}}</a>
   <div class="navbar-right-side" >
     <div><span class="pickup-delivery mr-2" (click)="orderService.openPickupDelivery()">{{orderService.order.isPickup ? "PICKUP" : "DELIVERY"}}</span>
-      <span class="fa fa-shopping-cart top-cart-icon " queryParamsHandling="merge" [routerLink]="['/cart']"></span>
+      <img src="./assets/icons/cart.png" class="top-cart-icon" queryParamsHandling="merge" [routerLink]="['/cart']">
       <span class="top-cart-counter bg-success text-white">{{cartService.getTotalItems()}}</span>
 
     </div>
