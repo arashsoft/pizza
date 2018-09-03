@@ -34,6 +34,10 @@ body {
   margin-top: 10px;
 }
 
+.top14 {
+  margin-top: 14px;
+}
+
 .top15 {
   margin-top: 15px;
 }
@@ -42,12 +46,20 @@ body {
   margin-top: 17px;
 }
 
+.top20 {
+  margin-top: 20px;
+}
+
 .top28 {
   margin-top: 28px;
 }
 
 .top30 {
   margin-top: 30px;
+}
+
+.top40 {
+  margin-top: 40px;
 }
 
 .bottom5 {
@@ -207,6 +219,11 @@ body {
   }
 }
 
-.food-details-modal .modal-body{
+.food-details-modal .modal-body {
   padding: 21px;
+}
+
+.mealsy-icon {
+  width: 20px;
+  height: 20px;
 }

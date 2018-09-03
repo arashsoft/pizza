@@ -28,6 +28,8 @@
 
 .coupon-container {
   border-top: 2px dashed #f8f9fa;
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 .coupon-circle {
@@ -49,6 +51,7 @@
 
 .coupon-circle-container {
   position: relative;
+  margin-top: -10px;
 }
 
 .apply-coupon-btn {
@@ -75,13 +78,14 @@
   word-wrap: break-word;
 }
 
-.tip-input-container{
+.tip-input-container {
   color: lightgray;
   border-bottom: 1px solid lightgray;
+  margin-bottom: 14px;
 }
 
-.left-indent{
-  margin-left: 32px;
+.left-indent {
+  margin-left: 26px;
 }
 
 .checkout-food-provider {
@@ -97,35 +101,53 @@
   margin-bottom: 25px;
 }
 
-.checkout-text{
+.checkout-text {
   font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 14px;
   margin-top: 14px;
 }
 
-.checkout-general-container{
+.checkout-general-container {
   padding-top: 20px;
   padding-bottom: 14px;
 }
 
-.checkout-icons{
+.checkout-icons {
   width: 20px;
   height: 20px;
   margin-left: -8px;
   margin-right: 14px;
 }
 
-.checkout-icons.fa-truck{
+.checkout-icons.fa {
   font-size: 20px;
 }
 
-.checkout-general-text{
+.checkout-general-text {
   font-weight: bold;
   font-size: 0.9em;
 }
 
-.checkout-hr{
+.checkout-hr {
   margin: 20px -22px;
   background-color: #F7F7F7;
+}
+
+.tip-row {
+  margin: 14px 0;
+}
+
+.price-container{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.total-price{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.payment-container{
+  padding-top: 20px;
+  padding-bottom: 40px;
 }

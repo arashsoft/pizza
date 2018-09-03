@@ -49,8 +49,8 @@
     </div>
     <hr class="checkout-hr">
     <div *ngIf="order.foodProvider.acceptTip">
-      <span class="fa fa-money mr-3"></span>TIP
-      <div class="d-flex flex-row left-indent pr-3 mt-3">
+      <span class="fa fa-money checkout-icons"></span><span class="checkout-general-text">TIP</span>
+      <div class="d-flex flex-row left-indent tip-row">
         <button type="button" class="btn btn-sm btn-mealsy2 tip-btn ml-1"
                 [ngClass]="{'active': orderService.order.tipType === 1}" (click)="orderService.updateTip(1)">Round
         </button>
@@ -64,15 +64,15 @@
                 [ngClass]="{'active': orderService.order.tipType === 15}" (click)="orderService.updateTip(15)">15%
         </button>
       </div>
-      <div class="clearfix left-indent mt-4 pb-2 tip-input-container">
+      <div class="clearfix left-indent tip-input-container">
         <label for="tipAmount" class="input-label float-left cursor-pointer">Tip</label>
         <input type="text" OnlyNumber="true" class="float-right faded-input" id="tipAmount" name="tipAmount" placeholder="Enter custom tip amount"
                [(ngModel)]="orderService.order.tipAmount" (change)="orderService.updateTip(0)">
       </div>
     </div>
   </div>
-  <div class="checkout-padding bg-white mt-2">
-    <div class="clearfix mt-1">
+  <div class="checkout-padding price-container bg-white mx-2 mt-2">
+    <div class="clearfix">
       <div class="float-left">Subtotal</div>
       <div class="float-right">{{cart.subTotalPrice | currency}}</div>
     </div>
@@ -97,25 +97,25 @@
       <div class="float-right">{{order.discount | currency}}</div>
     </div>
     <div *ngIf="errors?.minOrder" class="text-center text-danger mb-2">{{errors.minOrder}}</div>
-    <div class="clearfix mt-2 mealsy-green mb-2">
-      <h5 class="float-left">TOTAL</h5>
-      <h5 class="float-right">{{order.totalPrice | currency}}</h5>
+    <div class="clearfix mt-2 mealsy-green total-price">
+      <div class="float-left">TOTAL</div>
+      <div class="float-right">{{order.totalPrice | currency}}</div>
     </div>
   </div>
-  <div class="coupon-circle-container">
+  <div class="coupon-circle-container mx-2">
     <div class="coupon-circle left"></div><div class="coupon-circle right"></div>
   </div>
-  <div class="checkout-padding bg-white coupon-container">
+  <div class="checkout-padding bg-white mx-2 coupon-container">
     <div>APPLY COUPON</div>
-    <div class="clearfix">
+    <div class="clearfix top14">
       <input type="text" class="float-left faded-input coupon-input"  [(ngModel)]="currentCoupon" placeholder="Enter the coupon code">
       <button type="button" class="btn btn-mealsy1 btn-large float-right apply-coupon-btn ml-2">APPLY</button>
     </div>
   </div>
-  <div class="checkout-padding bg-white mt-2 mb-5">
-    <span class="fa fa-credit-card-alt mr-3"></span>PAYMENT METHODS
-    <div class="px-3 mt-4">
-      <label class="checkmark-container">PAY UPON DELIVERY OR PICKUP
+  <div class="checkout-padding bg-white mt-2 mb-5 payment-container">
+    <img src="./assets/icons/PaymentMethod.png" class="checkout-icons"><span class="checkout-general-text">PAYMENT METHODS</span>
+    <div class="left-indent top40">
+      <label class="checkmark-container"><span class="checkout-general-text">PAY UPON DELIVERY OR PICKUP</span>
         <input type="radio" [(ngModel)]="order.isPayOnline" [value]="false" name="isPayOnline">
         <span class="checkmark"></span>
       </label>
@@ -137,7 +137,7 @@
         <div *ngIf="errors?.paymentType && order.paymentType === 'None'" class="error-message">{{errors.paymentType}}</div>
       </div>
       <hr>
-      <label class="checkmark-container">PAY ONLINE NOW
+      <label class="checkmark-container"><span class="checkout-general-text">PAY ONLINE NOW</span>
         <input type="radio" [(ngModel)]="order.isPayOnline" [value]="true" name="isPayOnline">
         <span class="checkmark"></span>
       </label>

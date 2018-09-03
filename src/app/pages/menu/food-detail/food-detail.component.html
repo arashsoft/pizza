@@ -3,7 +3,7 @@
   <div class="food-information">
     <div class="food-title clearfix">
       <div class="float-left food-name">{{food.name}}</div>
-      <i class="float-right fa fa-cart-plus d-none d-sm-block cart-icon"></i>
+      <img src="./assets/icons/Add-to-cart.png" class="float-right d-none d-sm-block mealsy-icon">
     </div>
     <div class="food-price">{{food.price | currency}}</div>
     <div class="food-description">{{food.description}}</div>
@@ -13,7 +13,7 @@
 <ng-template #foodDetailTemplate let-c="close" let-d="dismiss">
   <div class="modal-body food-detail-modal">
     <i class="fa fa-arrow-left cursor-pointer" (click)="d('Cross click')"></i>
-    <img *ngIf="food.picturePath" class="modal-img" [src]="food.picturePath + '_' + food.id + '_600X400.jpg'">
+    <img *ngIf="food.picturePath" class="modal-picture" [src]="food.picturePath + '_' + food.id + '_600X400.jpg'">
     <div class="modal-food-title">{{food.name}}</div>
     <div class="modal-food-description">{{food.description}}</div>
     <div class="mt-3">

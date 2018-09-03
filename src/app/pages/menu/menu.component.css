@@ -31,14 +31,14 @@
 }
 
 .mainMenu-item {
-  font-size: 1.1em;
   border: 0;
   padding: 0;
   margin-bottom: 26px;
 }
 
 .subMenu-item {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
+  font-weight: bold;
   color: #34353d;
   border: 0;
   padding: 16px;
@@ -55,7 +55,8 @@
   margin-bottom: 0;
   padding: 5px 0 10px 0;
   margin-left: 10px;
-  font-size: 18pt;
+  font-size: 1rem;
+  font-weight: bold;
   color: #35343D;
 }
 
@@ -68,7 +69,8 @@
 .menu-name {
   margin-left: 10px;
   color: #34353d;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .sub-menu-container {
