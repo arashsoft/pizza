@@ -47,29 +47,4 @@ export class Food {
       this.defaultSelectedSize = this.selectedSize;
     }
   }
-
-  /**
-   * Calculate total price of food.
-   */
-  public calculatePrice(): void {
-    if (this.selectedSize) {
-      this.totalPrice = this.selectedSize.getPrice();
-    } else {
-      this.totalPrice = this.price;
-    }
-    this.totalTax = Global.priceRound(this.taxRate * this.totalPrice);
-  };
-
-  /**
-   * reset food to its original state, including size and all question/answers
-   */
-  public reset() {
-    if (this.foodSizes) {
-      for (const foodSize of this.foodSizes) {
-        foodSize.reset();
-      }
-    }
-    this.selectedSize = this.defaultSelectedSize;
-    this.calculatePrice();
-  }
 }

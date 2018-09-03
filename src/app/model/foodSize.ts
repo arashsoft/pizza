@@ -12,24 +12,4 @@ export class FoodSize {
     this.price = foodSizeObject.Price;
     this.questions = foodSizeObject.FoodSizeOrderQuestions.map(questionObject => new FoodQuestion(questionObject));
   }
-
-  getPrice(): number {
-    if (this.questions) {
-      let totalQuestionsPrice = 0;
-      for (const question of this.questions) {
-        totalQuestionsPrice += question.getPrice();
-      }
-      return totalQuestionsPrice + this.price;
-    } else {
-      return this.price;
-    }
-  }
-
-  reset(): void {
-    if (this.questions) {
-      for (const question of this.questions) {
-        question.reset();
-      }
-    }
-  }
 }

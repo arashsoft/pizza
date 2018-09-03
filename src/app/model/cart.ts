@@ -23,6 +23,8 @@ export class Cart {
   }
 
   loadCart(cart: Cart) {
-    this.items = cart.items;
+    cart.items.forEach(cartItem => {
+      this.items.push(new CartItem(cartItem.food, cartItem.quantity));
+    });
   }
 }

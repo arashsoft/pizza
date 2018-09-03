@@ -1,0 +1,100 @@
+/* FoodDetailComponent's private CSS styles */
+
+.food-item {
+  padding: 0 10px 10px 10px;
+}
+
+.modal-food-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 21px;
+  margin-bottom: 11px;
+  color: #4a4a4a;
+}
+
+img.modal-picture {
+  width: 100%;
+  padding: 0 40px;
+}
+
+.food-item .food-title {
+}
+
+.food-price {
+  margin-top: 10px;
+  color: #b2b0c0;
+  font-size: 0.8rem;
+}
+
+.food-description {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: #4a4a4a;
+  margin-top: 13px;
+  margin-bottom: 3px;
+}
+
+.modal-food-description {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: #4a4a4a;
+  margin-bottom: 25px;
+}
+
+.add-to-cart-btn {
+  width: 250px;
+}
+
+.size-container {
+  display: flex;
+  margin: 0 -21px;
+}
+
+.food-size {
+  flex: 1;
+  cursor: pointer;
+  border: solid lightgray;
+  border-width: 1px 0 1px 1px;
+  padding: 22px 0 24px 0;
+}
+
+.food-size:first-child {
+  border-left-width: 0;
+}
+
+.food-size.active {
+  background-color: #00C864;
+  color: white;
+}
+
+.food-size.active .food-size-name,
+.food-size.active .food-price {
+  color: white;
+}
+
+.food-size-name {
+  font-size: 0.9em;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+
+.food-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+}
+
+.answer-following-text {
+  color: #00C864;
+  font-size: 0.8em;
+  margin-top: 27px;
+}
+
+.modal-footer.food-detail-footer {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.food-picture {
+  width: 100%;
+}

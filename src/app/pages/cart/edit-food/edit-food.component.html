@@ -1,0 +1,26 @@
+<div class="modal-body food-details-modal">
+  <i class="fa fa-arrow-left cursor-pointer" (click)="activeModal.dismiss()"></i>
+  <img *ngIf="food.picturePath" class="modal-picture" [src]="food.picturePath + '_' + food.id + '_600X400.jpg'">
+  <div class="modal-food-title">{{food.name}}</div>
+  <div class="modal-food-description">{{food.description}}</div>
+  <div class="mt-3">
+    <div *ngIf="food.foodSizes && food.foodSizes.length > 1" class="size-container">
+      <div *ngFor="let foodSize of food.foodSizes" class="food-size" (click)="selectSize(foodSize)"
+           [ngClass]="{'active': foodSize.id === food.selectedSize.id}">
+        <div class="text-center food-size-name">{{foodSize.name}}</div>
+        <div class="food-price text-center">{{foodSize.price}}</div>
+      </div>
+    </div>
+    <div *ngIf="food.selectedSize.questions && food.selectedSize.questions.length">
+      <div class="answer-following-text text-center font-italic">Answer following questions to customize your order</div>
+      <div *ngFor="let question of food.selectedSize.questions">
+        <app-food-question [food]="food" [question]="question"></app-food-question>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer food-detail-footer">
+  <button type="button" class="btn btn-mealsy1 btn-large mx-auto add-to-cart-btn"
+          (click)="activeModal.close()">CONTINUE
+  </button>
+</div>

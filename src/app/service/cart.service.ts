@@ -5,6 +5,7 @@ import {CartItem} from '../model/cartItem';
 import {Global} from '../global';
 import {OrderStorageService} from './order-storage-service';
 import {Order} from '../model/order';
+import {FoodService} from './food-service';
 
 @Injectable({providedIn: 'root'})
 export class CartService {
@@ -16,7 +17,7 @@ export class CartService {
   }
 
   addFood(food: Food) {
-    food.calculatePrice();
+    FoodService.calculateFoodPrice(food);
     this.cart.items.push(new CartItem(food));
     this.calculatePrice();
     this.shakeCart();

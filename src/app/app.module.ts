@@ -22,7 +22,7 @@ import {LoadingIndicatorComponent} from './component/loading-indicator/loading-i
 import {RemoveItemModalComponent} from './pages/cart/quantity/remove-item-modal/remove-item-modal.component';
 import {OnlyNumberDirective} from './component/only-number/only-number';
 import { BaseRouterComponent } from './pages/base-router/base-router.component';
-import { EditFoodComponent } from './edit-food/edit-food.component';
+import { EditFoodComponent } from './pages/cart/edit-food/edit-food.component';
 
 
 @NgModule({
@@ -51,7 +51,7 @@ import { EditFoodComponent } from './edit-food/edit-food.component';
     BaseRouterComponent,
     EditFoodComponent
   ],
-  entryComponents: [PickupDeliveryComponent, RemoveItemModalComponent],
+  entryComponents: [PickupDeliveryComponent, RemoveItemModalComponent, EditFoodComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

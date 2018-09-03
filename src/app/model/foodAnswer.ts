@@ -26,23 +26,6 @@ export class FoodAnswer {
       this.quantity = answerObject.defaultQuantity;
     }
   }
-
-  public toString = (): string => {
-    if (this.toppingSide === FoodAnswerToppingSide.FULL) {
-      return this.name;
-    } else if (this.toppingSide === FoodAnswerToppingSide.RIGHT) {
-      return this.name + '(right side)';
-    } else if (this.toppingSide === FoodAnswerToppingSide.LEFT) {
-      return this.name + '(left side)';
-    }
-    return this.name;
-  };
-
-  reset(): void {
-    this.selected = this.defaultSelected || false;
-    this.quantity = this.defaultQuantity || 0;
-    this.totalPrice = 0;
-  }
 }
 
 export enum FoodAnswerToppingSide {

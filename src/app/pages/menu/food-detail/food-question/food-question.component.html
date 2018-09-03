@@ -3,7 +3,7 @@
   <div *ngSwitchCase="1">
     <div *ngFor="let answer of question.answers" class="clearfix">
       <div class="float-left answer-name">
-        <input type="checkbox" [(ngModel)]="answer.selected" (change)="food.calculatePrice();">
+        <input type="checkbox" [(ngModel)]="answer.selected" (change)="calculateFoodPrice(food)">
         {{answer.name}}
       </div>
       <div *ngIf="answer.price" class="float-right">{{answer.price | currency}}</div>
@@ -12,7 +12,7 @@
   <div *ngSwitchCase="2">
     <div *ngFor="let answer of question.answers; let answerIndex = index" class="clearfix">
       <div class="float-left answer-name">
-        <input class="cursor-pointer" id="{{'answer' + answer.id}}" type="radio" name="{{'radio' + question.id}}" (change)="question.checkAnswer(answerIndex); food.calculatePrice();">
+        <input class="cursor-pointer" id="{{'answer' + answer.id}}" type="radio" name="{{'radio' + question.id}}" (change)="foodQuestionService.checkFoodQuestionAnswer(question, answerIndex); calculateFoodPrice(food);">
         <label class="pl-2 cursor-pointer" for="{{'answer' + answer.id}}">{{answer.name}}</label>
       </div>
       <div *ngIf="answer.price" class="float-right">{{answer.price | currency}}</div>
@@ -23,11 +23,11 @@
       <div class="clearfix">
         <div class="float-left answer-name">{{answer.name}}</div>
         <div class="float-right">{{answer.price | currency}}
-          <div (click)="answer.quantity = answer.quantity + 1; food.calculatePrice();" class="quantity-sign plus-sign">+</div>
+          <div (click)="answer.quantity = answer.quantity + 1; calculateFoodPrice(food);" class="quantity-sign plus-sign">+</div>
         </div>
       </div>
       <div *ngIf="answer.quantity > 0" class="clearfix answer-quantity-line2">
-          <div (click)="answer.quantity = answer.quantity - 1; food.calculatePrice();" class="float-left quantity-sign minus-sign">-</div>
+          <div (click)="answer.quantity = answer.quantity - 1; calculateFoodPrice(food);" class="float-left quantity-sign minus-sign">-</div>
           <div class="float-left food-quality ml-2">{{answer.totalPrice | currency}}</div>
           <div class="float-right food-quality">{{answer.quantity}}</div>
       </div>
@@ -38,15 +38,15 @@
       <div class="clearfix">
         <div class="float-left answer-name">{{answer.name}}</div>
         <div class="float-right">{{answer.price | currency}}
-          <div (click)="answer.quantity = answer.quantity + 1; food.calculatePrice();" class="quantity-sign plus-sign">+</div>
+          <div (click)="answer.quantity = answer.quantity + 1; calculateFoodPrice(food);" class="quantity-sign plus-sign">+</div>
         </div>
       </div>
       <div *ngIf="answer.quantity > 0" class="clearfix answer-quantity-line2">
-        <div (click)="answer.quantity = answer.quantity - 1; food.calculatePrice();" class="float-left quantity-sign minus-sign">-</div>
+        <div (click)="answer.quantity = answer.quantity - 1; calculateFoodPrice(food);" class="float-left quantity-sign minus-sign">-</div>
         <div class="float-left food-quality ml-2">{{answer.totalPrice | currency}}</div>
-        <div class="float-left ml-5 circle circle-left" [ngClass]="{'active': answer.toppingSide === 2}" (click)="answer.toppingSide = 2; food.calculatePrice();"></div>
-        <div class="float-left ml-4 circle" [ngClass]="{'active': answer.toppingSide === 1}" (click)="answer.toppingSide = 1; food.calculatePrice();"></div>
-        <div class="float-left ml-4 circle circle-right" [ngClass]="{'active': answer.toppingSide === 3}" (click)="answer.toppingSide = 3; food.calculatePrice();"></div>
+        <div class="float-left ml-5 circle circle-left" [ngClass]="{'active': answer.toppingSide === 2}" (click)="answer.toppingSide = 2; calculateFoodPrice(food);"></div>
+        <div class="float-left ml-4 circle" [ngClass]="{'active': answer.toppingSide === 1}" (click)="answer.toppingSide = 1; calculateFoodPrice(food);"></div>
+        <div class="float-left ml-4 circle circle-right" [ngClass]="{'active': answer.toppingSide === 3}" (click)="answer.toppingSide = 3; calculateFoodPrice(food);"></div>
         <div class="float-right food-quality">{{answer.quantity}}</div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import {CartService} from '../../../service/cart.service';
 import * as _ from 'lodash';
 import {FoodSize} from '../../../model/foodSize';
 import {OrderService} from '../../../service/order-service';
+import {FoodService} from '../../../service/food-service';
 
 @Component({
   selector: 'app-food-detail',
@@ -22,12 +23,12 @@ export class FoodDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.food.calculatePrice();
+    FoodService.calculateFoodPrice(this.food);
   }
 
   openDetails(foodDetailTemplate): void {
-    this.food.reset();
-    this.food.calculatePrice();
+    FoodService.resetFood(this.food);
+    FoodService.calculateFoodPrice(this.food);
     this.modalService.open(foodDetailTemplate, {windowClass: 'food-details-modal'});
   }
 
@@ -38,6 +39,6 @@ export class FoodDetailComponent implements OnInit {
 
   selectSize(foodSize: FoodSize): void {
     this.food.selectedSize = foodSize;
-    this.food.calculatePrice();
+    FoodService.calculateFoodPrice(this.food);
   }
 }

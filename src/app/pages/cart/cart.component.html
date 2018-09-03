@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container mealsy-container">
   <div class="cart-padding">
-    <div class="text-center cart-food-provider">{{orderService.order.foodProvider.name}}</div>
-    <div class="text-center cart-food-provider-city">{{orderService.order.foodProvider.address.city}}</div>
+    <div class="text-center cart-food-provider">{{orderService.order.foodProvider?.name}}</div>
+    <div class="text-center cart-food-provider-city">{{orderService.order.foodProvider?.address.city}}</div>
     <div class="cart-text">CART</div>
     <div class="clearfix cart-header">
       <div class="float-left">ITEMS</div>
@@ -11,7 +11,7 @@
   </div>
   <div *ngFor="let item of cartService.cart.items; let itemIndex = index" class="bg-white cart-padding item-container">
     <div class="clearfix">
-      <div class="float-left food-name">{{item.food.name}}</div>
+      <div class="float-left food-name cursor-pointer" (click)="openFoodEditModal(item.food)">{{item.food.name}}</div>
       <span class="float-right food-price">{{item.food.totalPrice | currency}}</span>
     </div>
     <div *ngFor="let question of item.food.selectedSize.questions" class="question-container">
