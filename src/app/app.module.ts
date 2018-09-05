@@ -21,9 +21,9 @@ import {SuccessSubmitComponent} from './pages/success-submit/success-submit.comp
 import {LoadingIndicatorComponent} from './component/loading-indicator/loading-indicator.component';
 import {RemoveItemModalComponent} from './pages/cart/quantity/remove-item-modal/remove-item-modal.component';
 import {OnlyNumberDirective} from './component/only-number/only-number';
-import { BaseRouterComponent } from './pages/base-router/base-router.component';
-import { EditFoodComponent } from './pages/cart/edit-food/edit-food.component';
-
+import {BaseRouterComponent} from './pages/base-router/base-router.component';
+import {EditFoodComponent} from './pages/cart/edit-food/edit-food.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   imports: [
@@ -52,7 +52,8 @@ import { EditFoodComponent } from './pages/cart/edit-food/edit-food.component';
     EditFoodComponent
   ],
   entryComponents: [PickupDeliveryComponent, RemoveItemModalComponent, EditFoodComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class AppModule {
 }
