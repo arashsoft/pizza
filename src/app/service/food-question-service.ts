@@ -14,22 +14,32 @@ export class FoodQuestionService {
     let totalPrice = 0;
     const selectedItems: Array<FoodAnswer> = [];
     if (foodQuestion.type === FoodQuestionType.OPTION || foodQuestion.type === FoodQuestionType.CHECKBOX) {
+      let answerCount = 0;
       for (const answer of foodQuestion.answers) {
         if (answer.selected) {
           answer.totalPrice = answer.price;
+          answerCount++;
           totalPrice += answer.totalPrice;
           selectedItems.push(answer);
         } else {
           answer.totalPrice = 0;
         }
       }
+      if (foodQuestion.maxAnswer && foodQuestion.maxAnswer < answerCount) {
+        foodQuestion.errorMessage = 'Cannot select more than ' + foodQuestion.maxAnswer;
+      } else {
+        foodQuestion.errorMessage = undefined;
+      }
     } else if (foodQuestion.type === FoodQuestionType.QUANTITY || foodQuestion.type === FoodQuestionType.TOPPING_QUANTITY) {
+      let answerCount = 0;
       for (const answer of foodQuestion.answers) {
         if (answer.quantity > 0) {
           if (answer.toppingSide === FoodAnswerToppingSide.FULL) {
+            answerCount += answer.quantity;
             answer.totalPrice = Global.priceRound(answer.price * answer.quantity);
             totalPrice += answer.totalPrice;
           } else if (answer.toppingSide === FoodAnswerToppingSide.LEFT || answer.toppingSide === FoodAnswerToppingSide.RIGHT) {
+            answerCount += (answer.quantity / 2);
             answer.totalPrice = Global.priceRound(answer.price * answer.quantity / 2);
             totalPrice += answer.totalPrice;
           } else {
@@ -39,6 +49,11 @@ export class FoodQuestionService {
         } else {
           answer.totalPrice = 0;
         }
+      }
+      if (foodQuestion.maxAnswer && foodQuestion.maxAnswer < answerCount) {
+        foodQuestion.errorMessage = 'Cannot select more than ' + foodQuestion.maxAnswer;
+      } else {
+        foodQuestion.errorMessage = undefined;
       }
     } else {
       throw new Error('Unknown food Type');

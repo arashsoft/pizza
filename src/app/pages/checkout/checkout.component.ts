@@ -53,9 +53,7 @@ export class CheckoutComponent implements OnInit {
     }
     this.validateCart(this.errors);
     if (!_.isEmpty(this.errors)) {
-      if (this.errors.emptyCart) {
-        $('html, body').animate({scrollTop: 0}, 'slow');
-      }
+      $('html, body').animate({scrollTop: 0}, 'slow');
       return;
     }
     // front-end validation are passed.
@@ -98,28 +96,48 @@ export class CheckoutComponent implements OnInit {
     }
     if (_.isEmpty(this.order.cart.items)) {
       errors.emptyCart = 'There is not any item in your cart';
+      return;
     }
     if (this.order.isPickup) {
       this.cart.items.every(cartItem => {
         if (cartItem.food.deliveryType === DeliveryType.DELIVERY_ONLY) {
           errors.deliveryPickupOnly = cartItem.food.name + ' is delivery only and cannot get ordered as pickup.';
           return false;
+        } else {
+          return true;
         }
       });
       if (this.order.totalPrice < this.order.foodProvider.minOrderForPickup) {
         errors.minOrder = 'The minimum order price for pickup is ' + this.order.foodProvider.minOrderForPickup;
+        return;
       }
     } else {
       this.cart.items.every(cartItem => {
         if (cartItem.food.deliveryType === DeliveryType.PICKUP_ONLY) {
           errors.deliveryPickupOnly = cartItem.food.name + ' is pickup only and cannot get ordered as delivery.';
           return false;
+        } else {
+          return true;
         }
       });
       if (this.order.totalPrice < this.order.foodProvider.minOrderForDelivery) {
         errors.minOrder = 'The minimum order price for delivery is ' + this.order.foodProvider.minOrderForDelivery;
+        return;
       }
     }
+    // validate maxAnswer
+    this.cart.items.forEach(cartItem => {
+      if (cartItem.food.selectedSize.questions) {
+        cartItem.food.selectedSize.questions.every(question => {
+          if (question.errorMessage !== undefined) {
+            errors.maxAnswer = question.errorMessage + ' ' + question.name + ' for item ' + cartItem.food.name;
+            return false;
+          } else {
+            return true;
+          }
+        });
+      }
+    });
   }
 
   validatePickupDelivery(errors: { [k: string]: any }) {

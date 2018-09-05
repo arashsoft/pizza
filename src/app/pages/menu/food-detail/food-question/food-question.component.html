@@ -1,4 +1,6 @@
-<div class="question-name">{{question.name}} ?</div>
+<div class="question-name">{{question.name}} ?
+  <div *ngIf="question.errorMessage" class="error-message">{{question.errorMessage}}</div>
+</div>
 <div [ngSwitch]="question.type">
   <div *ngSwitchCase="1">
     <div *ngFor="let answer of question.answers" class="clearfix">

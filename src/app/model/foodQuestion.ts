@@ -9,6 +9,8 @@ export class FoodQuestion {
   answers: FoodAnswer[];
   numberOfFreeItems?: number;
   lowestItemPrice?: number;
+  maxAnswer?: number;
+  errorMessage?: string;
 
   // @Lazy: comma separated string of selected items
   selectedItems?: string;
@@ -19,6 +21,7 @@ export class FoodQuestion {
     this.id = questionObject.Id;
     this.name = questionObject.Text;
     this.type = questionObject.Type;
+    this.maxAnswer = questionObject.MaxAnswer;
     this.numberOfFreeItems = questionObject.MaxFreeAnswer;
     this.answers = questionObject.OrderQuestion.OrderAnswers.map(answerObject => new FoodAnswer(answerObject, questionObject.Ratio));
     if (this.numberOfFreeItems > 0) {
