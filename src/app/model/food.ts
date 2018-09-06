@@ -30,7 +30,7 @@ export class Food {
     this.price = foodObject.Price;
     this.picturePath = foodObject.PhotoPath;
     this.sortOrder = foodObject.Order;
-    this.taxRate = foodObject.FirstTaxRate;
+    this.taxRate = Global.safeSum(foodObject.FirstTaxRate, foodObject.SecondTaxRate);
     this.deliveryType = deliveryType;
     if (foodObject.FoodSizes) {
       this.foodSizes = foodObject.FoodSizes.map(foodSizeObject => new FoodSize(foodSizeObject));
