@@ -37,6 +37,14 @@ img.modal-picture {
   color: #4a4a4a;
   margin-top: 13px;
   margin-bottom: 3px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-height: 0.8rem;        /* fallback */
+  max-height: 2.4rem;
 }
 
 .modal-food-description {
