@@ -80,7 +80,7 @@
       <div class="float-left">Tax</div>
       <div class="float-right">{{cart.taxPrice | currency}}</div>
     </div>
-    <div class="clearfix mt-2">
+    <div *ngIf="order.foodProvider.acceptTip" class="clearfix mt-2">
       <div class="float-left">Tip</div>
       <div class="float-right">{{order.totalTip | currency}}</div>
     </div>
