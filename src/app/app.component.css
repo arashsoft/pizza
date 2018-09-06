@@ -1,1 +1,57 @@
 /* AppComponent's private CSS styles */
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 50px;
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.toast {
+  visibility: hidden;
+  position: fixed;
+  color: white;
+  z-index: 999990;
+  text-align: center;
+  width: 100%;
+}
+
+.toast.toast-visible {
+  top: 50px;
+  visibility: visible;
+  animation: fadein 0.5s;
+}
+
+.toast.toast-invisible {
+  animation: fadeout 0.5s;
+}
+
+.toast-message {
+  padding: 5px 20px;
+  border-radius: 35px / 100%;
+  display: inline-block;
+}
+
+.toast-message.toast-normal {
+  background-color: #34353d;
+}
+
+.toast-message.toast-error {
+  background-color: #dc3545;
+}

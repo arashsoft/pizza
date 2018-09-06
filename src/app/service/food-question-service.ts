@@ -12,9 +12,9 @@ export class FoodQuestionService {
    */
   public static getFoodQuestionPrice(foodQuestion: FoodQuestion): number {
     let totalPrice = 0;
+    let answerCount = 0;
     const selectedItems: Array<FoodAnswer> = [];
     if (foodQuestion.type === FoodQuestionType.OPTION || foodQuestion.type === FoodQuestionType.CHECKBOX) {
-      let answerCount = 0;
       for (const answer of foodQuestion.answers) {
         if (answer.selected) {
           answer.totalPrice = answer.price;
@@ -25,13 +25,7 @@ export class FoodQuestionService {
           answer.totalPrice = 0;
         }
       }
-      if (foodQuestion.maxAnswer && foodQuestion.maxAnswer < answerCount) {
-        foodQuestion.errorMessage = 'Cannot select more than ' + foodQuestion.maxAnswer;
-      } else {
-        foodQuestion.errorMessage = undefined;
-      }
     } else if (foodQuestion.type === FoodQuestionType.QUANTITY || foodQuestion.type === FoodQuestionType.TOPPING_QUANTITY) {
-      let answerCount = 0;
       for (const answer of foodQuestion.answers) {
         if (answer.quantity > 0) {
           if (answer.toppingSide === FoodAnswerToppingSide.FULL) {
@@ -50,20 +44,24 @@ export class FoodQuestionService {
           answer.totalPrice = 0;
         }
       }
-      if (foodQuestion.maxAnswer && foodQuestion.maxAnswer < answerCount) {
-        foodQuestion.errorMessage = 'Cannot select more than ' + foodQuestion.maxAnswer;
-      } else {
-        foodQuestion.errorMessage = undefined;
-      }
     } else {
       throw new Error('Unknown food Type');
     }
+
+    if (foodQuestion.maxAnswer && foodQuestion.maxAnswer < answerCount) {
+      foodQuestion.errorMessage = 'Cannot select more than ' + foodQuestion.maxAnswer;
+    } else {
+      foodQuestion.errorMessage = undefined;
+    }
+    foodQuestion.answerCount = answerCount;
+
     // reduce free items price
     if (foodQuestion.numberOfFreeItems) {
       totalPrice = Global.safeMinus(totalPrice, Global.priceRound(foodQuestion.numberOfFreeItems * foodQuestion.lowestItemPrice));
     }
     foodQuestion.totalPrice = totalPrice > 0 ? totalPrice : 0;
     foodQuestion.selectedItems = selectedItems.length ? selectedItems.map(this.foodAnswerToString).join(', ') : '-no selection';
+    foodQuestion.hasAnyAnswer = selectedItems.length > 0;
     return foodQuestion.totalPrice;
   }
 

@@ -52,4 +52,24 @@ export class FoodService {
     }
   }
 
+  /**
+   * Check if a food is valid and can be added to cart or not
+   * @return an error message if food cannot be added to cart or undefined if the food is in valid condition
+   */
+  public static checkIfFoodCanBeAddedToCart(food: Food): string {
+    let result: string;
+    if (food.selectedSize.questions) {
+      food.selectedSize.questions.every(question => {
+        if (question.mustBeAnswered && !question.hasAnyAnswer) {
+          result = 'Question "' + question.name + '" must have an answer';
+          return false;
+        } else if (question.maxAnswer && question.maxAnswer < question.answerCount) {
+          result = 'Question "' + question.name + '" cannot have more than ' + question.maxAnswer + ' answers';
+          return false;
+        }
+        return true;
+      });
+    }
+    return result;
+  }
 }

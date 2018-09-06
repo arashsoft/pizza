@@ -24,6 +24,7 @@ export class Order {
   paymentType = PaymentType.NONE;
   orderName = '';
   orderPhoneNumber = '';
+  userIP?: string;
 
   // @Lazy
   totalTip?: number;

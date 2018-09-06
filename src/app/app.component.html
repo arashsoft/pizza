@@ -1,2 +1,6 @@
 <app-loading-indicator></app-loading-indicator>
+<div [ngClass]="{'toast-visible': toastService.isToastVisible, 'toast-invisible': !toastService.isToastVisible, 'd-none': !toastService.toast.message}"
+  class="toast">
+  <div class="toast-message" [ngClass]="'toast-' + toastService.toast.type">{{toastService.toast.message}}</div>
+</div>
 <router-outlet></router-outlet>

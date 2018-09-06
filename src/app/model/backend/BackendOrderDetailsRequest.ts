@@ -1,4 +1,4 @@
-import {Order, PaymentType} from '../order';
+import {Order} from '../order';
 import {BackendFoodRequest} from './backendFoodRequest';
 import {Global} from '../../global';
 
@@ -44,7 +44,7 @@ export class BackendOrderDetailsRequest {
     this.tip = order.totalTip;
     this.totalTax = Global.safeSum(order.cart.taxPrice, order.deliveryTax);
     this.discount = order.discount;
-    this.ip = window.location.origin;
+    this.ip = order.userIP;
     this.httpUserAgent = navigator.userAgent;
     this.orderTiming = order.isForNow ? 'Asap' : order.scheduledFor;
 

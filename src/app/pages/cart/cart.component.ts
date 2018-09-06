@@ -3,9 +3,9 @@ import {CartService} from '../../service/cart.service';
 import {OrderService} from '../../service/order-service';
 import {Router} from '@angular/router';
 import {Food} from '../../model/food';
-import {PickupDeliveryComponent} from '../pickup-delivery/pickup-delivery.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditFoodComponent} from './edit-food/edit-food.component';
+import {Toast, ToastService, ToastType} from '../../service/toast-service';
 
 @Component({
   selector: 'app-page-cart',
@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   constructor(public cartService: CartService,
               public orderService: OrderService,
               private modalService: NgbModal,
+              private toastService: ToastService,
               private router: Router) {
   }
 

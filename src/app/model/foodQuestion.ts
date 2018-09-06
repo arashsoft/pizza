@@ -1,6 +1,5 @@
-import {FoodAnswer, FoodAnswerToppingSide} from './foodAnswer';
+import {FoodAnswer} from './foodAnswer';
 import * as _ from 'lodash';
-import {Global} from '../global';
 
 export class FoodQuestion {
   id: number;
@@ -11,7 +10,12 @@ export class FoodQuestion {
   lowestItemPrice?: number;
   maxAnswer?: number;
   errorMessage?: string;
+  mustBeAnswered?: boolean;
 
+  // @Lazy : determines if this question has any selected answer
+  hasAnyAnswer?: boolean;
+  // @Lazy : number of selected answers for this question. It can be include half values because of half topping sides
+  answerCount: number;
   // @Lazy: comma separated string of selected items
   selectedItems?: string;
   // @Lazy: total price of this question
@@ -21,6 +25,7 @@ export class FoodQuestion {
     this.id = questionObject.Id;
     this.name = questionObject.Text;
     this.type = questionObject.Type;
+    this.mustBeAnswered = questionObject.MustBeAnswered;
     this.maxAnswer = questionObject.MaxAnswer;
     this.numberOfFreeItems = questionObject.MaxFreeAnswer;
     this.answers = questionObject.OrderQuestion.OrderAnswers.map(answerObject => new FoodAnswer(answerObject, questionObject.Ratio));

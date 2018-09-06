@@ -4,6 +4,7 @@ import {RemoveItemModalComponent} from './remove-item-modal/remove-item-modal.co
 import {CartService} from '../../../service/cart.service';
 import {CartItem} from '../../../model/cartItem';
 import {OrderService} from '../../../service/order-service';
+import {Toast, ToastService, ToastType} from '../../../service/toast-service';
 
 @Component({
   selector: 'app-quantity',
@@ -15,7 +16,10 @@ export class QuantityComponent {
   @Input() index: number;
   @Output() quantityChange = new EventEmitter<number>();
 
-  constructor(private modalService: NgbModal, private cartService: CartService, private orderService: OrderService) {
+  constructor(private modalService: NgbModal,
+              private toastService: ToastService,
+              private cartService: CartService,
+              private orderService: OrderService) {
   }
 
   increaseQuantity(): void {
@@ -30,6 +34,7 @@ export class QuantityComponent {
       modalRef.result.then(() => {
         this.cartService.removeFoodByIndex(this.index);
         this.orderService.saveOrderHistory();
+        this.toastService.setToast(new Toast(this.item.food.name + ' is removed to your cart!', ToastType.NORMAL));
       });
       return;
     }

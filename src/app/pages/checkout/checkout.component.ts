@@ -34,10 +34,14 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     if (this.orderService.isInitialized) {
+      const self = this;
       this.cart = this.cartService.cart;
       this.order = this.orderService.order;
       this.orderService.calculatePrice();
       $('html, body').animate({scrollTop: 0}, 'fast');
+      ConfigService.findIP(function(ip){
+        self.order.userIP = ip;
+      });
     } else {
       // order page is not initialized, return to menu
       this.router.navigate(['./menus'], {queryParamsHandling: 'merge'});
@@ -95,7 +99,7 @@ export class CheckoutComponent implements OnInit {
       }
     }
     if (_.isEmpty(this.order.cart.items)) {
-      errors.emptyCart = 'There is not any item in your cart';
+      errors.emptyCart = 'Your Cart is Empty';
       return;
     }
     if (this.order.isPickup) {
