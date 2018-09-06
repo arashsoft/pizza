@@ -60,7 +60,6 @@
   font-weight: bold;
   height: 48px;
   line-height: 48px;
-  vertical-align: center;
 }
 
 .item-container {
@@ -71,7 +70,6 @@
 .food-name {
   font-size: 1.3em;
   font-weight: bold;
-  margin-bottom: 21px;
 }
 
 .question-container {
@@ -79,7 +77,7 @@
 }
 
 .cart-quantity-container {
-  margin-top: -7px;
+  margin-top: 21px;
   padding-bottom: 21px;
 }
 
