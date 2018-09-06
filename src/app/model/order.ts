@@ -4,7 +4,7 @@ import {Coupon} from './coupon';
 import {SavedCard} from './savedCard';
 import {NewCard} from './newCard';
 import {Address} from './address';
-import {FoodProvider} from './foodProvider';
+import {FoodProvider, PaymentMethod} from './foodProvider';
 
 export class Order {
   user?: User;
@@ -45,6 +45,9 @@ export class Order {
   setFoodProvidder(foodProvider: FoodProvider) {
     this.foodProvider = foodProvider;
     this.cart.taxRate = foodProvider.taxRate;
+    if (foodProvider.paymentMethod === PaymentMethod.ONLINE){
+      this.isPayOnline = true;
+    }
   }
 
   reset() {

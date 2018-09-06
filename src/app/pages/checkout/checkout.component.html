@@ -115,11 +115,11 @@
   <div class="checkout-padding bg-white mt-2 mb-5 payment-container">
     <img src="./assets/icons/PaymentMethod.png" class="checkout-icons"><span class="checkout-general-text">PAYMENT METHODS</span>
     <div class="left-indent top40">
-      <label class="checkmark-container"><span class="checkout-general-text">PAY UPON DELIVERY OR PICKUP</span>
+      <label *ngIf="order.foodProvider.paymentMethod !== 1" class="checkmark-container"><span class="checkout-general-text">PAY UPON DELIVERY OR PICKUP</span>
         <input type="radio" [(ngModel)]="order.isPayOnline" [value]="false" name="isPayOnline">
         <span class="checkmark"></span>
       </label>
-      <div *ngIf="!order.isPayOnline">
+      <div *ngIf="!order.isPayOnline && order.foodProvider.paymentMethod !== 1">
         <div class="d-flex flex-row px-3 mt-3">
           <button type="button" class="btn btn-sm btn-mealsy2 payment-type-btn ml-1"
                   [ngClass]="{'active': order.paymentType === 'Cash'}" (click)="order.paymentType = 'Cash'">Cash
@@ -137,11 +137,11 @@
         <div *ngIf="errors?.paymentType && order.paymentType === 'None'" class="error-message">{{errors.paymentType}}</div>
       </div>
       <hr>
-      <label class="checkmark-container"><span class="checkout-general-text">PAY ONLINE NOW</span>
+      <label *ngIf="order.foodProvider.paymentMethod !== 0" class="checkmark-container"><span class="checkout-general-text">PAY ONLINE NOW</span>
         <input type="radio" [(ngModel)]="order.isPayOnline" [value]="true" name="isPayOnline">
         <span class="checkmark"></span>
       </label>
-      <div *ngIf="order.isPayOnline" class="ml-2" >
+      <div *ngIf="order.isPayOnline && order.foodProvider.paymentMethod !== 0" class="ml-2" >
         <form #newCardForm="ngForm" >
           <div *ngIf="errors?.newCard && newCardForm.pristine" class="error-message">{{errors.newCard}}</div>
           <input name="cardNumber" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">

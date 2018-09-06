@@ -12,6 +12,7 @@ export class FoodProvider {
   minOrderForDelivery: number;
   acceptTip: boolean;
   menus?: Menu[];
+  paymentMethod: PaymentMethod;
 
   constructor(foodProviderObject) {
     this.id = foodProviderObject.Id;
@@ -24,6 +25,7 @@ export class FoodProvider {
     this.minOrderForPickup = foodProviderObject.MinOrderForPickUp;
     this.minOrderForDelivery = foodProviderObject.MinOrderForDelivery;
     this.acceptTip = foodProviderObject.AcceptOnlineTip;
+    this.paymentMethod = foodProviderObject.PaymentMethod;
 
     const menusObject = JSON.parse(foodProviderObject.CompleteMenu.Menus);
     const menusArray: Menu[] = [];
@@ -39,4 +41,8 @@ export class FoodProvider {
 
 export enum DeliveryType {
   DELIVERY_ONLY = 1, PICKUP_ONLY = 2, BOTH = 3
+}
+
+export enum PaymentMethod {
+  OFFLINE = 0, ONLINE = 1, BOTH = 2
 }
