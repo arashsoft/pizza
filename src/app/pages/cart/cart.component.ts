@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     if (this.orderService.isInitialized) {
-
+      $('html, body').animate({scrollTop: 0}, 'fast');
     } else {
       // order page is not initialized, return to menu
       this.router.navigate(['./menus'], {queryParamsHandling: 'merge'});

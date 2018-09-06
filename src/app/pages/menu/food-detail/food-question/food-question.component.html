@@ -1,4 +1,4 @@
-<div class="question-name">{{question.name}} ?
+<div class="question-name">{{question.name}} ? <span *ngIf="question.numberOfFreeItems" class="free-item">{{'(' + question.numberOfFreeItems + ' Free Item)'}}</span>
   <div *ngIf="question.errorMessage" class="error-message">{{question.errorMessage}}</div>
 </div>
 <div [ngSwitch]="question.type">

@@ -122,7 +122,6 @@ body {
   color: #00C864;
   font-size: 1.3em;
   border: none;
-  border-bottom: 1px solid white;
 }
 
 .faded-input::placeholder {
