@@ -34,7 +34,7 @@ export class QuantityComponent {
       modalRef.result.then(() => {
         this.cartService.removeFoodByIndex(this.index);
         this.orderService.saveOrderHistory();
-        this.toastService.setToast(new Toast(this.item.food.name + ' is removed to your cart!', ToastType.NORMAL));
+        this.toastService.setToast(new Toast(this.item.food.name + ' is removed from your cart!', ToastType.NORMAL));
       });
       return;
     }

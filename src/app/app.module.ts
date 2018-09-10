@@ -53,7 +53,11 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
   ],
   entryComponents: [PickupDeliveryComponent, RemoveItemModalComponent, EditFoodComponent],
   bootstrap: [AppComponent],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }],
 })
 export class AppModule {
 }

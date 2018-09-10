@@ -43,8 +43,8 @@ img.modal-picture {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; /* number of lines to show */
-  line-height: 0.8rem;        /* fallback */
-  max-height: 2.4rem;
+  line-height: 0.82rem;        /* fallback */
+  max-height: 2.5rem;
 }
 
 .modal-food-description {

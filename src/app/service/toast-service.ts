@@ -2,10 +2,9 @@ import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class ToastService {
-  private isToastVisible = false;
-  private toast = new Toast('', ToastType.NORMAL, 0);
+  public isToastVisible = false;
+  public toast = new Toast('', ToastType.NORMAL, 0);
   private currentToastTimeout?: number;
-
 
   setToast(toast: Toast) {
     clearTimeout(this.currentToastTimeout);
@@ -16,7 +15,6 @@ export class ToastService {
     }, toast.timeout);
   }
 }
-
 
 export class Toast {
   // The toast message to show

@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div class="d-flex flex-row">
   <div class="d-none d-md-block menu-list-container bg-mealsy2">
+    <div id="menu-scrollable" slimScroll >
       <ng-template ngFor let-menu [ngForOf]="menus">
         <div class="mainMenu-item bg-mealsy2">
           <i class="fa fa-angle-right"></i><span class="menu-name">{{menu.name}}</span>
@@ -12,6 +13,7 @@
           </ng-template>
         </div>
       </ng-template>
+    </div>
   </div>
   <img *ngIf="!mobileMenu" src="./assets/icons/MenuSection_Shadow.png" class="d-block d-md-none mobile-menu-trigger" (click)="mobileMenu = !mobileMenu">
   <div *ngIf="mobileMenu" class="d-block d-md-none mobile-menu-container" (click)="mobileMenu = !mobileMenu">
