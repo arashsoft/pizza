@@ -13,6 +13,8 @@ export class Food {
   taxRate: number;
   sortOrder: number;
   deliveryType: DeliveryType;
+  startDate: Date;
+  endDate: Date;
 
   // @Data: The size of food
   selectedSize?: FoodSize;
@@ -23,7 +25,7 @@ export class Food {
   // @Lazy: The amount of tax on this specific food
   totalTax?: number;
 
-  constructor(foodObject, deliveryType: DeliveryType) {
+  constructor(foodObject, deliveryType: DeliveryType, startDate: Date, endDate: Date) {
     this.id = foodObject.Id;
     this.name = foodObject.Name;
     this.description = foodObject.Ingredients;
@@ -35,6 +37,9 @@ export class Food {
     if (foodObject.FoodSizes) {
       this.foodSizes = foodObject.FoodSizes.map(foodSizeObject => new FoodSize(foodSizeObject));
     }
+
+    this.startDate = startDate;
+    this.endDate = endDate;
 
     if (this.foodSizes && this.foodSizes.length) {
       // find cheapest foodSize and use it as selectedSize

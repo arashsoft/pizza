@@ -8,6 +8,7 @@ import {FoodSize} from '../../../model/foodSize';
 import {OrderService} from '../../../service/order-service';
 import {FoodService} from '../../../service/food-service';
 import {Toast, ToastService, ToastType} from '../../../service/toast-service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-food-detail',
@@ -23,6 +24,7 @@ export class FoodDetailComponent implements OnInit {
               private modalService: NgbModal,
               private toastService: ToastService,
               private cartService: CartService,
+              private datePipe: DatePipe,
               private orderService: OrderService) {
   }
 
@@ -31,6 +33,14 @@ export class FoodDetailComponent implements OnInit {
   }
 
   openDetails(foodDetailTemplate): void {
+    const currentDate = new Date();
+    if (this.food.startDate > currentDate || this.food.endDate < currentDate) {
+      const toastMessage = 'The online ordering hours are between ' + this.datePipe.transform(this.food.startDate, 'shortTime') + ' and ' +
+        this.datePipe.transform(this.food.endDate, 'shortTime');
+      this.toastService.setToast(new Toast(toastMessage, ToastType.ERROR));
+      return;
+    }
+
     FoodService.resetFood(this.food);
     FoodService.calculateFoodPrice(this.food);
     this.modalRef = this.modalService.open(foodDetailTemplate, {windowClass: 'food-details-modal'});

@@ -8,14 +8,14 @@ export class MenuSection {
   sortOrder: number;
   deliveryType: DeliveryType;
 
-  constructor(menuSectionObject) {
+  constructor(menuSectionObject, startDate: Date, endDate: Date) {
     this.id = menuSectionObject.Id;
     this.name = menuSectionObject.Name;
     this.sortOrder = menuSectionObject.Order;
     this.deliveryType = menuSectionObject.Type;
     const foods: Food[] = [];
     menuSectionObject.Food.forEach(foodObject => {
-      foods.push(new Food(foodObject, this.deliveryType));
+      foods.push(new Food(foodObject, this.deliveryType, startDate, endDate));
     });
     foods.sort(function (food1, food2) {
       return food1.sortOrder - food2.sortOrder;
