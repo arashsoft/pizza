@@ -72,6 +72,10 @@
   font-weight: bold;
 }
 
+.food-name:hover {
+  text-decoration: underline;
+}
+
 .question-container {
   margin-bottom: 21px;
 }
@@ -86,7 +90,7 @@
   padding-bottom: 40px;
 }
 
-.cart-total-price{
+.cart-total-price {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 40px;

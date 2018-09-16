@@ -61,7 +61,7 @@ export class FoodService {
     if (food.selectedSize.questions) {
       food.selectedSize.questions.every(question => {
         if (question.mustBeAnswered && !question.hasAnyAnswer) {
-          result = 'Question "' + question.name + '" must have an answer';
+          result = 'Question "' + question.name + '" must be answered';
           return false;
         } else if (question.maxAnswer && question.maxAnswer < question.answerCount) {
           result = 'Question "' + question.name + '" cannot have more than ' + question.maxAnswer + ' answers';

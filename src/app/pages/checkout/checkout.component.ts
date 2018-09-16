@@ -39,7 +39,7 @@ export class CheckoutComponent implements OnInit {
       this.order = this.orderService.order;
       this.orderService.calculatePrice();
       $('html, body').animate({scrollTop: 0}, 'fast');
-      ConfigService.findIP(function(ip){
+      ConfigService.findIP(function (ip) {
         self.order.userIP = ip;
       });
     } else {
@@ -150,6 +150,8 @@ export class CheckoutComponent implements OnInit {
     }
     if (_.isEmpty(this.order.orderPhoneNumber)) {
       errors.orderPhoneNumber = 'Please enter your phone number';
+    } else if (this.order.orderPhoneNumber.length !== 10) {
+      errors.orderPhoneNumber = 'Phone number must have 10 digits';
     }
     if (!this.order.isPickup && _.isEmpty(this.order.address.placeId)) {
       errors.address = 'Please select your address from suggested menu';

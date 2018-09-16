@@ -22,7 +22,7 @@
         <div *ngIf="errors?.orderPhoneNumber && phoneNumber.pristine" class="error-message">
           {{errors.orderPhoneNumber}}
         </div>
-        <label for="phoneNumber" class="input-label mt-1 float-left cursor-pointer">Phone</label>
+        <label for="phoneNumber" OnlyNumber="true" class="input-label mt-1 float-left cursor-pointer">Phone</label>
         <input #phoneNumber="ngModel" OnlyNumber="true" type="text" placeholder="Your phone number" class="float-right faded-input" id="phoneNumber" name="phoneNumber"
                [(ngModel)]="order.orderPhoneNumber">
       </div>

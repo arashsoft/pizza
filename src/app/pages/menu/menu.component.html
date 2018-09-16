@@ -1,28 +1,32 @@
 <app-navbar></app-navbar>
 <div class="d-flex flex-row">
   <div class="d-none d-md-block menu-list-container bg-mealsy2">
-    <div id="menu-scrollable" slimScroll >
+    <div id="menu-scrollable" slimScroll>
       <ng-template ngFor let-menu [ngForOf]="menus">
         <div class="mainMenu-item bg-mealsy2">
           <i class="fa fa-angle-right"></i><span class="menu-name">{{menu.name}}</span>
         </div>
         <div class="sub-menu-container">
           <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
-            <div *ngIf="isSubMenuVisible(subMenu)" class="subMenu-item bg-mealsy2 cursor-pointer" (click)="gotoSubMenu(subMenu)">{{subMenu.name}}
+            <div *ngIf="isSubMenuVisible(subMenu)" class="subMenu-item bg-mealsy2 cursor-pointer"
+                 (click)="gotoSubMenu(subMenu, false, $event)">{{subMenu.name}}
             </div>
           </ng-template>
         </div>
       </ng-template>
     </div>
   </div>
-  <img *ngIf="!mobileMenu" src="./assets/icons/MenuSection_Shadow.png" class="d-block d-md-none mobile-menu-trigger" (click)="mobileMenu = !mobileMenu">
+  <img *ngIf="!mobileMenu" src="./assets/icons/MenuSection_Shadow.png" class="d-block d-md-none mobile-menu-trigger"
+       (click)="mobileMenu = !mobileMenu">
   <div *ngIf="mobileMenu" class="d-block d-md-none mobile-menu-container" (click)="mobileMenu = !mobileMenu">
     <div class="mobile-menu" (click)="$event.stopPropagation()">
       <div class="mobile-menu-scroller">
         <ng-template ngFor let-menu [ngForOf]="menus">
           <div class="mobile-mainMenu-item text-center">{{menu.name}}</div>
           <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
-            <div *ngIf="isSubMenuVisible(subMenu)" class="mobile-subMenu-item text-center cursor-pointer" (click)="gotoSubMenu(subMenu, true); mobileMenu = !mobileMenu">{{subMenu.name}}</div>
+            <div *ngIf="isSubMenuVisible(subMenu)" class="mobile-subMenu-item text-center cursor-pointer"
+                 (click)="gotoSubMenu(subMenu, true); mobileMenu = !mobileMenu">{{subMenu.name}}
+            </div>
           </ng-template>
         </ng-template>
       </div>
@@ -32,11 +36,13 @@
   <div class="menu-items-container bg-mealsy1">
     <ng-template ngFor let-menu [ngForOf]="menus">
       <ng-template ngFor let-subMenu [ngForOf]="menu.menuSections">
-        <div class="submenu-position-holder" id="subMenu{{subMenu.id}}"></div>
-        <div class="submenu-title bg-mealsy1">{{subMenu.name}}</div>
-        <div class="d-flex flex-row flex-wrap align-content-around menu-food-item-container">
-          <div *ngFor="let food of subMenu.foods" class="menu-food-item bg-white">
-            <app-food-detail [food]="food"></app-food-detail>
+        <div class="sub-menu-section-container">
+          <div class="submenu-position-holder" id="subMenu{{subMenu.id}}"></div>
+          <div class="submenu-title bg-mealsy1">{{subMenu.name}}</div>
+          <div class="d-flex flex-row flex-wrap align-content-around menu-food-item-container">
+            <div *ngFor="let food of subMenu.foods" class="menu-food-item bg-white">
+              <app-food-detail [food]="food"></app-food-detail>
+            </div>
           </div>
         </div>
       </ng-template>

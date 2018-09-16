@@ -10,6 +10,7 @@ export class ToastService {
     clearTimeout(this.currentToastTimeout);
     this.toast.load(toast);
     this.isToastVisible = true;
+    // @ts-ignore
     this.currentToastTimeout = setTimeout(() => {
       this.isToastVisible = false;
     }, toast.timeout);

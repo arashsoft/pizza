@@ -5,6 +5,7 @@ import {OrderService} from '../../service/order-service';
 import * as $ from 'jquery';
 import {MenuSection} from '../../model/menuSection';
 import {DeliveryType} from '../../model/foodProvider';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-page-menu',
@@ -15,6 +16,7 @@ export class MenuComponent implements OnInit {
   menus: Menu[];
   subMenuMap = {};
   mobileMenu = false;
+  previousActiveSubMenuIndex = -1;
 
   constructor(private foodProviderService: FoodProviderService, public orderService: OrderService) {
   }
@@ -26,25 +28,36 @@ export class MenuComponent implements OnInit {
       this.menus = data.menus;
     });
 
-    // $(window).on('scroll', _.throttle(this.updatePosition, 200));
+    $(window).on('scroll', _.throttle(this.updatePosition, 200));
   }
 
   updatePosition(): void {
     const scrollTop = $(window).scrollTop();
-    $('.menu-food-item-container').each((index, element) => {
-      const menuTop = $(element).offset().top;
+    $('.sub-menu-section-container').each((index, element) => {
+      const menuTop = $(element).offset().top - 50;
       const menuBottom = $(element).height() + menuTop;
       if (scrollTop >= menuTop && scrollTop < menuBottom) {
-        const $subMenu = $('.subMenu-item');
-        $subMenu.removeClass('active');
-        $($subMenu[index]).addClass('active');
-        return false;
+        if (this.previousActiveSubMenuIndex !== index) {
+          this.previousActiveSubMenuIndex = index;
+          const $subMenu = $('.subMenu-item');
+          $subMenu.removeClass('active');
+          $($subMenu[index]).addClass('active');
+          return false;
+        }
       }
     });
   }
 
-  public gotoSubMenu(subMenu: MenuSection, isMobile ?: boolean): void {
-    $([document.documentElement, document.body]).animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - (isMobile ? 0 : 56)});
+  public gotoSubMenu(subMenu: MenuSection, isMobile ?: boolean, event?: Event): void {
+    $([document.documentElement, document.body])
+      .animate({scrollTop: $('#subMenu' + subMenu.id).offset().top - (isMobile ? 0 : 56)}, () => {
+        if (!isMobile) {
+          const $subMenu = $('.subMenu-item');
+          $subMenu.removeClass('active');
+          $(event.target).addClass('active');
+          this.previousActiveSubMenuIndex = -1;
+        }
+      });
   }
 
   isSubMenuVisible(subMenu: MenuSection): boolean {
