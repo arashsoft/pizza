@@ -146,12 +146,10 @@
           <div *ngIf="errors?.newCard && newCardForm.pristine" class="error-message">{{errors.newCard}}</div>
           <input name="cardNumber" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.cardNumber" placeholder="Credit Card">
           <input name="nameOnCard" type="text" class="faded-input card-input mt-2" [(ngModel)]="order.newCard.nameOnCard" placeholder="Name on Card">
-          <div class="d-flex flex-row mt-2">
-            <div class="d-flex flex-row">
-              <input maxlength="2" name="month" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.month" placeholder="Month">
-              <input maxlength="2" name="year" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.year" placeholder="Year">
-            </div>
-            <input name="ccv" OnlyNumber="true" type="text" class="faded-input card-input" [(ngModel)]="order.newCard.ccv" placeholder="CVC">
+          <div class="mt-2">
+              <input maxlength="2" name="month" OnlyNumber="true" type="text" class="faded-input card-input card-input2" [(ngModel)]="order.newCard.month" placeholder="Month">
+              <input maxlength="2" name="year" OnlyNumber="true" type="text" class="faded-input card-input card-input2" [(ngModel)]="order.newCard.year" placeholder="Year">
+              <input name="ccv" OnlyNumber="true" type="text" class="faded-input card-input card-input2" [(ngModel)]="order.newCard.ccv" placeholder="CVC">
           </div>
         </form>
       </div>
